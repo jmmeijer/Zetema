@@ -1,0 +1,7 @@
+{
+  "name": "@zetema/functions",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Zetema Firebase Cloud Functions command gateway."
+}

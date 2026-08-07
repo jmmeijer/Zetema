@@ -1,0 +1,26 @@
+{
+  "name": "zetema",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Adaptive theological dialogue and belief-exploration tool.",
+  "type": "module",
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": ">=24 <27",
+    "pnpm": ">=11 <12"
+  },
+  "scripts": {
+    "build": "pnpm -r --if-present build",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "ci": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.7.0",
+    "typescript": "^6.0.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^4.1.10"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@zetema/domain",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Framework-independent Zetema domain model."
+}
