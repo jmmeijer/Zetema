@@ -7,15 +7,17 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   quality:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
+      - name: Check out pull request branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
@@ -27,14 +29,22 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+      - name: Generate dependency lockfile
+        run: pnpm install --lockfile-only --no-frozen-lockfile
 
-      - name: Upload generated lockfile
-        uses: actions/upload-artifact@v4
-        with:
-          name: pnpm-lockfile
-          path: pnpm-lock.yaml
+      - name: Commit generated lockfile
+        if: github.event_name == 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pnpm-lock.yaml
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: add pnpm lockfile"
+            git push origin HEAD:${GITHUB_HEAD_REF}
+          fi
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Run quality gates
         run: pnpm ci
