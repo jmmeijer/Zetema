@@ -17,7 +17,7 @@
     "ci": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
   },
   "devDependencies": {
-    "@eslint/js": "^10.7.0",
+    "@eslint/js": "^10.0.1",
     "eslint": "^10.7.0",
     "typescript": "^6.0.0",
     "typescript-eslint": "^8.0.0",
