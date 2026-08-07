@@ -1,0 +1,7 @@
+{
+  "name": "@zetema/question-engine",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Framework-independent question eligibility and branching engine."
+}
