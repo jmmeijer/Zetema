@@ -32,6 +32,37 @@ export type StructuredAnswer =
       value: SpecialResponseValue;
     };
 
+export type QuestionPresentationReason =
+  | {
+      kind: "base_sequence";
+    }
+  | {
+      kind: "follow_up_rule";
+      ruleId: string;
+      sourceQuestionId: QuestionId;
+    };
+
+export type QuestionExposure =
+  | {
+      questionId: QuestionId;
+      outcome: "presented";
+      reason: QuestionPresentationReason;
+    }
+  | {
+      questionId: QuestionId;
+      outcome: "not_presented_not_eligible";
+      reason: {
+        kind: "not_eligible";
+      };
+    }
+  | {
+      questionId: QuestionId;
+      outcome: "not_presented_interview_ended";
+      reason: {
+        kind: "interview_ended";
+      };
+    };
+
 export type InterviewSessionStatus =
   | "in_progress"
   | "completed"

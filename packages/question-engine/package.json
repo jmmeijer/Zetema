@@ -3,5 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Framework-independent question eligibility and branching engine."
+  "description": "Framework-independent question eligibility and branching engine.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@zetema/content-schema": "workspace:*",
+    "@zetema/domain": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0"
+  }
 }
