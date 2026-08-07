@@ -3,5 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Schemas and validation for Zetema study content."
+  "description": "Schemas and validation for Zetema study content.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@zetema/domain": "workspace:*",
+    "ajv": "^8.20.0",
+    "yaml": "^2.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0"
+  }
 }
