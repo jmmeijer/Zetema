@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zetema.app/schema/content-release.schema.json",
+  "title": "Zetema Content Release",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "contentVersion",
+    "defaultLocale",
+    "specialResponses",
+    "theme",
+    "questions",
+    "followUpRules"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "releaseId": {
+      "$ref": "#/$defs/id"
+    },
+    "contentVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "defaultLocale": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(?:-[A-Z]{2})?$"
+    },
+    "specialResponses": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/specialResponse"
+      }
+    },
+    "theme": {
+      "$ref": "#/$defs/theme"
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/question"
+      }
+    },
+    "followUpRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/followUpRule"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+    },
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "source"],
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/id"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      }
+    },
+    "specialResponse": {
+      "enum": ["unsure", "skip", "prefer_not_to_answer"]
+    },
+    "theme": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "description"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "description": {
+          "$ref": "#/$defs/localizedText"
+        }
+      }
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/localizedText"
+        }
+      }
+    },
+    "likertScale": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max", "lowLabel", "highLabel"],
+      "properties": {
+        "min": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7
+        },
+        "max": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 7
+        },
+        "lowLabel": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "highLabel": {
+          "$ref": "#/$defs/localizedText"
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "flow", "type", "prompt"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "flow": {
+          "enum": ["base", "follow_up"]
+        },
+        "type": {
+          "enum": ["yes_no", "single_choice", "likert"]
+        },
+        "prompt": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/option"
+          }
+        },
+        "scale": {
+          "$ref": "#/$defs/likertScale"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "single_choice"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "required": ["options"],
+            "not": {
+              "required": ["scale"]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "likert"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "required": ["scale"],
+            "not": {
+              "required": ["options"]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "yes_no"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": ["options"]
+                },
+                {
+                  "required": ["scale"]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "yesNoCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "yes_no"
+        },
+        "value": {
+          "enum": ["yes", "no"]
+        }
+      }
+    },
+    "singleChoiceCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "optionId"],
+      "properties": {
+        "kind": {
+          "const": "single_choice"
+        },
+        "optionId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "likertCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "operator", "value"],
+      "properties": {
+        "kind": {
+          "const": "likert"
+        },
+        "operator": {
+          "enum": ["eq", "gte", "lte"]
+        },
+        "value": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7
+        }
+      }
+    },
+    "specialCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {
+          "const": "special"
+        },
+        "value": {
+          "$ref": "#/$defs/specialResponse"
+        }
+      }
+    },
+    "condition": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/yesNoCondition"
+        },
+        {
+          "$ref": "#/$defs/singleChoiceCondition"
+        },
+        {
+          "$ref": "#/$defs/likertCondition"
+        },
+        {
+          "$ref": "#/$defs/specialCondition"
+        }
+      ]
+    },
+    "followUpRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "sourceQuestionId", "when", "targetQuestionId"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceQuestionId": {
+          "$ref": "#/$defs/id"
+        },
+        "when": {
+          "$ref": "#/$defs/condition"
+        },
+        "targetQuestionId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    }
+  }
+}
