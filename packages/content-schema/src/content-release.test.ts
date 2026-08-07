@@ -3,7 +3,11 @@ import { readFileSync } from "node:fs";
 import YAML from "yaml";
 import { describe, expect, it } from "vitest";
 
-import type { ContentRelease } from "./index.js";
+import type {
+  ContentRelease,
+  FollowUpRule,
+  QuestionDefinition,
+} from "./index.js";
 import {
   parseAndValidateContentReleaseYaml,
   validateContentRelease,
@@ -20,6 +24,14 @@ function loadFixtureSource(): string {
 
 function loadFixture(): ContentRelease {
   return YAML.parse(loadFixtureSource()) as ContentRelease;
+}
+
+function mutableQuestions(release: ContentRelease): QuestionDefinition[] {
+  return release.questions as QuestionDefinition[];
+}
+
+function mutableRules(release: ContentRelease): FollowUpRule[] {
+  return release.followUpRules as FollowUpRule[];
 }
 
 describe("MVP-0.1 content release", () => {
@@ -41,12 +53,20 @@ describe("MVP-0.1 content release", () => {
   });
 
   it("rejects duplicate question ids", () => {
-    const release = loadFixture();
-    const duplicate = structuredClone(release) as ContentRelease;
+    const duplicate = structuredClone(loadFixture()) as ContentRelease;
+    const questions = mutableQuestions(duplicate);
+    const first = questions[0];
+    const second = questions[1];
 
-    duplicate.questions[1] = {
-      ...duplicate.questions[1],
-      id: duplicate.questions[0]?.id ?? "god-exists",
+    expect(first).toBeDefined();
+    expect(second).toBeDefined();
+    if (first === undefined || second === undefined) {
+      throw new Error("Canonical fixture must contain at least two questions.");
+    }
+
+    questions[1] = {
+      ...second,
+      id: first.id,
     };
 
     const result = validateContentRelease(duplicate);
@@ -59,11 +79,17 @@ describe("MVP-0.1 content release", () => {
   });
 
   it("rejects branching from a follow-up question", () => {
-    const release = loadFixture();
-    const invalid = structuredClone(release) as ContentRelease;
+    const invalid = structuredClone(loadFixture()) as ContentRelease;
+    const rules = mutableRules(invalid);
+    const firstRule = rules[0];
 
-    invalid.followUpRules[0] = {
-      ...invalid.followUpRules[0],
+    expect(firstRule).toBeDefined();
+    if (firstRule === undefined) {
+      throw new Error("Canonical fixture must contain at least one follow-up rule.");
+    }
+
+    rules[0] = {
+      ...firstRule,
       sourceQuestionId: "god-conception",
       when: {
         kind: "single_choice",
@@ -81,11 +107,17 @@ describe("MVP-0.1 content release", () => {
   });
 
   it("rejects a single-choice rule that references a missing option", () => {
-    const release = loadFixture();
-    const invalid = structuredClone(release) as ContentRelease;
+    const invalid = structuredClone(loadFixture()) as ContentRelease;
+    const rules = mutableRules(invalid);
+    const firstRule = rules[0];
 
-    invalid.followUpRules[0] = {
-      ...invalid.followUpRules[0],
+    expect(firstRule).toBeDefined();
+    if (firstRule === undefined) {
+      throw new Error("Canonical fixture must contain at least one follow-up rule.");
+    }
+
+    rules[0] = {
+      ...firstRule,
       sourceQuestionId: "relation-to-time",
       when: {
         kind: "single_choice",
