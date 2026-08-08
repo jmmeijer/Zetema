@@ -6,6 +6,8 @@ This runbook deploys the synthetic-only MVP-0.1 walking skeleton. Do not use rea
 
 Development project: `zetema-4853d`.
 
+The development Firestore database and Cloud Functions are co-located in `europe-west4` (Netherlands).
+
 Before deployed browser synchronization is enabled:
 
 1. Upgrade the Firebase project to a plan that permits Cloud Functions deployment.
@@ -33,6 +35,8 @@ Then deploy the authoritative gateway and Firestore controls:
 ```text
 firebase deploy --project zetema-4853d --only functions,firestore:rules,firestore:indexes
 ```
+
+The callable Functions are explicitly deployed to `europe-west4`, and the browser Functions client targets the same region.
 
 The deployed package intentionally excludes the monorepo `workspace:*` development dependencies. Type-only domain/shared contracts are erased during TypeScript compilation; the deployment manifest contains only Firebase runtime dependencies.
 
