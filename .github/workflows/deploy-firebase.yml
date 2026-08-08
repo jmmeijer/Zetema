@@ -2,6 +2,15 @@ name: Deploy Firebase backend
 
 on:
   workflow_dispatch:
+    inputs:
+      target:
+        description: Backend components to deploy
+        required: true
+        default: firestore
+        type: choice
+        options:
+          - firestore
+          - full
 
 permissions:
   contents: read
@@ -42,9 +51,17 @@ jobs:
           workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
 
-      - name: Deploy Functions and Firestore configuration
-        run: >-
-          npx --yes firebase-tools@latest deploy
-          --project zetema-4853d
-          --only functions,firestore:rules,firestore:indexes
-          --non-interactive
+      - name: Deploy selected backend components
+        env:
+          DEPLOY_TARGET: ${{ inputs.target }}
+        run: |
+          if [ "$DEPLOY_TARGET" = "firestore" ]; then
+            ONLY="firestore:rules,firestore:indexes"
+          else
+            ONLY="functions,firestore:rules,firestore:indexes"
+          fi
+
+          npx --yes firebase-tools@15.21.0 deploy \
+            --project zetema-4853d \
+            --only "$ONLY" \
+            --non-interactive
