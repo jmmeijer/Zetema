@@ -7,15 +7,17 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   quality:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
+      - name: Check out pull request branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
@@ -26,8 +28,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Generate dependency lockfile
+        run: pnpm install --lockfile-only --no-frozen-lockfile
+
+      - name: Commit generated lockfile
+        if: github.event_name == 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pnpm-lock.yaml
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update pnpm lockfile"
+            git push origin HEAD:${GITHUB_HEAD_REF}
+          fi
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
