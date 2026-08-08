@@ -11,13 +11,13 @@ Before deployed browser synchronization is enabled:
 1. Upgrade the Firebase project to a plan that permits Cloud Functions deployment.
 2. Enable **Authentication > Sign-in method > Anonymous**.
 3. Create the default Cloud Firestore database in the intended region.
-4. Register the web app with Firebase App Check using a reCAPTCHA Enterprise provider.
-5. Add the resulting public App Check site key to the GitHub repository secret `VITE_FIREBASE_APPCHECK_SITE_KEY`.
+4. Register the web app with Firebase App Check using the reCAPTCHA v3 provider. Keep App Check enforcement disabled until valid requests have been observed during the development smoke test.
+5. Add the public reCAPTCHA v3 site key to the GitHub repository secret `VITE_FIREBASE_APPCHECK_SITE_KEY`. The corresponding reCAPTCHA secret key stays in Firebase/Google configuration and must not be committed or exposed to the browser.
 6. Deploy Cloud Functions and Firestore rules from the repository root with the Firebase CLI using the `dev` alias or explicit `--project zetema-4853d`.
 
-The reCAPTCHA Enterprise site key is browser-visible and is not a server credential. It is nevertheless injected at build time so deployment-specific configuration stays out of application source.
+The reCAPTCHA v3 site key is browser-visible and is not a server credential. It is nevertheless injected at build time so deployment-specific configuration stays out of application source.
 
-Never store service-account JSON, private keys, App Check debug tokens, or Firebase Admin credentials in the repository.
+Never store the reCAPTCHA secret key, service-account JSON, private keys, App Check debug tokens, or Firebase Admin credentials in the repository.
 
 ## Firebase backend
 
@@ -59,5 +59,6 @@ After backend and Pages deployment:
 5. Retry/reload and confirm idempotent commands do not duplicate revisions.
 6. Complete the interview and confirm finalization reaches the server.
 7. Verify direct browser writes to authoritative Firestore records remain denied.
+8. Confirm valid App Check requests are visible before enabling App Check enforcement for the deployed gateway.
 
 This is a development smoke test only and does not authorize real-user processing.
