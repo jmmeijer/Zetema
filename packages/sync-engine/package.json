@@ -3,5 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Local-first outbox, synchronization, and recovery engine."
+  "description": "Local-first outbox, synchronization, and recovery engine.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@zetema/domain": "workspace:*"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.2.5"
+  }
 }
