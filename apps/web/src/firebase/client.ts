@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import {
   initializeAppCheck,
-  ReCaptchaEnterpriseProvider,
+  ReCaptchaV3Provider,
   type AppCheck,
 } from "firebase/app-check";
 import {
@@ -88,7 +88,7 @@ function initializeAppCheckForEnvironment(app: FirebaseApp, environment: Firebas
   }
 
   return initializeAppCheck(app, {
-    provider: new ReCaptchaEnterpriseProvider(environment.appCheckSiteKey),
+    provider: new ReCaptchaV3Provider(environment.appCheckSiteKey),
     isTokenAutoRefreshEnabled: true,
   });
 }
