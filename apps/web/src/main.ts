@@ -1,11 +1,13 @@
 import { createPinia } from "pinia";
 import { createApp } from "vue";
 import { createI18n } from "vue-i18n";
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import YAML from "yaml";
 
 import App from "./App.vue";
+import { createFirebaseCommandGateway } from "./firebase/client";
 import enSource from "./i18n/en.yaml?raw";
+import { BrowserOutboxSync } from "./sync/outbox-sync";
 import LandingView from "./views/LandingView.vue";
 import InterviewView from "./views/InterviewView.vue";
 import SummaryView from "./views/SummaryView.vue";
@@ -23,7 +25,7 @@ const i18n = createI18n({
 });
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
@@ -44,3 +46,14 @@ const router = createRouter({
 });
 
 createApp(App).use(createPinia()).use(router).use(i18n).mount("#app");
+
+try {
+  const gateway = createFirebaseCommandGateway();
+  const outboxSync = new BrowserOutboxSync(gateway);
+  outboxSync.start();
+} catch (error) {
+  console.info(
+    "Firebase synchronization is not configured for this build; local-first interview capture remains available.",
+    error,
+  );
+}
