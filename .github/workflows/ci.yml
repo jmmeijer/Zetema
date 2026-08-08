@@ -34,3 +34,47 @@ jobs:
 
       - name: Run quality gates
         run: pnpm ci
+
+  firebase-emulator:
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11.7.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare Functions emulator artifact
+        run: |
+          pnpm --dir apps/functions run build
+          node apps/functions/scripts/prepare-deploy.mjs
+
+      - name: Run Firebase emulator smoke test
+        env:
+          FUNCTIONS_EMULATOR: "true"
+        run: >-
+          npx --yes firebase-tools@15.21.0 emulators:exec
+          --project demo-zetema
+          --only auth,firestore,functions
+          "node apps/web/scripts/firebase-emulator-smoke.mjs"
