@@ -1,0 +1,32 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function ownsSession(sessionId) {
+      return signedIn()
+        && get(/databases/$(database)/documents/interviewSessions/$(sessionId)).data.ownerUid == request.auth.uid;
+    }
+
+    match /interviewSessions/{sessionId} {
+      allow read: if signedIn() && resource.data.ownerUid == request.auth.uid;
+      allow create, update, delete: if false;
+
+      match /responseRevisions/{revisionId} {
+        allow read: if ownsSession(sessionId);
+        allow create, update, delete: if false;
+      }
+
+      match /operations/{operationId} {
+        allow read, write: if false;
+      }
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
