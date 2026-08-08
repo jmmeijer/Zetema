@@ -19,6 +19,7 @@ const commandService = new CommandGatewayService(
 );
 
 const callableOptions = {
+  region: "europe-west4",
   enforceAppCheck: true,
 } as const;
 
