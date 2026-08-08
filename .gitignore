@@ -6,6 +6,8 @@ node_modules/
 dist/
 coverage/
 *.tsbuildinfo
+apps/functions/lib/
+apps/functions/deploy/lib/
 
 # Vite / Vue
 .vite/
