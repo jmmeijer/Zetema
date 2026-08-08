@@ -5,6 +5,13 @@ packages:
 # Delay newly published package versions by one day to reduce supply-chain risk.
 minimumReleaseAge: 1440
 
+# Require an explicit decision for dependency build scripts.
+# Firebase util materializes runtime defaults files; protobufjs only performs
+# a compatibility-warning check that Zetema does not require at install time.
+allowBuilds:
+  "@firebase/util": true
+  protobufjs: false
+
 # Keep workspace package resolution explicit and reproducible.
 linkWorkspacePackages: true
 preferWorkspacePackages: true
