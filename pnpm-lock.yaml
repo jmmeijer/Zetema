@@ -46,7 +46,18 @@ importers:
 
   packages/domain: {}
 
-  packages/question-engine: {}
+  packages/question-engine:
+    dependencies:
+      '@zetema/content-schema':
+        specifier: workspace:*
+        version: link:../content-schema
+      '@zetema/domain':
+        specifier: workspace:*
+        version: link:../domain
+    devDependencies:
+      '@types/node':
+        specifier: ^24.0.0
+        version: 24.13.3
 
   packages/reasoning-engine: {}
 
