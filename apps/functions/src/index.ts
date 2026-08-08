@@ -18,9 +18,12 @@ const commandService = new CommandGatewayService(
   new FirestoreCommandStore(getFirestore()),
 );
 
+// Browser and CI emulator clients cannot produce production App Check attestations.
+// Keep App Check enforced everywhere except when the Functions emulator explicitly
+// marks the process as local.
 const callableOptions = {
   region: "europe-west4",
-  enforceAppCheck: true,
+  enforceAppCheck: process.env.FUNCTIONS_EMULATOR !== "true",
 } as const;
 
 function requireAuthenticatedUid(uid: string | undefined): string {
