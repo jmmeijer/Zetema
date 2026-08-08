@@ -1,7 +1,7 @@
 {
   "functions": [
     {
-      "source": "apps/functions",
+      "source": "apps/functions/deploy",
       "codebase": "default",
       "ignore": [
         "node_modules",
@@ -11,7 +11,8 @@
         "*.local"
       ],
       "predeploy": [
-        "pnpm --dir apps/functions run build"
+        "pnpm --dir apps/functions run build",
+        "node apps/functions/scripts/prepare-deploy.mjs"
       ]
     }
   ],
