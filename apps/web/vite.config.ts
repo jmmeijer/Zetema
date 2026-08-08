@@ -1,6 +1,11 @@
 import vue from "@vitejs/plugin-vue";
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 
-export default defineConfig({
-  plugins: [vue()],
+export default defineConfig(({ mode }) => {
+  const environment = loadEnv(mode, process.cwd(), "");
+
+  return {
+    base: environment.VITE_BASE_PATH || "/",
+    plugins: [vue()],
+  };
 });
