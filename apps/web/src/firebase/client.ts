@@ -64,7 +64,7 @@ function readEnvironment(): FirebaseEnvironment {
     messagingSenderId: requiredEnvironmentValue("VITE_FIREBASE_MESSAGING_SENDER_ID"),
     appId: requiredEnvironmentValue("VITE_FIREBASE_APP_ID"),
     functionsRegion:
-      (import.meta.env.VITE_FIREBASE_FUNCTIONS_REGION as string | undefined)?.trim() || "us-central1",
+      (import.meta.env.VITE_FIREBASE_FUNCTIONS_REGION as string | undefined)?.trim() || "europe-west4",
     appCheckSiteKey:
       (import.meta.env.VITE_FIREBASE_APPCHECK_SITE_KEY as string | undefined)?.trim() ?? "",
     appCheckDebug: import.meta.env.VITE_FIREBASE_APPCHECK_DEBUG === "true",
