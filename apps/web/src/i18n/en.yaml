@@ -1,0 +1,41 @@
+brand:
+  name: Zetema
+  tagline: Explore what you believe.
+landing:
+  intro: Explore beliefs, ideas and the reasons behind them through a series of questions.
+  start: Start
+  resume: Resume a session
+  noWrong: No right or wrong answers
+  canSkip: You can skip any question
+  duration: Takes about 10–20 minutes
+  about: About
+interview:
+  unsure: I'm unsure
+  skip: Skip
+  preferNot: Prefer not to answer
+  continue: Continue
+  back: Back
+  loading: Loading your session…
+  saveError: We couldn't save that response. Please try again.
+  unavailable: This question is unavailable.
+  progressLabel: Progress
+summary:
+  title: Your summary
+  review: Review or change answers
+  finish: Finish
+  basedOnResponses: Summary based on your responses
+  questionsAnswered: questions answered
+  reviewHeading: Your answers
+  change: Change
+  completedTitle: Thank you
+  completedBody: Your responses have been saved on this device and the interview is complete.
+clarification:
+  title: One point to clarify
+  intro: To better understand your perspective, we'd like to explore two statements together.
+  tension: These answers seem difficult to hold together as stated. How would you describe your view?
+  continue: Continue
+common:
+  yes: Yes
+  no: No
+  language: Language
+  english: English
