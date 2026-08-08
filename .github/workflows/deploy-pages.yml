@@ -40,7 +40,7 @@ jobs:
       - name: Build web app
         run: pnpm --dir apps/web build
         env:
-          VITE_APP_BASE_PATH: /Zetema/
+          VITE_BASE_PATH: /Zetema/
           VITE_FIREBASE_API_KEY: AIzaSyAY4nPo3N-eD8U1mOO85VzIsZ25b_CdIiA
           VITE_FIREBASE_AUTH_DOMAIN: zetema-4853d.firebaseapp.com
           VITE_FIREBASE_PROJECT_ID: zetema-4853d

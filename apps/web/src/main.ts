@@ -13,7 +13,7 @@ import InterviewView from "./views/InterviewView.vue";
 import SummaryView from "./views/SummaryView.vue";
 import "./styles.css";
 
-const messages = YAML.parse(enSource) as Record<string, unknown>;
+const messages = YAML.parse(enSource);
 
 const i18n = createI18n({
   legacy: false,

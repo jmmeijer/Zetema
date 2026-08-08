@@ -69,6 +69,15 @@ function toFinalizeRequest(command: FinalizeInterviewSessionOutboxCommand) {
   };
 }
 
+function withLastSuccessfulSyncAt(
+  state: Omit<BrowserSyncState, "lastSuccessfulSyncAt">,
+  lastSuccessfulSyncAt: string | undefined,
+): BrowserSyncState {
+  return lastSuccessfulSyncAt === undefined
+    ? state
+    : { ...state, lastSuccessfulSyncAt };
+}
+
 export class BrowserOutboxSync {
   private readonly gateway: FirebaseCommandGateway;
   private readonly listeners = new Set<BrowserSyncStateListener>();
@@ -128,28 +137,40 @@ export class BrowserOutboxSync {
     const pending = await this.commandsAfterAcknowledgement(allCommands);
 
     if (pending.length === 0) {
-      this.publish({
-        status: navigator.onLine ? "idle" : "offline",
-        pendingCommands: 0,
-        lastSuccessfulSyncAt: this.state.lastSuccessfulSyncAt,
-      });
+      this.publish(
+        withLastSuccessfulSyncAt(
+          {
+            status: navigator.onLine ? "idle" : "offline",
+            pendingCommands: 0,
+          },
+          this.state.lastSuccessfulSyncAt,
+        ),
+      );
       return;
     }
 
     if (!navigator.onLine) {
-      this.publish({
-        status: "offline",
-        pendingCommands: pending.length,
-        lastSuccessfulSyncAt: this.state.lastSuccessfulSyncAt,
-      });
+      this.publish(
+        withLastSuccessfulSyncAt(
+          {
+            status: "offline",
+            pendingCommands: pending.length,
+          },
+          this.state.lastSuccessfulSyncAt,
+        ),
+      );
       return;
     }
 
-    this.publish({
-      status: "syncing",
-      pendingCommands: pending.length,
-      lastSuccessfulSyncAt: this.state.lastSuccessfulSyncAt,
-    });
+    this.publish(
+      withLastSuccessfulSyncAt(
+        {
+          status: "syncing",
+          pendingCommands: pending.length,
+        },
+        this.state.lastSuccessfulSyncAt,
+      ),
+    );
 
     try {
       await this.gateway.ensureAuthenticatedUser();
@@ -165,11 +186,11 @@ export class BrowserOutboxSync {
 
         const serverSequence = await sendCommand(this.gateway, command);
         const syncedAt = now();
+        const highestServerSequence = serverSequence ?? metadata?.highestServerSequence;
         await localStore.putSyncMetadata({
           sessionId: command.sessionId,
           highestAcknowledgedLocalSequence: command.localSequence,
-          highestServerSequence:
-            serverSequence ?? metadata?.highestServerSequence,
+          ...(highestServerSequence === undefined ? {} : { highestServerSequence }),
           lastSuccessfulSyncAt: syncedAt,
         });
         remaining -= 1;
@@ -180,12 +201,16 @@ export class BrowserOutboxSync {
         });
       }
     } catch (error) {
-      this.publish({
-        status: navigator.onLine ? "error" : "offline",
-        pendingCommands: pending.length,
-        lastSuccessfulSyncAt: this.state.lastSuccessfulSyncAt,
-        lastError: error instanceof Error ? error.message : "Synchronization failed.",
-      });
+      this.publish(
+        withLastSuccessfulSyncAt(
+          {
+            status: navigator.onLine ? "error" : "offline",
+            pendingCommands: pending.length,
+            lastError: error instanceof Error ? error.message : "Synchronization failed.",
+          },
+          this.state.lastSuccessfulSyncAt,
+        ),
+      );
     }
   }
 
