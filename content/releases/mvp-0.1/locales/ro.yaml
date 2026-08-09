@@ -1,0 +1,30 @@
+theme.nature-of-god.title: Natura lui Dumnezeu
+theme.nature-of-god.description: Întrebări despre cum este Dumnezeu și ce atribute crezi că are.
+question.god-exists.prompt: Crezi că Dumnezeu există?
+question.existence-confidence.prompt: Cât de sigur(ă) ești de răspunsul tău la întrebarea dacă Dumnezeu există?
+scale.confidence.low: Deloc sigur(ă)
+scale.confidence.high: Foarte sigur(ă)
+question.personal-god.prompt: Crezi că Dumnezeu este o ființă personală care poate avea intenții și relații?
+question.omnipotent.prompt: Crezi că Dumnezeu este atotputernic, în sensul de a avea puterea maxim posibilă?
+question.omniscient.prompt: Crezi că Dumnezeu este atotștiutor, în sensul că Dumnezeu cunoaște toate adevărurile?
+question.omnipresent.prompt: Crezi că Dumnezeu este omniprezent?
+question.perfectly-good.prompt: Crezi că Dumnezeu este perfect bun?
+question.relation-to-time.prompt: Care descriere se potrivește cel mai bine cu felul în care crezi că Dumnezeu se raportează la timp?
+option.relation-to-time.outside-time: Dumnezeu există în afara timpului
+option.relation-to-time.within-time: Dumnezeu există în timp
+option.relation-to-time.both: Ambele, într-un anumit sens
+option.common.other: O altă perspectivă
+question.acts-in-world.prompt: Crezi că Dumnezeu acționează uneori în lume în moduri care influențează evenimentele?
+question.reveals-self.prompt: Crezi că Dumnezeu le revelează în mod intenționat oamenilor informații despre sine?
+question.god-conception.prompt: Dacă Dumnezeu nu este personal, care descriere se apropie cel mai mult de perspectiva ta?
+option.god-conception.impersonal-mind: O minte sau inteligență impersonală
+option.god-conception.ground-of-being: Temeiul sau fundamentul existenței
+option.god-conception.force-or-principle: O forță sau un principiu impersonal
+question.power-limits.prompt: Ce fel de limitare a puterii lui Dumnezeu se potrivește cel mai bine cu perspectiva ta?
+option.power-limits.logical-limits: Dumnezeu nu poate face ceea ce este imposibil din punct de vedere logic
+option.power-limits.self-imposed-limits: Dumnezeu își limitează în mod voluntar propria putere
+option.power-limits.external-limits: Ceva din afara lui Dumnezeu îi limitează puterea
+question.goodness-conception.prompt: Care descriere se apropie cel mai mult de perspectiva ta asupra caracterului moral al lui Dumnezeu?
+option.goodness-conception.mostly-good: Dumnezeu este bun, dar nu perfect bun
+option.goodness-conception.morally-mixed: Dumnezeu poate fi atât moral bun, cât și moral rău
+option.goodness-conception.beyond-morality: Categoriile morale umane nu se aplică lui Dumnezeu
