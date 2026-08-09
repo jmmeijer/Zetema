@@ -3,8 +3,8 @@ import { onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 
-import zetemaLogoSymbol from "../assets/brand/zetema-logo-symbol.png";
-import zetemaWatercolorBackground from "../assets/brand/zetema-watercolor-background.webp";
+import zetemaLogoSymbol from "../assets/brand/zetema-logo-symbol.png?inline";
+import zetemaWatercolorBackground from "../assets/brand/zetema-watercolor-background.webp?inline";
 import LanguageSelector from "../components/LanguageSelector.vue";
 import { useInterviewStore } from "../stores/interview";
 
