@@ -6,7 +6,7 @@
   "description": "Zetema Vue web application.",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/validate-locales.mjs && vue-tsc -p tsconfig.json --noEmit && vite build",
+    "build": "node scripts/validate-locales.mjs && vue-tsc -p tsconfig.json --noEmit && vite build && node scripts/validate-brand-assets-built.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
