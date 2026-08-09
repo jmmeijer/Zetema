@@ -55,7 +55,7 @@ summary:
     attributePerfectlyGood: perfect bun
     attributesAffirmed: Dintre atributele analizate aici, îl descrii pe Dumnezeu ca fiind {attributes}.
     attributesRejected: Nu îl descrii pe Dumnezeu ca fiind {attributes}.
-    attributesUnsure: Nu ești sigur(ă) dacă lui Dumnezeu i se pot atribui următoarele: {attributes}.
+    attributesUnsure: "Nu ești sigur(ă) dacă lui Dumnezeu i se pot atribui următoarele: {attributes}."
     timeOutside: Crezi că Dumnezeu există în afara timpului.
     timeWithin: Crezi că Dumnezeu există în timp.
     timeBoth: Crezi că Dumnezeu se raportează la timp în ambele moduri, într-un anumit sens.
