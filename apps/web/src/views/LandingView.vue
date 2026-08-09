@@ -3,6 +3,7 @@ import { onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 
+import zetemaLogoSymbol from "../assets/brand/zetema-logo-symbol.svg";
 import LanguageSelector from "../components/LanguageSelector.vue";
 import { useInterviewStore } from "../stores/interview";
 
@@ -30,11 +31,13 @@ async function resume(): Promise<void> {
     <LanguageSelector class="landing-language" />
 
     <section class="landing-card">
-      <div class="brand-mark" aria-hidden="true">○</div>
-      <p class="brand-name">{{ t("brand.name") }}</p>
+      <div class="brand-lockup">
+        <img class="brand-symbol brand-symbol-large" :src="zetemaLogoSymbol" alt="" aria-hidden="true" />
+        <p class="brand-name">{{ t("brand.name") }}</p>
+      </div>
+
       <h1>{{ t("brand.tagline") }}</h1>
       <p class="lead">{{ t("landing.intro") }}</p>
-      <p class="preview-notice">{{ t("landing.preview") }}</p>
 
       <button class="button button-primary button-large" :disabled="interview.busy" @click="start">
         {{ t("landing.start") }} <span aria-hidden="true">→</span>
@@ -42,10 +45,11 @@ async function resume(): Promise<void> {
 
       <button
         v-if="interview.resumeAvailable"
-        class="button button-secondary button-large"
+        class="button button-secondary button-large resume-button"
         :disabled="interview.busy"
         @click="resume"
       >
+        <span aria-hidden="true">◷</span>
         {{ t("landing.resume") }}
       </button>
 
@@ -56,15 +60,15 @@ async function resume(): Promise<void> {
 
     <section class="landing-facts" :aria-label="t('landing.interviewInfo')">
       <div>
-        <span class="fact-icon" aria-hidden="true">○</span>
+        <span class="fact-icon fact-icon-blush" aria-hidden="true">○</span>
         <p>{{ t("landing.noWrong") }}</p>
       </div>
       <div>
-        <span class="fact-icon" aria-hidden="true">↷</span>
+        <span class="fact-icon fact-icon-seafoam" aria-hidden="true">↷</span>
         <p>{{ t("landing.canSkip") }}</p>
       </div>
       <div>
-        <span class="fact-icon" aria-hidden="true">◷</span>
+        <span class="fact-icon fact-icon-slate" aria-hidden="true">◷</span>
         <p>{{ t("landing.duration") }}</p>
       </div>
     </section>
