@@ -1,0 +1,52 @@
+/* Brand asset rendering adjustments.
+ * Keep asset placement separate from the core component styles so the
+ * decorative artwork can be tuned without touching interview behavior.
+ */
+
+/* The original pseudo-element background proved too easy to lose visually
+ * after cropping. Render the supplied artwork as a real decorative image
+ * instead; this also lets Vite resolve and preload the asset normally.
+ */
+.landing-page::before {
+  content: none;
+}
+
+.landing-watercolor {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  display: block;
+  width: min(68vw, 1040px);
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+  opacity: 1;
+}
+
+@media (min-width: 1440px) {
+  .landing-watercolor {
+    width: min(62vw, 1160px);
+  }
+}
+
+/* The style guide calls for cropping rather than shrinking the watercolour
+ * on mobile. Keep the artwork large and let the viewport crop its right edge.
+ */
+@media (max-width: 720px) {
+  .landing-watercolor {
+    top: -8px;
+    right: -335px;
+    width: 760px;
+    opacity: 0.96;
+  }
+}
+
+@media (max-width: 430px) {
+  .landing-watercolor {
+    top: -14px;
+    right: -330px;
+    width: 700px;
+  }
+}
