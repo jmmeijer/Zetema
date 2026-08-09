@@ -97,6 +97,11 @@ export type ContentValidationResult =
 const ajv = new Ajv2020({
   allErrors: true,
   strict: true,
+  // The schema intentionally uses conditional `required` checks inside
+  // allOf/then/not branches. They are valid JSON Schema, but Ajv's
+  // strictRequired lint can reject them because parent properties are not
+  // always considered across these conditional subschema boundaries.
+  strictRequired: false,
 });
 
 const validateSchema = ajv.compile<ContentRelease>(contentReleaseSchema);
