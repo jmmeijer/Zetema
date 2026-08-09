@@ -1,0 +1,40 @@
+/* Zetema design tokens - Style Guide v1.0 */
+:root {
+  /* Brand */
+  --zetema-ink: #0D1B2A;
+  --zetema-seafoam: #2DBFAE;
+  --zetema-seafoam-dark: #0F8076;
+  --zetema-paper: #FAF6F1;
+  --zetema-blush: #EBC8C3;
+  --zetema-slate: #5B6A80;
+  --zetema-charcoal: #2C2F36;
+  --zetema-seafoam-tint: #E6F7F4;
+  --zetema-border: #D8D9D7;
+
+  /* Typography */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Radius */
+  --radius-control: 12px;
+  --radius-card: 18px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-card: 0 8px 24px rgba(13, 27, 42, 0.08);
+  --shadow-float: 0 12px 36px rgba(13, 27, 42, 0.12);
+
+  /* Focus */
+  --focus-ring: 0 0 0 3px rgba(45, 191, 174, 0.42);
+}
+
+/* Recommended semantic mappings */
+:root {
+  --color-bg: var(--zetema-paper);
+  --color-text: var(--zetema-ink);
+  --color-text-muted: var(--zetema-slate);
+  --color-primary: var(--zetema-ink);
+  --color-accent: var(--zetema-seafoam);
+  --color-accent-text: var(--zetema-ink); /* do not use white on #2DBFAE for normal text */
+  --color-examination: var(--zetema-blush); /* tension/clarification, not "wrong" */
+}
