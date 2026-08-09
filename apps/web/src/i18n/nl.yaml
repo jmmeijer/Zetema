@@ -55,7 +55,7 @@ summary:
     attributePerfectlyGood: volmaakt goed
     attributesAffirmed: Onder de eigenschappen die hier aan bod kwamen, beschrijf je God als {attributes}.
     attributesRejected: Je beschrijft God niet als {attributes}.
-    attributesUnsure: Je bent onzeker over de vraag of de volgende eigenschappen op God van toepassing zijn: {attributes}.
+    attributesUnsure: "Je bent onzeker over de vraag of de volgende eigenschappen op God van toepassing zijn: {attributes}."
     timeOutside: Je denkt dat God buiten de tijd bestaat.
     timeWithin: Je denkt dat God binnen de tijd bestaat.
     timeBoth: Je denkt dat God zich in zekere zin op beide manieren tot de tijd verhoudt.
