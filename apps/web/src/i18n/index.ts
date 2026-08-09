@@ -78,6 +78,16 @@ export const i18n = createI18n({
 
 export const currentLocale = i18n.global.locale;
 
+// vue-i18n's strongly typed `t` overload recursively derives message-key paths.
+// Our messages are loaded from YAML at runtime and callers intentionally use
+// runtime string keys, so keep that complexity behind this small stable wrapper.
+type RuntimeTranslate = (
+  key: string,
+  named?: Record<string, string | number>,
+) => string;
+
+const runtimeTranslate = i18n.global.t as unknown as RuntimeTranslate;
+
 function updateDocumentLanguage(locale: SupportedLocale): void {
   if (typeof document !== "undefined") {
     document.documentElement.lang = locale;
@@ -104,5 +114,5 @@ export function translate(
   // Reading the locale keeps callers such as computed summaries reactive when the
   // language changes, even though they use the global i18n instance directly.
   void currentLocale.value;
-  return named === undefined ? i18n.global.t(key) : i18n.global.t(key, named);
+  return runtimeTranslate(key, named);
 }
