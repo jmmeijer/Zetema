@@ -9,6 +9,8 @@ landing:
   canSkip: You can skip any question
   duration: Takes about 10–20 minutes
   about: About
+  interviewInfo: Interview information
+  preview: Development preview — synthetic/test responses only
 interview:
   unsure: I'm unsure
   skip: Skip
@@ -19,6 +21,7 @@ interview:
   saveError: We couldn't save that response. Please try again.
   unavailable: This question is unavailable.
   progressLabel: Progress
+  reviewing: Reviewing an earlier answer
 summary:
   title: Your summary
   review: Review or change answers
@@ -29,6 +32,54 @@ summary:
   change: Change
   completedTitle: Thank you
   completedBody: Your responses have been saved on this device and the interview is complete.
+  returnHome: Return home
+  reviewNote: You can review or change your answers before finishing.
+  skipped: Skipped
+  generated:
+    existenceYes: You believe that God exists.
+    existenceNo: You do not believe that God exists.
+    existenceUnsure: You are unsure whether God exists.
+    confidence: Your confidence in that answer is {level}.
+    confidenceUnsure: You are unsure how confident you are in that answer.
+    confidenceVeryLow: very low
+    confidenceLow: low
+    confidenceModerate: moderate
+    confidenceFairlyHigh: fairly high
+    confidenceVeryHigh: very high
+    personalYes: You understand God as a personal being who can have intentions and relationships.
+    personalNo: You do not understand God as a personal being who can have intentions and relationships.
+    personalUnsure: You are unsure whether God should be understood as a personal being.
+    attributeMaxPowerful: maximally powerful
+    attributeAllKnowing: all-knowing
+    attributeOmnipresent: omnipresent
+    attributePerfectlyGood: perfectly good
+    attributesAffirmed: Among the attributes considered here, you describe God as {attributes}.
+    attributesRejected: You do not describe God as {attributes}.
+    attributesUnsure: You are unsure whether the following attributes apply to God: {attributes}.
+    timeOutside: You think God exists outside time.
+    timeWithin: You think God exists within time.
+    timeBoth: You think God relates to time in both ways, in some sense.
+    timeOther: You hold another view about how God relates to time.
+    timeUnsure: You are unsure how God relates to time.
+    actsYes: You think God acts within the world in ways that can affect events.
+    actsNo: You do not think God acts within the world in ways that affect events.
+    revealsYes: You think God can intentionally reveal information about himself to people.
+    revealsNo: You do not think God intentionally reveals information about himself to people.
+    conceptionImpersonalMind: an impersonal mind or intelligence
+    conceptionGroundOfBeing: the ground or foundation of existence
+    conceptionForceOrPrinciple: an impersonal force or principle
+    conceptionOther: another conception
+    conceptionSentence: When describing a non-personal God, {description} comes closest to your view.
+    powerLogical: God cannot do what is logically impossible
+    powerSelfImposed: God can voluntarily limit his own power
+    powerExternal: something outside God can limit his power
+    powerOther: you understand limits on God's power in another way
+    powerSentence: Regarding limits on God's power, your view is that {description}.
+    goodnessMostlyGood: God is good, but not perfectly good
+    goodnessMixed: God can be both morally good and morally bad
+    goodnessBeyondMorality: human moral categories do not apply to God
+    goodnessOther: you understand God's moral character in another way
+    goodnessSentence: Regarding God's moral character, your view is that {description}.
 clarification:
   title: One point to clarify
   intro: To better understand your perspective, we'd like to explore two statements together.
@@ -39,3 +90,12 @@ common:
   no: No
   language: Language
   english: English
+  dutch: Dutch
+  romanian: Romanian
+  homeLabel: Zetema home
+errors:
+  noSession: No interview session is loaded.
+  loadSession: Unable to load this session.
+  saveAnswer: Unable to save this answer.
+  noActiveQuestion: No active question is available.
+  cannotFinish: The interview cannot be finished yet.

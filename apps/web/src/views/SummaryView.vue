@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 
+import LanguageSelector from "../components/LanguageSelector.vue";
 import { useInterviewStore } from "../stores/interview";
 
 const { t } = useI18n();
@@ -43,17 +44,17 @@ async function finish(): Promise<void> {
 <template>
   <main class="page summary-page">
     <header class="app-header">
-      <RouterLink class="brand-inline" to="/" aria-label="Zetema home">
+      <RouterLink class="brand-inline" to="/" :aria-label="t('common.homeLabel')">
         <span class="brand-mark-small" aria-hidden="true">○</span>
         <span>{{ t("brand.name") }}</span>
       </RouterLink>
-      <span class="language-chip">◎ EN</span>
+      <LanguageSelector />
     </header>
 
     <section class="content-shell summary-shell">
       <div class="theme-progress">
         <div class="theme-progress-labels">
-          <span>{{ interview.release.theme.title.source }}</span>
+          <span>{{ interview.localizeContentText(interview.release.theme.title) }}</span>
           <span class="muted">100%</span>
         </div>
         <div class="progress-track">
@@ -65,7 +66,9 @@ async function finish(): Promise<void> {
         <div class="completion-icon" aria-hidden="true">✓</div>
         <h1>{{ t("summary.completedTitle") }}</h1>
         <p class="lead">{{ t("summary.completedBody") }}</p>
-        <RouterLink class="button button-primary button-large" to="/">Return home</RouterLink>
+        <RouterLink class="button button-primary button-large" to="/">
+          {{ t("summary.returnHome") }}
+        </RouterLink>
       </section>
 
       <section v-else class="summary-content">
@@ -79,7 +82,7 @@ async function finish(): Promise<void> {
 
         <div class="summary-note">
           <span aria-hidden="true">✎</span>
-          <p>You can review or change your answers before finishing.</p>
+          <p>{{ t("summary.reviewNote") }}</p>
         </div>
 
         <button class="button button-secondary button-large" type="button" @click="showReview = !showReview">

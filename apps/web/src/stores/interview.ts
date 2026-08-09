@@ -15,6 +15,8 @@ import {
   type LocalSessionState,
 } from "@zetema/sync-engine";
 import releaseSource from "../../../../content/releases/mvp-0.1/nature-of-god.en.yaml?raw";
+import { currentLocale, translate } from "../i18n";
+import { localizeContentText } from "../i18n/content";
 
 const parsedRelease = parseAndValidateContentReleaseYaml(releaseSource);
 
@@ -39,16 +41,10 @@ function newId(): string {
 }
 
 function naturalList(items: readonly string[]): string {
-  if (items.length === 0) {
-    return "";
-  }
-  if (items.length === 1) {
-    return items[0] ?? "";
-  }
-  if (items.length === 2) {
-    return `${items[0]} and ${items[1]}`;
-  }
-  return `${items.slice(0, -1).join(", ")}, and ${items.at(-1)}`;
+  return new Intl.ListFormat(currentLocale.value, {
+    style: "long",
+    type: "conjunction",
+  }).format([...items]);
 }
 
 export const useInterviewStore = defineStore("interview", () => {
@@ -99,7 +95,7 @@ export const useInterviewStore = defineStore("interview", () => {
 
   async function hydrateSession(): Promise<LocalSessionState> {
     if (sessionId.value === null) {
-      throw new Error("No interview session is loaded.");
+      throw new Error(translate("errors.noSession"));
     }
 
     const snapshot = await localStore.getSessionSnapshot(sessionId.value);
@@ -260,7 +256,7 @@ export const useInterviewStore = defineStore("interview", () => {
         finished.value = true;
       }
     } catch (error) {
-      errorMessage.value = error instanceof Error ? error.message : "Unable to load this session.";
+      errorMessage.value = error instanceof Error ? error.message : translate("errors.loadSession");
       throw error;
     } finally {
       busy.value = false;
@@ -269,7 +265,7 @@ export const useInterviewStore = defineStore("interview", () => {
 
   async function answerCurrent(answer: StructuredAnswer): Promise<void> {
     if (sessionId.value === null || currentQuestionId.value === null) {
-      throw new Error("No active question is available.");
+      throw new Error(translate("errors.noActiveQuestion"));
     }
 
     busy.value = true;
@@ -286,7 +282,7 @@ export const useInterviewStore = defineStore("interview", () => {
       });
       await refreshFlow();
     } catch (error) {
-      errorMessage.value = error instanceof Error ? error.message : "Unable to save this answer.";
+      errorMessage.value = error instanceof Error ? error.message : translate("errors.saveAnswer");
       throw error;
     } finally {
       busy.value = false;
@@ -303,7 +299,7 @@ export const useInterviewStore = defineStore("interview", () => {
 
   async function finishSession(): Promise<void> {
     if (sessionId.value === null || !flowComplete.value) {
-      throw new Error("The interview cannot be finished yet.");
+      throw new Error(translate("errors.cannotFinish"));
     }
 
     busy.value = true;
@@ -332,37 +328,45 @@ export const useInterviewStore = defineStore("interview", () => {
 
     if (existence?.kind === "yes_no") {
       first.push(
-        existence.value === "yes"
-          ? "You believe that God exists."
-          : "You do not believe that God exists.",
+        translate(
+          existence.value === "yes"
+            ? "summary.generated.existenceYes"
+            : "summary.generated.existenceNo",
+        ),
       );
     } else if (existence?.kind === "special" && existence.value === "unsure") {
-      first.push("You are unsure whether God exists.");
+      first.push(translate("summary.generated.existenceUnsure"));
     }
 
     const confidence = getAnswer("existence-confidence");
     if (confidence?.kind === "likert") {
       const labels: Record<number, string> = {
-        1: "very low",
-        2: "low",
-        3: "moderate",
-        4: "fairly high",
-        5: "very high",
+        1: translate("summary.generated.confidenceVeryLow"),
+        2: translate("summary.generated.confidenceLow"),
+        3: translate("summary.generated.confidenceModerate"),
+        4: translate("summary.generated.confidenceFairlyHigh"),
+        5: translate("summary.generated.confidenceVeryHigh"),
       };
-      first.push(`Your confidence in that answer is ${labels[confidence.value] ?? "moderate"}.`);
+      first.push(
+        translate("summary.generated.confidence", {
+          level: labels[confidence.value] ?? translate("summary.generated.confidenceModerate"),
+        }),
+      );
     } else if (confidence?.kind === "special" && confidence.value === "unsure") {
-      first.push("You are unsure how confident you are in that answer.");
+      first.push(translate("summary.generated.confidenceUnsure"));
     }
 
     const personal = getAnswer("personal-god");
     if (personal?.kind === "yes_no") {
       first.push(
-        personal.value === "yes"
-          ? "You understand God as a personal being who can have intentions and relationships."
-          : "You do not understand God as a personal being who can have intentions and relationships.",
+        translate(
+          personal.value === "yes"
+            ? "summary.generated.personalYes"
+            : "summary.generated.personalNo",
+        ),
       );
     } else if (personal?.kind === "special" && personal.value === "unsure") {
-      first.push("You are unsure whether God should be understood as a personal being.");
+      first.push(translate("summary.generated.personalUnsure"));
     }
 
     if (first.length > 0) {
@@ -370,10 +374,10 @@ export const useInterviewStore = defineStore("interview", () => {
     }
 
     const attributes = [
-      ["omnipotent", "maximally powerful"],
-      ["omniscient", "all-knowing"],
-      ["omnipresent", "omnipresent"],
-      ["perfectly-good", "perfectly good"],
+      ["omnipotent", translate("summary.generated.attributeMaxPowerful")],
+      ["omniscient", translate("summary.generated.attributeAllKnowing")],
+      ["omnipresent", translate("summary.generated.attributeOmnipresent")],
+      ["perfectly-good", translate("summary.generated.attributePerfectlyGood")],
     ] as const;
     const affirmed: string[] = [];
     const rejected: string[] = [];
@@ -390,13 +394,25 @@ export const useInterviewStore = defineStore("interview", () => {
 
     const second: string[] = [];
     if (affirmed.length > 0) {
-      second.push(`Among the attributes considered here, you describe God as ${naturalList(affirmed)}.`);
+      second.push(
+        translate("summary.generated.attributesAffirmed", {
+          attributes: naturalList(affirmed),
+        }),
+      );
     }
     if (rejected.length > 0) {
-      second.push(`You do not describe God as ${naturalList(rejected)}.`);
+      second.push(
+        translate("summary.generated.attributesRejected", {
+          attributes: naturalList(rejected),
+        }),
+      );
     }
     if (uncertain.length > 0) {
-      second.push(`You are unsure whether ${naturalList(uncertain)} applies to God.`);
+      second.push(
+        translate("summary.generated.attributesUnsure", {
+          attributes: naturalList(uncertain),
+        }),
+      );
     }
     if (second.length > 0) {
       paragraphs.push(second.join(" "));
@@ -405,35 +421,37 @@ export const useInterviewStore = defineStore("interview", () => {
     const third: string[] = [];
     const time = getAnswer("relation-to-time");
     if (time?.kind === "single_choice") {
-      const timeText: Record<string, string> = {
-        "outside-time": "You think God exists outside time.",
-        "within-time": "You think God exists within time.",
-        both: "You think God relates to time in both ways, in some sense.",
-        other: "You hold another view about how God relates to time.",
+      const timeKeys: Record<string, string> = {
+        "outside-time": "summary.generated.timeOutside",
+        "within-time": "summary.generated.timeWithin",
+        both: "summary.generated.timeBoth",
+        other: "summary.generated.timeOther",
       };
-      const text = timeText[time.optionId];
-      if (text !== undefined) {
-        third.push(text);
+      const key = timeKeys[time.optionId];
+      if (key !== undefined) {
+        third.push(translate(key));
       }
     } else if (time?.kind === "special" && time.value === "unsure") {
-      third.push("You are unsure how God relates to time.");
+      third.push(translate("summary.generated.timeUnsure"));
     }
 
     const acts = getAnswer("acts-in-world");
     if (acts?.kind === "yes_no") {
       third.push(
-        acts.value === "yes"
-          ? "You think God acts within the world in ways that can affect events."
-          : "You do not think God acts within the world in ways that affect events.",
+        translate(
+          acts.value === "yes" ? "summary.generated.actsYes" : "summary.generated.actsNo",
+        ),
       );
     }
 
     const reveals = getAnswer("reveals-self");
     if (reveals?.kind === "yes_no") {
       third.push(
-        reveals.value === "yes"
-          ? "You think God can intentionally reveal information about himself to people."
-          : "You do not think God intentionally reveals information about himself to people.",
+        translate(
+          reveals.value === "yes"
+            ? "summary.generated.revealsYes"
+            : "summary.generated.revealsNo",
+        ),
       );
     }
 
@@ -444,43 +462,55 @@ export const useInterviewStore = defineStore("interview", () => {
     const qualifications: string[] = [];
     const conception = getAnswer("god-conception");
     if (conception?.kind === "single_choice") {
-      const texts: Record<string, string> = {
-        "impersonal-mind": "an impersonal mind or intelligence",
-        "ground-of-being": "the ground or foundation of existence",
-        "force-or-principle": "an impersonal force or principle",
-        other: "another conception",
+      const keys: Record<string, string> = {
+        "impersonal-mind": "summary.generated.conceptionImpersonalMind",
+        "ground-of-being": "summary.generated.conceptionGroundOfBeing",
+        "force-or-principle": "summary.generated.conceptionForceOrPrinciple",
+        other: "summary.generated.conceptionOther",
       };
-      const text = texts[conception.optionId];
-      if (text !== undefined) {
-        qualifications.push(`When describing a non-personal God, ${text} comes closest to your view.`);
+      const key = keys[conception.optionId];
+      if (key !== undefined) {
+        qualifications.push(
+          translate("summary.generated.conceptionSentence", {
+            description: translate(key),
+          }),
+        );
       }
     }
 
     const power = getAnswer("power-limits");
     if (power?.kind === "single_choice") {
-      const texts: Record<string, string> = {
-        "logical-limits": "God cannot do what is logically impossible",
-        "self-imposed-limits": "God can voluntarily limit his own power",
-        "external-limits": "something outside God can limit his power",
-        other: "you understand limits on God's power in another way",
+      const keys: Record<string, string> = {
+        "logical-limits": "summary.generated.powerLogical",
+        "self-imposed-limits": "summary.generated.powerSelfImposed",
+        "external-limits": "summary.generated.powerExternal",
+        other: "summary.generated.powerOther",
       };
-      const text = texts[power.optionId];
-      if (text !== undefined) {
-        qualifications.push(`Regarding limits on God's power, your view is that ${text}.`);
+      const key = keys[power.optionId];
+      if (key !== undefined) {
+        qualifications.push(
+          translate("summary.generated.powerSentence", {
+            description: translate(key),
+          }),
+        );
       }
     }
 
     const goodness = getAnswer("goodness-conception");
     if (goodness?.kind === "single_choice") {
-      const texts: Record<string, string> = {
-        "mostly-good": "God is good, but not perfectly good",
-        "morally-mixed": "God can be both morally good and morally bad",
-        "beyond-morality": "human moral categories do not apply to God",
-        other: "you understand God's moral character in another way",
+      const keys: Record<string, string> = {
+        "mostly-good": "summary.generated.goodnessMostlyGood",
+        "morally-mixed": "summary.generated.goodnessMixed",
+        "beyond-morality": "summary.generated.goodnessBeyondMorality",
+        other: "summary.generated.goodnessOther",
       };
-      const text = texts[goodness.optionId];
-      if (text !== undefined) {
-        qualifications.push(`Regarding God's moral character, your view is that ${text}.`);
+      const key = keys[goodness.optionId];
+      if (key !== undefined) {
+        qualifications.push(
+          translate("summary.generated.goodnessSentence", {
+            description: translate(key),
+          }),
+        );
       }
     }
 
@@ -501,30 +531,33 @@ export const useInterviewStore = defineStore("interview", () => {
       let displayAnswer: string;
       switch (answer.kind) {
         case "yes_no":
-          displayAnswer = answer.value === "yes" ? "Yes" : "No";
+          displayAnswer = translate(answer.value === "yes" ? "common.yes" : "common.no");
           break;
         case "likert":
           displayAnswer = `${answer.value} / ${question.scale?.max ?? answer.value}`;
           break;
         case "single_choice":
           displayAnswer =
-            question.options?.find((option) => option.id === answer.optionId)?.label.source ??
-            answer.optionId;
+            question.options?.find((option) => option.id === answer.optionId) !== undefined
+              ? localizeContentText(
+                  question.options.find((option) => option.id === answer.optionId)!.label,
+                )
+              : answer.optionId;
           break;
         case "special":
           displayAnswer =
             answer.value === "unsure"
-              ? "I'm unsure"
+              ? translate("interview.unsure")
               : answer.value === "skip"
-                ? "Skipped"
-                : "Prefer not to answer";
+                ? translate("summary.skipped")
+                : translate("interview.preferNot");
           break;
       }
 
       return [
         {
           questionId: question.id,
-          prompt: question.prompt.source,
+          prompt: localizeContentText(question.prompt),
           answer: displayAnswer,
         },
       ];
@@ -549,6 +582,7 @@ export const useInterviewStore = defineStore("interview", () => {
     progressPercent,
     summaryParagraphs,
     reviewItems,
+    localizeContentText,
     getAnswer,
     getQuestion,
     startSession,

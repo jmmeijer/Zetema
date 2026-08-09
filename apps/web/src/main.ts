@@ -1,28 +1,15 @@
 import { createPinia } from "pinia";
 import { createApp } from "vue";
-import { createI18n } from "vue-i18n";
 import { createRouter, createWebHashHistory } from "vue-router";
-import YAML from "yaml";
 
 import App from "./App.vue";
 import { createFirebaseCommandGateway } from "./firebase/client";
-import enSource from "./i18n/en.yaml?raw";
+import { i18n } from "./i18n";
 import { BrowserOutboxSync } from "./sync/outbox-sync";
 import LandingView from "./views/LandingView.vue";
 import InterviewView from "./views/InterviewView.vue";
 import SummaryView from "./views/SummaryView.vue";
 import "./styles.css";
-
-const messages = YAML.parse(enSource);
-
-const i18n = createI18n({
-  legacy: false,
-  locale: "en",
-  fallbackLocale: "en",
-  messages: {
-    en: messages,
-  },
-});
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),

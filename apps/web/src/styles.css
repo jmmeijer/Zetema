@@ -41,12 +41,14 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
 button,
-a {
+a,
+select {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -57,6 +59,7 @@ a {
 
 button:focus-visible,
 a:focus-visible,
+select:focus-visible,
 input:focus-visible + span {
   outline: 3px solid color-mix(in srgb, var(--focus) 35%, transparent);
   outline-offset: 3px;
@@ -107,17 +110,25 @@ input:focus-visible + span {
   font-size: 1rem;
 }
 
-.language-chip,
-.landing-language {
+.language-selector {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 9px 13px;
+  padding: 9px 11px 9px 13px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text);
   background: rgb(255 253 249 / 65%);
   font-size: 0.9rem;
+}
+
+.language-selector select {
+  min-width: 3rem;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 650;
 }
 
 .content-shell {
@@ -262,7 +273,20 @@ h2 {
 
 .landing-card .lead {
   max-width: 540px;
-  margin: 0 auto 36px;
+  margin: 0 auto 24px;
+}
+
+.preview-notice {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 30px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgb(255 253 249 / 58%);
+  font-size: 0.82rem;
+  line-height: 1.4;
 }
 
 .landing-card .button + .button {
@@ -308,9 +332,23 @@ h2 {
   margin: 0 auto;
   padding-top: 26px;
   display: flex;
+  align-items: center;
   gap: 22px;
   border-top: 1px solid var(--border);
   font-size: 0.9rem;
+}
+
+.footer-language {
+  padding: 0;
+  border: 0;
+  color: var(--text);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.footer-language.muted {
+  color: var(--muted);
 }
 
 .footer-spacer {

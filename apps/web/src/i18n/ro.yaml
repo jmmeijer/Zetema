@@ -1,0 +1,101 @@
+brand:
+  name: Zetema
+  tagline: Explorează ceea ce crezi.
+landing:
+  intro: Explorează credințe, idei și motivele din spatele lor printr-o serie de întrebări.
+  start: Începe
+  resume: Reia sesiunea
+  noWrong: Nu există răspunsuri corecte sau greșite
+  canSkip: Poți sări peste orice întrebare
+  duration: Durează aproximativ 10–20 de minute
+  about: Despre
+  interviewInfo: Informații despre interviu
+  preview: Previzualizare de dezvoltare — doar răspunsuri sintetice/de test
+interview:
+  unsure: Nu sunt sigur(ă)
+  skip: Sari peste
+  preferNot: Prefer să nu răspund
+  continue: Continuă
+  back: Înapoi
+  loading: Se încarcă sesiunea…
+  saveError: Nu am putut salva acel răspuns. Încearcă din nou.
+  unavailable: Această întrebare nu este disponibilă.
+  progressLabel: Progres
+  reviewing: Revizuirea unui răspuns anterior
+summary:
+  title: Rezumatul tău
+  review: Revizuiește sau modifică răspunsurile
+  finish: Finalizează
+  basedOnResponses: Rezumat bazat pe răspunsurile tale
+  questionsAnswered: întrebări cu răspuns
+  reviewHeading: Răspunsurile tale
+  change: Modifică
+  completedTitle: Mulțumim
+  completedBody: Răspunsurile tale au fost salvate pe acest dispozitiv, iar interviul este finalizat.
+  returnHome: Înapoi la început
+  reviewNote: Poți revizui sau modifica răspunsurile înainte de finalizare.
+  skipped: Omis
+  generated:
+    existenceYes: Crezi că Dumnezeu există.
+    existenceNo: Nu crezi că Dumnezeu există.
+    existenceUnsure: Nu ești sigur(ă) dacă Dumnezeu există.
+    confidence: Nivelul tău de încredere în acel răspuns este {level}.
+    confidenceUnsure: Nu ești sigur(ă) câtă încredere ai în acel răspuns.
+    confidenceVeryLow: foarte scăzut
+    confidenceLow: scăzut
+    confidenceModerate: moderat
+    confidenceFairlyHigh: destul de ridicat
+    confidenceVeryHigh: foarte ridicat
+    personalYes: Consideri că Dumnezeu este o ființă personală care poate avea intenții și relații.
+    personalNo: Nu consideri că Dumnezeu este o ființă personală care poate avea intenții și relații.
+    personalUnsure: Nu ești sigur(ă) dacă Dumnezeu ar trebui înțeles ca o ființă personală.
+    attributeMaxPowerful: cu putere maximă
+    attributeAllKnowing: atotștiutor
+    attributeOmnipresent: omniprezent
+    attributePerfectlyGood: perfect bun
+    attributesAffirmed: Dintre atributele analizate aici, îl descrii pe Dumnezeu ca fiind {attributes}.
+    attributesRejected: Nu îl descrii pe Dumnezeu ca fiind {attributes}.
+    attributesUnsure: Nu ești sigur(ă) dacă lui Dumnezeu i se pot atribui următoarele: {attributes}.
+    timeOutside: Crezi că Dumnezeu există în afara timpului.
+    timeWithin: Crezi că Dumnezeu există în timp.
+    timeBoth: Crezi că Dumnezeu se raportează la timp în ambele moduri, într-un anumit sens.
+    timeOther: Ai o altă perspectivă asupra modului în care Dumnezeu se raportează la timp.
+    timeUnsure: Nu ești sigur(ă) cum se raportează Dumnezeu la timp.
+    actsYes: Crezi că Dumnezeu acționează în lume în moduri care pot influența evenimentele.
+    actsNo: Nu crezi că Dumnezeu acționează în lume în moduri care influențează evenimentele.
+    revealsYes: Crezi că Dumnezeu le poate revela în mod intenționat oamenilor informații despre sine.
+    revealsNo: Nu crezi că Dumnezeu le revelează în mod intenționat oamenilor informații despre sine.
+    conceptionImpersonalMind: o minte sau inteligență impersonală
+    conceptionGroundOfBeing: temeiul sau fundamentul existenței
+    conceptionForceOrPrinciple: o forță sau un principiu impersonal
+    conceptionOther: o altă concepție
+    conceptionSentence: Când descrii un Dumnezeu nepersonal, ideea de {description} se apropie cel mai mult de perspectiva ta.
+    powerLogical: Dumnezeu nu poate face ceea ce este imposibil din punct de vedere logic
+    powerSelfImposed: Dumnezeu își poate limita în mod voluntar propria putere
+    powerExternal: ceva din afara lui Dumnezeu îi poate limita puterea
+    powerOther: înțelegi limitele puterii lui Dumnezeu într-un alt mod
+    powerSentence: În privința limitelor puterii lui Dumnezeu, perspectiva ta este că {description}.
+    goodnessMostlyGood: Dumnezeu este bun, dar nu perfect bun
+    goodnessMixed: Dumnezeu poate fi atât moral bun, cât și moral rău
+    goodnessBeyondMorality: categoriile morale umane nu se aplică lui Dumnezeu
+    goodnessOther: înțelegi caracterul moral al lui Dumnezeu într-un alt mod
+    goodnessSentence: În privința caracterului moral al lui Dumnezeu, perspectiva ta este că {description}.
+clarification:
+  title: Un punct de clarificat
+  intro: Pentru a înțelege mai bine perspectiva ta, am dori să analizăm împreună două afirmații.
+  tension: Aceste răspunsuri par dificil de susținut împreună în forma actuală. Cum ți-ai descrie perspectiva?
+  continue: Continuă
+common:
+  yes: Da
+  no: Nu
+  language: Limbă
+  english: Engleză
+  dutch: Neerlandeză
+  romanian: Română
+  homeLabel: Pagina principală Zetema
+errors:
+  noSession: Nu este încărcată nicio sesiune de interviu.
+  loadSession: Această sesiune nu a putut fi încărcată.
+  saveAnswer: Acest răspuns nu a putut fi salvat.
+  noActiveQuestion: Nu există nicio întrebare activă disponibilă.
+  cannotFinish: Interviul nu poate fi finalizat încă.

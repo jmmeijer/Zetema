@@ -1,0 +1,101 @@
+brand:
+  name: Zetema
+  tagline: Onderzoek wat je gelooft.
+landing:
+  intro: Onderzoek overtuigingen, ideeën en de redenen erachter aan de hand van een reeks vragen.
+  start: Start
+  resume: Sessie hervatten
+  noWrong: Geen goede of foute antwoorden
+  canSkip: Je kunt elke vraag overslaan
+  duration: Duurt ongeveer 10–20 minuten
+  about: Over
+  interviewInfo: Informatie over het interview
+  preview: Ontwikkelpreview — alleen synthetische/testantwoorden
+interview:
+  unsure: Ik weet het niet zeker
+  skip: Overslaan
+  preferNot: Liever niet beantwoorden
+  continue: Doorgaan
+  back: Terug
+  loading: Je sessie laden…
+  saveError: We konden dat antwoord niet opslaan. Probeer het opnieuw.
+  unavailable: Deze vraag is niet beschikbaar.
+  progressLabel: Voortgang
+  reviewing: Eerder antwoord bekijken
+summary:
+  title: Jouw samenvatting
+  review: Antwoorden bekijken of wijzigen
+  finish: Afronden
+  basedOnResponses: Samenvatting op basis van je antwoorden
+  questionsAnswered: vragen beantwoord
+  reviewHeading: Jouw antwoorden
+  change: Wijzigen
+  completedTitle: Bedankt
+  completedBody: Je antwoorden zijn op dit apparaat opgeslagen en het interview is afgerond.
+  returnHome: Terug naar start
+  reviewNote: Je kunt je antwoorden bekijken of wijzigen voordat je afrondt.
+  skipped: Overgeslagen
+  generated:
+    existenceYes: Je gelooft dat God bestaat.
+    existenceNo: Je gelooft niet dat God bestaat.
+    existenceUnsure: Je weet niet zeker of God bestaat.
+    confidence: Je vertrouwen in dat antwoord is {level}.
+    confidenceUnsure: Je weet niet zeker hoe veel vertrouwen je in dat antwoord hebt.
+    confidenceVeryLow: zeer laag
+    confidenceLow: laag
+    confidenceModerate: gemiddeld
+    confidenceFairlyHigh: vrij hoog
+    confidenceVeryHigh: zeer hoog
+    personalYes: Je begrijpt God als een persoonlijk wezen dat bedoelingen kan hebben en relaties kan aangaan.
+    personalNo: Je begrijpt God niet als een persoonlijk wezen dat bedoelingen kan hebben en relaties kan aangaan.
+    personalUnsure: Je weet niet zeker of God als een persoonlijk wezen moet worden begrepen.
+    attributeMaxPowerful: maximaal machtig
+    attributeAllKnowing: alwetend
+    attributeOmnipresent: alomtegenwoordig
+    attributePerfectlyGood: volmaakt goed
+    attributesAffirmed: Onder de eigenschappen die hier aan bod kwamen, beschrijf je God als {attributes}.
+    attributesRejected: Je beschrijft God niet als {attributes}.
+    attributesUnsure: Je bent onzeker over de vraag of de volgende eigenschappen op God van toepassing zijn: {attributes}.
+    timeOutside: Je denkt dat God buiten de tijd bestaat.
+    timeWithin: Je denkt dat God binnen de tijd bestaat.
+    timeBoth: Je denkt dat God zich in zekere zin op beide manieren tot de tijd verhoudt.
+    timeOther: Je hebt een andere opvatting over hoe God zich tot de tijd verhoudt.
+    timeUnsure: Je weet niet zeker hoe God zich tot de tijd verhoudt.
+    actsYes: Je denkt dat God in de wereld handelt op manieren die gebeurtenissen kunnen beïnvloeden.
+    actsNo: Je denkt niet dat God in de wereld handelt op manieren die gebeurtenissen beïnvloeden.
+    revealsYes: Je denkt dat God bewust informatie over zichzelf aan mensen kan openbaren.
+    revealsNo: Je denkt niet dat God bewust informatie over zichzelf aan mensen openbaart.
+    conceptionImpersonalMind: een onpersoonlijke geest of intelligentie
+    conceptionGroundOfBeing: de grond of grondslag van het bestaan
+    conceptionForceOrPrinciple: een onpersoonlijke kracht of beginsel
+    conceptionOther: een andere opvatting
+    conceptionSentence: Als je een niet-persoonlijke God beschrijft, komt {description} het dichtst bij jouw opvatting.
+    powerLogical: God kan niet doen wat logisch onmogelijk is
+    powerSelfImposed: God kan vrijwillig zijn eigen macht beperken
+    powerExternal: iets buiten God kan zijn macht beperken
+    powerOther: je begrijpt grenzen aan Gods macht op een andere manier
+    powerSentence: Wat grenzen aan Gods macht betreft, is jouw opvatting dat {description}.
+    goodnessMostlyGood: God is goed, maar niet volmaakt goed
+    goodnessMixed: God kan zowel moreel goed als moreel slecht zijn
+    goodnessBeyondMorality: menselijke morele categorieën zijn niet op God van toepassing
+    goodnessOther: je begrijpt Gods morele karakter op een andere manier
+    goodnessSentence: Wat Gods morele karakter betreft, is jouw opvatting dat {description}.
+clarification:
+  title: Eén punt om te verduidelijken
+  intro: Om je perspectief beter te begrijpen, willen we twee uitspraken samen bekijken.
+  tension: Deze antwoorden lijken in deze vorm moeilijk samen te gaan. Hoe zou je jouw opvatting omschrijven?
+  continue: Doorgaan
+common:
+  yes: Ja
+  no: Nee
+  language: Taal
+  english: Engels
+  dutch: Nederlands
+  romanian: Roemeens
+  homeLabel: Startpagina van Zetema
+errors:
+  noSession: Er is geen interviewsessie geladen.
+  loadSession: Deze sessie kon niet worden geladen.
+  saveAnswer: Dit antwoord kon niet worden opgeslagen.
+  noActiveQuestion: Er is geen actieve vraag beschikbaar.
+  cannotFinish: Het interview kan nog niet worden afgerond.
