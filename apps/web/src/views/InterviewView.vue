@@ -4,6 +4,7 @@ import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 
 import type { StructuredAnswer } from "@zetema/domain";
+import LanguageSelector from "../components/LanguageSelector.vue";
 import { useInterviewStore } from "../stores/interview";
 
 const { t } = useI18n();
@@ -94,17 +95,17 @@ async function submitSelected(): Promise<void> {
 <template>
   <main class="page interview-page">
     <header class="app-header">
-      <RouterLink class="brand-inline" to="/" aria-label="Zetema home">
+      <RouterLink class="brand-inline" to="/" :aria-label="t('common.homeLabel')">
         <span class="brand-mark-small" aria-hidden="true">○</span>
         <span>{{ t("brand.name") }}</span>
       </RouterLink>
-      <span class="language-chip">◎ EN</span>
+      <LanguageSelector />
     </header>
 
     <section class="content-shell">
       <div class="theme-progress">
         <div class="theme-progress-labels">
-          <span>{{ interview.release.theme.title.source }}</span>
+          <span>{{ interview.localizeContentText(interview.release.theme.title) }}</span>
           <span class="muted">{{ interview.progressPercent }}%</span>
         </div>
         <div class="progress-track" :aria-label="t('interview.progressLabel')">
@@ -126,8 +127,10 @@ async function submitSelected(): Promise<void> {
           ← {{ t("interview.back") }}
         </button>
 
-        <p v-if="editingQuestionId" class="eyebrow">Reviewing an earlier answer</p>
-        <h1 class="question-title">{{ interview.currentQuestion.prompt.source }}</h1>
+        <p v-if="editingQuestionId" class="eyebrow">{{ t("interview.reviewing") }}</p>
+        <h1 class="question-title">
+          {{ interview.localizeContentText(interview.currentQuestion.prompt) }}
+        </h1>
 
         <div v-if="interview.currentQuestion.type === 'yes_no'" class="yes-no-grid">
           <button
@@ -156,14 +159,18 @@ async function submitSelected(): Promise<void> {
             :class="{ selected: selectedOptionId === option.id }"
           >
             <input v-model="selectedOptionId" type="radio" :value="option.id" />
-            <span>{{ option.label.source }}</span>
+            <span>{{ interview.localizeContentText(option.label) }}</span>
           </label>
         </div>
 
         <div v-else-if="interview.currentQuestion.type === 'likert'" class="likert-block">
           <div class="likert-labels">
-            <span>{{ interview.currentQuestion.scale?.lowLabel.source }}</span>
-            <span>{{ interview.currentQuestion.scale?.highLabel.source }}</span>
+            <span v-if="interview.currentQuestion.scale">
+              {{ interview.localizeContentText(interview.currentQuestion.scale.lowLabel) }}
+            </span>
+            <span v-if="interview.currentQuestion.scale">
+              {{ interview.localizeContentText(interview.currentQuestion.scale.highLabel) }}
+            </span>
           </div>
           <div class="likert-options">
             <label
