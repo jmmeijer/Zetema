@@ -4,6 +4,7 @@ import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 
 import type { StructuredAnswer } from "@zetema/domain";
+import zetemaLogoSymbol from "../assets/brand/zetema-logo-symbol.svg";
 import LanguageSelector from "../components/LanguageSelector.vue";
 import { useInterviewStore } from "../stores/interview";
 
@@ -96,7 +97,7 @@ async function submitSelected(): Promise<void> {
   <main class="page interview-page">
     <header class="app-header">
       <RouterLink class="brand-inline" to="/" :aria-label="t('common.homeLabel')">
-        <span class="brand-mark-small" aria-hidden="true">○</span>
+        <img class="brand-symbol brand-symbol-small" :src="zetemaLogoSymbol" alt="" aria-hidden="true" />
         <span>{{ t("brand.name") }}</span>
       </RouterLink>
       <LanguageSelector />
