@@ -1,3 +1,4 @@
+import type { Plugin, Ref } from "vue";
 import { createI18n } from "vue-i18n";
 import YAML from "yaml";
 
@@ -19,6 +20,31 @@ export const localeOptions: readonly {
 ];
 
 const LOCALE_STORAGE_KEY = "zetema.locale";
+
+type RuntimeMessages = Record<string, unknown>;
+type RuntimeTranslate = (
+  key: string,
+  named?: Record<string, string | number>,
+) => string;
+
+type RuntimeI18n = Plugin & {
+  global: {
+    locale: Ref<SupportedLocale>;
+    t: RuntimeTranslate;
+  };
+};
+
+type RuntimeI18nFactory = (options: {
+  legacy: false;
+  locale: SupportedLocale;
+  fallbackLocale: SupportedLocale;
+  messages: Record<SupportedLocale, RuntimeMessages>;
+}) => RuntimeI18n;
+
+// vue-i18n's public factory carries deeply recursive schema/key generics. Zetema's
+// UI messages are YAML parsed at runtime and intentionally addressed by runtime
+// string keys, so erase those compile-time schema generics at this boundary.
+const createRuntimeI18n = createI18n as unknown as RuntimeI18nFactory;
 
 function isSupportedLocale(value: string): value is SupportedLocale {
   return supportedLocales.includes(value as SupportedLocale);
@@ -63,13 +89,13 @@ function detectBrowserLocale(): SupportedLocale | undefined {
 
 const initialLocale = readStoredLocale() ?? detectBrowserLocale() ?? "en";
 
-const messages = {
-  en: YAML.parse(enSource),
-  nl: YAML.parse(nlSource),
-  ro: YAML.parse(roSource),
+const messages: Record<SupportedLocale, RuntimeMessages> = {
+  en: YAML.parse(enSource) as RuntimeMessages,
+  nl: YAML.parse(nlSource) as RuntimeMessages,
+  ro: YAML.parse(roSource) as RuntimeMessages,
 };
 
-export const i18n = createI18n({
+export const i18n = createRuntimeI18n({
   legacy: false,
   locale: initialLocale,
   fallbackLocale: "en",
@@ -77,16 +103,7 @@ export const i18n = createI18n({
 });
 
 export const currentLocale = i18n.global.locale;
-
-// vue-i18n's strongly typed `t` overload recursively derives message-key paths.
-// Our messages are loaded from YAML at runtime and callers intentionally use
-// runtime string keys, so keep that complexity behind this small stable wrapper.
-type RuntimeTranslate = (
-  key: string,
-  named?: Record<string, string | number>,
-) => string;
-
-const runtimeTranslate = i18n.global.t as unknown as RuntimeTranslate;
+const runtimeTranslate = i18n.global.t;
 
 function updateDocumentLanguage(locale: SupportedLocale): void {
   if (typeof document !== "undefined") {
