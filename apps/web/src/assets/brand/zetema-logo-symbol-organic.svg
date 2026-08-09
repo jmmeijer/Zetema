@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 881 881" role="img" aria-labelledby="title">
+<title id="title">Zetema aperture symbol</title>
+<defs>
+  <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0D1B2A"/>
+    <stop offset="1" stop-color="#133252"/>
+  </linearGradient>
+  <linearGradient id="seafoam" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#35C9BE"/>
+    <stop offset="1" stop-color="#2DBFAE"/>
+  </linearGradient>
+</defs>
+<path d="M 26 640 L 2 575 L 0 491 L 16 383 L 51 291 L 102 213 L 167 145 L 246 89 L 338 45 L 423 20 L 519 5 L 608 0 L 681 7 L 741 22 L 792 43 L 827 65 L 850 87 L 860 107 L 858 128 L 845 147 L 818 171 L 781 198 L 737 232 L 688 270 L 638 309 L 592 347 L 550 386 L 521 419 L 501 443 L 473 430 L 445 420 L 415 418 L 386 425 L 360 440 L 340 460 L 325 485 L 318 513 L 320 542 L 330 569 L 343 589 L 318 610 L 292 633 L 265 658 L 236 684 L 207 711 L 177 738 L 148 763 L 118 784 L 91 801 L 67 809 L 50 807 L 39 800 L 31 786 L 26 768 L 24 743 L 26 715 L 29 683 Z" fill="url(#navy)"/>
+<path d="M 367 541 L 344 563 L 318 589 L 289 618 L 258 648 L 227 679 L 196 710 L 165 740 L 135 768 L 110 792 L 91 815 L 83 834 L 84 849 L 94 860 L 112 868 L 136 874 L 167 878 L 202 881 L 247 880 L 301 874 L 362 861 L 423 842 L 482 817 L 539 784 L 594 745 L 644 700 L 688 650 L 724 594 L 752 536 L 773 476 L 786 416 L 793 359 L 792 310 L 786 271 L 776 243 L 762 225 L 746 216 L 727 216 L 704 223 L 677 236 L 647 253 L 616 273 L 585 294 L 554 316 L 526 337 L 502 356 L 482 372 L 463 389 L 451 401 L 469 419 L 482 442 L 488 468 L 486 495 L 478 519 L 464 540 L 444 557 L 421 568 L 395 572 L 373 568 L 354 559 Z" fill="url(#seafoam)"/>
+</svg>
