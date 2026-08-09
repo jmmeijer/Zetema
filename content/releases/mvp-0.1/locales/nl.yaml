@@ -1,0 +1,30 @@
+theme.nature-of-god.title: Aard van God
+theme.nature-of-god.description: Vragen over hoe God is en welke eigenschappen je aan God toeschrijft.
+question.god-exists.prompt: Geloof je dat God bestaat?
+question.existence-confidence.prompt: Hoe zeker ben je van je antwoord op de vraag of God bestaat?
+scale.confidence.low: Helemaal niet zeker
+scale.confidence.high: Zeer zeker
+question.personal-god.prompt: Geloof je dat God een persoonlijk wezen is dat bedoelingen kan hebben en relaties kan aangaan?
+question.omnipotent.prompt: Geloof je dat God almachtig is, in de betekenis van maximaal machtig?
+question.omniscient.prompt: Geloof je dat God alwetend is, in de betekenis dat God alle waarheden kent?
+question.omnipresent.prompt: Geloof je dat God alomtegenwoordig is?
+question.perfectly-good.prompt: Geloof je dat God volmaakt goed is?
+question.relation-to-time.prompt: Welke beschrijving past het best bij hoe God zich volgens jou tot de tijd verhoudt?
+option.relation-to-time.outside-time: God bestaat buiten de tijd
+option.relation-to-time.within-time: God bestaat binnen de tijd
+option.relation-to-time.both: Beide, in zekere zin
+option.common.other: Een andere opvatting
+question.acts-in-world.prompt: Geloof je dat God soms in de wereld handelt op manieren die gebeurtenissen beïnvloeden?
+question.reveals-self.prompt: Geloof je dat God bewust informatie over zichzelf aan mensen openbaart?
+question.god-conception.prompt: Als God niet persoonlijk is, welke beschrijving komt dan het dichtst bij jouw opvatting?
+option.god-conception.impersonal-mind: Een onpersoonlijke geest of intelligentie
+option.god-conception.ground-of-being: De grond of grondslag van het bestaan
+option.god-conception.force-or-principle: Een onpersoonlijke kracht of beginsel
+question.power-limits.prompt: Welk soort beperking van Gods macht past het best bij jouw opvatting?
+option.power-limits.logical-limits: God kan niet doen wat logisch onmogelijk is
+option.power-limits.self-imposed-limits: God beperkt vrijwillig zijn eigen macht
+option.power-limits.external-limits: Iets buiten God beperkt zijn macht
+question.goodness-conception.prompt: Welke beschrijving komt het dichtst bij jouw opvatting over Gods morele karakter?
+option.goodness-conception.mostly-good: God is goed, maar niet volmaakt goed
+option.goodness-conception.morally-mixed: God kan zowel moreel goed als moreel slecht zijn
+option.goodness-conception.beyond-morality: Menselijke morele categorieën zijn niet op God van toepassing
