@@ -4,7 +4,6 @@ import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 
 import LanguageSelector from "../components/LanguageSelector.vue";
-import { currentLocale, localeOptions, setLocale } from "../i18n";
 import { useInterviewStore } from "../stores/interview";
 
 const { t } = useI18n();
@@ -71,17 +70,6 @@ async function resume(): Promise<void> {
     </section>
 
     <footer class="landing-footer">
-      <button
-        v-for="option in localeOptions"
-        :key="option.value"
-        class="footer-language"
-        :class="{ muted: currentLocale !== option.value }"
-        type="button"
-        :aria-label="option.nativeName"
-        @click="setLocale(option.value)"
-      >
-        {{ option.code }}
-      </button>
       <span class="footer-spacer" />
       <span>{{ t("landing.about") }}</span>
     </footer>
