@@ -55,7 +55,7 @@ summary:
     attributePerfectlyGood: perfectly good
     attributesAffirmed: Among the attributes considered here, you describe God as {attributes}.
     attributesRejected: You do not describe God as {attributes}.
-    attributesUnsure: You are unsure whether the following attributes apply to God: {attributes}.
+    attributesUnsure: "You are unsure whether the following attributes apply to God: {attributes}."
     timeOutside: You think God exists outside time.
     timeWithin: You think God exists within time.
     timeBoth: You think God relates to time in both ways, in some sense.
