@@ -9,6 +9,7 @@ import { BrowserOutboxSync } from "./sync/outbox-sync";
 import LandingView from "./views/LandingView.vue";
 import InterviewView from "./views/InterviewView.vue";
 import SummaryView from "./views/SummaryView.vue";
+import "./styles/tokens.css";
 import "./styles.css";
 
 const router = createRouter({
