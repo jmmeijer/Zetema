@@ -3,7 +3,8 @@ import { onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 
-import zetemaLogoSymbol from "../assets/brand/zetema-logo-symbol.svg";
+import zetemaLogoSymbol from "../assets/brand/zetema-logo-symbol.png";
+import zetemaWatercolorBackground from "../assets/brand/zetema-watercolor-background.webp";
 import LanguageSelector from "../components/LanguageSelector.vue";
 import { useInterviewStore } from "../stores/interview";
 
@@ -28,6 +29,13 @@ async function resume(): Promise<void> {
 
 <template>
   <main class="page landing-page">
+    <img
+      class="landing-watercolor"
+      :src="zetemaWatercolorBackground"
+      alt=""
+      aria-hidden="true"
+    />
+
     <LanguageSelector class="landing-language" />
 
     <section class="landing-card">

@@ -11,6 +11,7 @@ import InterviewView from "./views/InterviewView.vue";
 import SummaryView from "./views/SummaryView.vue";
 import "./styles/tokens.css";
 import "./styles.css";
+import "./styles/brand-assets.css";
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
