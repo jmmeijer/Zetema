@@ -1,0 +1,96 @@
+name: Diagnose deployed Pages
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/diagnose-pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Inspect deployed HTML and assets
+        run: |
+          set -euo pipefail
+          url='https://jmmeijer.github.io/Zetema/'
+          echo "Fetching $url"
+          curl --fail --silent --show-error --location --dump-header /tmp/headers.txt "$url" --output /tmp/index.html
+          echo '--- response headers ---'
+          cat /tmp/headers.txt
+          echo '--- deployed index.html ---'
+          cat /tmp/index.html
+          echo '--- referenced assets ---'
+          grep -Eo '(src|href)="[^"]+"' /tmp/index.html || true
+
+      - name: Install temporary browser diagnostic
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/zetema-pages-diagnostic
+          cd /tmp/zetema-pages-diagnostic
+          npm init -y >/dev/null
+          npm install --silent playwright@1.54.2
+          npx playwright install --with-deps chromium
+
+      - name: Run browser diagnostic
+        run: |
+          cat >/tmp/zetema-pages-diagnostic/check.mjs <<'EOF'
+          import { chromium } from 'playwright';
+
+          const target = 'https://jmmeijer.github.io/Zetema/';
+          const browser = await chromium.launch({ headless: true });
+          const page = await browser.newPage();
+
+          const consoleMessages = [];
+          const pageErrors = [];
+          const failedRequests = [];
+
+          page.on('console', message => {
+            consoleMessages.push(`[${message.type()}] ${message.text()}`);
+          });
+          page.on('pageerror', error => {
+            pageErrors.push(error.stack ?? error.message);
+          });
+          page.on('requestfailed', request => {
+            failedRequests.push(`${request.method()} ${request.url()} :: ${request.failure()?.errorText ?? 'unknown failure'}`);
+          });
+
+          const response = await page.goto(target, { waitUntil: 'domcontentloaded', timeout: 30000 });
+          await page.waitForTimeout(5000);
+
+          console.log(`navigation status: ${response?.status() ?? 'no response'}`);
+          console.log(`final url: ${page.url()}`);
+          console.log(`title: ${await page.title()}`);
+          console.log(`body text: ${JSON.stringify((await page.locator('body').innerText()).slice(0, 1500))}`);
+          console.log(`app html length: ${await page.locator('#app').innerHTML().then(value => value.length).catch(() => -1)}`);
+          console.log(`scripts: ${JSON.stringify(await page.locator('script[src]').evaluateAll(nodes => nodes.map(node => node.src)))}`);
+          console.log(`stylesheets: ${JSON.stringify(await page.locator('link[rel="stylesheet"]').evaluateAll(nodes => nodes.map(node => node.href)))}`);
+          console.log('--- console messages ---');
+          console.log(consoleMessages.length ? consoleMessages.join('\n') : '(none)');
+          console.log('--- page errors ---');
+          console.log(pageErrors.length ? pageErrors.join('\n') : '(none)');
+          console.log('--- failed requests ---');
+          console.log(failedRequests.length ? failedRequests.join('\n') : '(none)');
+
+          await page.screenshot({ path: process.env.GITHUB_WORKSPACE + '/pages-runtime.png', fullPage: true });
+          await browser.close();
+
+          if (pageErrors.length || failedRequests.some(item => item.includes('/assets/'))) {
+            process.exitCode = 1;
+          }
+          EOF
+          cd /tmp/zetema-pages-diagnostic
+          node check.mjs
+
+      - name: Upload diagnostic screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-runtime-diagnostic
+          path: pages-runtime.png
+          if-no-files-found: ignore
