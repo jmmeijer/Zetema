@@ -1,0 +1,38 @@
+name: Rebuild brand assets
+
+on:
+  push:
+    branches:
+      - fix/exact-brand-assets-blob-v2
+    paths:
+      - '.asset-staging/**'
+      - '.github/workflows/rebuild-brand-assets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: fix/exact-brand-assets-blob-v2
+
+      - name: Rebuild and verify binary assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .asset-staging/logo-*.b64 | tr -d '\n' | base64 -d > apps/web/src/assets/brand/zetema-logo-symbol.png
+          cat .asset-staging/bg-*.b64 | tr -d '\n' | base64 -d > apps/web/src/assets/brand/zetema-watercolor-background.webp
+
+          echo 'e07a45a48c14437b9d813d759ba98592ce175a88ecda377daadfb1e2a372b97e  apps/web/src/assets/brand/zetema-logo-symbol.png' | sha256sum -c -
+          echo 'e31eadd2bf712646c9c8fd95231021976c3165a68097cf276caf3cbfeeb595f6  apps/web/src/assets/brand/zetema-watercolor-background.webp' | sha256sum -c -
+
+          git rm -r .asset-staging .github/workflows/rebuild-brand-assets.yml
+          git add apps/web/src/assets/brand/zetema-logo-symbol.png apps/web/src/assets/brand/zetema-watercolor-background.webp
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Restore verified Zetema brand assets'
+          git push origin HEAD:fix/exact-brand-assets-blob-v2
