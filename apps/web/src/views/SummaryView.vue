@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 
+import zetemaLogoSymbol from "../assets/brand/zetema-logo-symbol.svg";
 import LanguageSelector from "../components/LanguageSelector.vue";
 import { useInterviewStore } from "../stores/interview";
 
@@ -45,7 +46,7 @@ async function finish(): Promise<void> {
   <main class="page summary-page">
     <header class="app-header">
       <RouterLink class="brand-inline" to="/" :aria-label="t('common.homeLabel')">
-        <span class="brand-mark-small" aria-hidden="true">○</span>
+        <img class="brand-symbol brand-symbol-small" :src="zetemaLogoSymbol" alt="" aria-hidden="true" />
         <span>{{ t("brand.name") }}</span>
       </RouterLink>
       <LanguageSelector />
