@@ -6,8 +6,11 @@
  * Reuse the verified watercolor artwork across the application. The source
  * already contains a warm paper field with pigment concentrated at the
  * top-right, so keep that corner anchored and let the image scale by width.
- * This shows the full composition more reliably on narrow screens than the
- * earlier height-based crop.
+ *
+ * styles.css still contains the original page-specific pseudo-element sizes.
+ * Explicitly reset those dimensions here: the shared decorative layer should
+ * span the full viewport width on desktop as well as mobile, while top/bottom
+ * anchoring lets it stretch with the page height.
  */
 .landing-page::before,
 .interview-page::before,
@@ -16,6 +19,9 @@
   position: absolute;
   z-index: 0;
   inset: 0;
+  width: 100vw;
+  max-width: none;
+  height: auto;
   background-image: url("../assets/brand/zetema-watercolor-background.webp");
   background-repeat: no-repeat;
   background-position: right top;
