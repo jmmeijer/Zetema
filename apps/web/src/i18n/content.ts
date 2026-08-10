@@ -1,11 +1,14 @@
 import type { LocalizedText } from "@zetema/content-schema";
 import YAML from "yaml";
 
-import nlSource from "../../../../content/releases/mvp-0.2/locales/nl.yaml?raw";
-import roSource from "../../../../content/releases/mvp-0.2/locales/ro.yaml?raw";
+import nlV01Source from "../../../../content/releases/mvp-0.1/locales/nl.yaml?raw";
+import roV01Source from "../../../../content/releases/mvp-0.1/locales/ro.yaml?raw";
+import nlV02Source from "../../../../content/releases/mvp-0.2/locales/nl.yaml?raw";
+import roV02Source from "../../../../content/releases/mvp-0.2/locales/ro.yaml?raw";
 import { currentLocale, type SupportedLocale } from "./index";
 
 type TranslationMap = Readonly<Record<string, string>>;
+type ReleaseTranslations = Partial<Record<SupportedLocale, TranslationMap>>;
 
 function parseTranslationMap(source: string, locale: SupportedLocale): TranslationMap {
   const parsed = YAML.parse(source) as unknown;
@@ -24,16 +27,24 @@ function parseTranslationMap(source: string, locale: SupportedLocale): Translati
   return translations;
 }
 
-const translations: Partial<Record<SupportedLocale, TranslationMap>> = {
-  nl: parseTranslationMap(nlSource, "nl"),
-  ro: parseTranslationMap(roSource, "ro"),
+const v01Translations: ReleaseTranslations = {
+  nl: parseTranslationMap(nlV01Source, "nl"),
+  ro: parseTranslationMap(roV01Source, "ro"),
+};
+const v02Translations: ReleaseTranslations = {
+  nl: parseTranslationMap(nlV02Source, "nl"),
+  ro: parseTranslationMap(roV02Source, "ro"),
 };
 
-export function localizeContentText(text: LocalizedText): string {
+function translationsForRelease(releaseId: string): ReleaseTranslations {
+  return releaseId.startsWith("mvp-0.1.") ? v01Translations : v02Translations;
+}
+
+export function localizeContentText(text: LocalizedText, releaseId: string): string {
   const locale = currentLocale.value as SupportedLocale;
   if (locale === "en") {
     return text.source;
   }
 
-  return translations[locale]?.[text.key] ?? text.source;
+  return translationsForRelease(releaseId)[locale]?.[text.key] ?? text.source;
 }
