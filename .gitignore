@@ -8,6 +8,7 @@ coverage/
 *.tsbuildinfo
 apps/functions/lib/
 apps/functions/deploy/lib/
+apps/web/public/icons/
 
 # Vite / Vue
 .vite/
