@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, nextTick, onMounted, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 
@@ -15,6 +15,8 @@ const interview = useInterviewStore();
 
 const selectedOptionId = ref<string | null>(null);
 const selectedLikert = ref<number | null>(null);
+const questionCard = ref<HTMLElement | null>(null);
+const questionHeading = ref<HTMLElement | null>(null);
 
 const sessionId = computed(() => String(route.params.sessionId));
 const editingQuestionId = computed(() =>
@@ -45,7 +47,24 @@ function syncSelection(): void {
   }
 }
 
-watch(() => interview.currentQuestionId, syncSelection);
+watch(
+  () => interview.currentQuestionId,
+  async (questionId, previousQuestionId) => {
+    syncSelection();
+
+    if (
+      questionId === null ||
+      previousQuestionId === null ||
+      questionId === previousQuestionId
+    ) {
+      return;
+    }
+
+    await nextTick();
+    questionCard.value?.scrollIntoView({ behavior: "auto", block: "start" });
+    questionHeading.value?.focus({ preventScroll: true });
+  },
+);
 
 onMounted(async () => {
   try {
@@ -118,7 +137,12 @@ async function submitSelected(): Promise<void> {
         {{ t("interview.loading") }}
       </div>
 
-      <section v-else-if="interview.currentQuestion" class="question-card">
+      <section
+        v-else-if="interview.currentQuestion"
+        :key="interview.currentQuestion.id"
+        ref="questionCard"
+        class="question-card"
+      >
         <button
           v-if="editingQuestionId"
           class="text-button back-link"
@@ -129,7 +153,7 @@ async function submitSelected(): Promise<void> {
         </button>
 
         <p v-if="editingQuestionId" class="eyebrow">{{ t("interview.reviewing") }}</p>
-        <h1 class="question-title">
+        <h1 ref="questionHeading" class="question-title" tabindex="-1">
           {{ interview.localizeContentText(interview.currentQuestion.prompt) }}
         </h1>
 
@@ -235,3 +259,31 @@ async function submitSelected(): Promise<void> {
     </section>
   </main>
 </template>
+
+<style scoped>
+.question-card {
+  scroll-margin-top: 24px;
+}
+
+.answer-button:active:not(:disabled) {
+  border-color: var(--zetema-seafoam);
+  background: var(--zetema-seafoam-tint);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .answer-button:hover:not(:disabled) {
+    border-color: color-mix(in srgb, var(--zetema-seafoam) 70%, var(--zetema-border));
+    background: #fffdfa;
+    box-shadow: 0 8px 22px rgb(13 27 42 / 8%);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .answer-button:hover:not(:disabled) {
+    transform: none;
+    border-color: color-mix(in srgb, var(--zetema-ink) 14%, transparent);
+    background: #fffdfa;
+    box-shadow: 0 4px 16px rgb(13 27 42 / 3%);
+  }
+}
+</style>
