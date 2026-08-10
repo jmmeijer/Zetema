@@ -1,51 +1,51 @@
 theme.nature-of-god.title: Natura lui Dumnezeu
-theme.nature-of-god.description: Întrebări despre cum este Dumnezeu și ce atribute crezi că are.
+theme.nature-of-god.description: Întrebări despre cum este Dumnezeu și ce crezi despre el.
 question.god-exists.prompt: Crezi că Dumnezeu există?
-question.existence-confidence.prompt: Cât de sigur(ă) ești de răspunsul tău la întrebarea dacă Dumnezeu există?
+question.existence-confidence.prompt: Cât de sigur(ă) ești de răspunsul tău?
 scale.confidence.low: Deloc sigur(ă)
 scale.confidence.high: Foarte sigur(ă)
-question.personal-god.prompt: Crezi că Dumnezeu este o ființă personală care poate avea intenții și relații?
-question.omnipotent.prompt: Crezi că Dumnezeu este atotputernic, în sensul de a avea puterea maxim posibilă?
-question.omniscient.prompt: Crezi că Dumnezeu este atotștiutor, în sensul că Dumnezeu cunoaște toate adevărurile?
-question.omnipresent.prompt: Crezi că Dumnezeu este omniprezent?
+question.personal-god.prompt: Crezi că Dumnezeu este o ființă personală, care are intenții și poate avea relații?
+question.omnipotent.prompt: Crezi că Dumnezeu are cea mai mare putere posibilă?
+question.omniscient.prompt: Crezi că Dumnezeu știe tot ce poate fi cunoscut?
+question.omnipresent.prompt: Crezi că Dumnezeu este prezent peste tot?
 question.perfectly-good.prompt: Crezi că Dumnezeu este perfect bun?
-question.relation-to-time.prompt: Care descriere se potrivește cel mai bine cu felul în care crezi că Dumnezeu se raportează la timp?
+question.relation-to-time.prompt: Care variantă descrie cel mai bine cum există Dumnezeu în raport cu timpul?
 option.relation-to-time.outside-time: Dumnezeu există în afara timpului
 option.relation-to-time.within-time: Dumnezeu există în timp
 option.relation-to-time.both: Ambele, într-un anumit sens
 option.common.other: O altă perspectivă
-question.acts-in-world.prompt: Crezi că Dumnezeu acționează uneori în lume în moduri care influențează evenimentele?
-question.reveals-self.prompt: Crezi că Dumnezeu le revelează în mod intenționat oamenilor informații despre sine?
-question.god-conception.prompt: Dacă Dumnezeu nu este personal, care descriere se apropie cel mai mult de perspectiva ta?
+question.acts-in-world.prompt: Crezi că Dumnezeu acționează uneori în lume și influențează ceea ce se întâmplă?
+question.reveals-self.prompt: Crezi că Dumnezeu le arată în mod intenționat oamenilor cine este?
+question.god-conception.prompt: Dacă Dumnezeu nu este o ființă personală, care variantă se apropie cel mai mult de ceea ce crezi?
 option.god-conception.impersonal-mind: O minte sau inteligență impersonală
-option.god-conception.ground-of-being: Temeiul sau fundamentul existenței
+option.god-conception.ground-of-being: Fundamentul a tot ceea ce există
 option.god-conception.force-or-principle: O forță sau un principiu impersonal
-question.power-limits.prompt: Ce fel de limitare a puterii lui Dumnezeu se potrivește cel mai bine cu perspectiva ta?
-option.power-limits.logical-limits: Dumnezeu nu poate face ceea ce este imposibil din punct de vedere logic
-option.power-limits.self-imposed-limits: Dumnezeu își limitează în mod voluntar propria putere
+question.power-limits.prompt: Dacă puterea lui Dumnezeu are limite, care variantă se potrivește cel mai bine cu ceea ce crezi?
+option.power-limits.logical-limits: Dumnezeu nu poate face lucruri imposibile din punct de vedere logic
+option.power-limits.self-imposed-limits: Dumnezeu alege să își limiteze propria putere
 option.power-limits.external-limits: Ceva din afara lui Dumnezeu îi limitează puterea
-question.goodness-conception.prompt: Care descriere se apropie cel mai mult de perspectiva ta asupra caracterului moral al lui Dumnezeu?
+question.goodness-conception.prompt: Cum ai descrie cel mai bine caracterul moral al lui Dumnezeu?
 option.goodness-conception.mostly-good: Dumnezeu este bun, dar nu perfect bun
-option.goodness-conception.morally-mixed: Dumnezeu poate fi atât moral bun, cât și moral rău
-option.goodness-conception.beyond-morality: Categoriile morale umane nu se aplică lui Dumnezeu
+option.goodness-conception.morally-mixed: Dumnezeu poate fi atât bun, cât și rău din punct de vedere moral
+option.goodness-conception.beyond-morality: Noțiunile omenești de bine și rău nu se aplică lui Dumnezeu
 
 theme.beliefs-and-background.title: Convingeri și context
-theme.beliefs-and-background.description: Întrebări despre Dumnezeu, Scriptură și contextul tău religios.
+theme.beliefs-and-background.description: Întrebări despre Dumnezeu, Biblie și contextul tău religios.
 question.bible-inspired.prompt: Crezi că Biblia este inspirată de Dumnezeu?
-question.bible-word-of-god.prompt: Crezi că Biblia poate fi descrisă în mod potrivit drept Cuvântul lui Dumnezeu?
-question.bible-authority.prompt: Câtă autoritate consideri că are Biblia în chestiuni de credință și practică?
+question.bible-word-of-god.prompt: Crezi că Biblia este Cuvântul lui Dumnezeu?
+question.bible-authority.prompt: Câtă autoritate crezi că are Biblia în credință și practică religioasă?
 scale.bible-authority.low: Fără autoritate
 scale.bible-authority.high: Autoritate deplină
-question.bible-infallible.prompt: Crezi că Biblia nu poate învăța eroarea în ceea ce intenționează să învețe?
-question.bible-inerrant.prompt: Crezi că tot ceea ce afirmă textele biblice este lipsit de eroare, inclusiv afirmațiile istorice și factuale?
-question.gospels-reliable.prompt: Cât de fiabile consideri Evangheliile canonice ca surse despre viața și învățăturile lui Isus?
-scale.gospels-reliable.low: Deloc fiabile
-scale.gospels-reliable.high: Foarte fiabile
+question.bible-infallible.prompt: Crezi că Biblia nu greșește în ceea ce vrea să ne învețe?
+question.bible-inerrant.prompt: Crezi că Biblia nu conține nicio greșeală în ceea ce afirmă, inclusiv despre istorie și fapte?
+question.gospels-reliable.prompt: Câtă încredere ai în Evangheliile din Biblie ca surse despre viața și învățăturile lui Isus?
+scale.gospels-reliable.low: Deloc de încredere
+scale.gospels-reliable.high: Foarte de încredere
 question.bible-contradictions.prompt: Crezi că Biblia conține contradicții reale?
-question.bible-interpretation.prompt: Care descriere se potrivește cel mai bine cu felul în care crezi că Biblia ar trebui interpretată în general?
-option.bible-interpretation.historical-literary: Cu atenție deosebită la contextul istoric și literar
-option.bible-interpretation.literal-where-possible: În principal literal, acolo unde textul permite acest lucru
-option.bible-interpretation.church-tradition: Prin tradiția teologică și învățătura Bisericii
+question.bible-interpretation.prompt: Care variantă descrie cel mai bine cum crezi că ar trebui interpretată Biblia?
+option.bible-interpretation.historical-literary: Ținând cont în special de contextul istoric și de tipul de text
+option.bible-interpretation.literal-where-possible: În principal literal, atunci când textul permite acest lucru
+option.bible-interpretation.church-tradition: Urmând tradiția teologică și învățătura Bisericii
 option.bible-interpretation.individual-discernment: În principal prin studiu personal, rugăciune și discernământ
 option.bible-interpretation.mixed: O combinație a acestor abordări
 question.age-group.prompt: Din ce grupă de vârstă faci parte?
@@ -57,7 +57,7 @@ option.age-group.45-54: 45–54
 option.age-group.55-64: 55–64
 option.age-group.65-74: 65–74
 option.age-group.75-plus: 75 de ani sau mai mult
-question.religious-identity.prompt: Ce identitate religioasă, dacă există, te descrie cel mai bine?
+question.religious-identity.prompt: Ce identitate religioasă, dacă ai una, te descrie cel mai bine?
 option.religious-identity.christian: Creștin(ă)
 option.religious-identity.jewish: Evreu/Evreică
 option.religious-identity.muslim: Musulman(ă)
@@ -69,12 +69,12 @@ option.religious-identity.spiritual-not-religious: Spiritual(ă), dar nu religio
 option.religious-identity.agnostic: Agnostic(ă)
 option.religious-identity.atheist: Ateu/Atee
 option.religious-identity.none: Fără identitate religioasă
-question.contradictions-authority.prompt: Dacă Biblia conține contradicții reale, crezi că acestea îi afectează semnificativ autoritatea religioasă?
-question.apparent-contradictions.prompt: Când două pasaje biblice par greu de armonizat, care variantă se apropie cel mai mult de perspectiva ta?
-option.apparent-contradictions.harmonizable: De obicei pot fi armonizate dacă se ține cont de suficient context
-option.apparent-contradictions.different-perspectives: Adesea exprimă perspective diferite, nu contradicții reale
-option.apparent-contradictions.unresolved: Unele tensiuni pot rămâne nerezolvate chiar dacă nu sunt contradicții reale
-question.christian-tradition.prompt: Ce tradiție creștină largă te descrie cel mai bine?
+question.contradictions-authority.prompt: Dacă Biblia conține contradicții reale, crezi că acest lucru îi reduce autoritatea religioasă?
+question.apparent-contradictions.prompt: Când două pasaje din Biblie par să spună lucruri diferite, care variantă se apropie cel mai mult de ceea ce crezi?
+option.apparent-contradictions.harmonizable: De obicei pot fi împăcate dacă luăm în calcul suficient context
+option.apparent-contradictions.different-perspectives: Pot prezenta perspective diferite fără să se contrazică cu adevărat
+option.apparent-contradictions.unresolved: Unele diferențe pot rămâne neclare, chiar dacă nu sunt contradicții reale
+question.christian-tradition.prompt: Ce tradiție creștină te descrie cel mai bine?
 option.christian-tradition.catholic: Catolică
 option.christian-tradition.orthodox: Ortodoxă
 option.christian-tradition.protestant: Protestantă

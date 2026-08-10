@@ -18,7 +18,7 @@ interview:
   continue: Continuă
   back: Înapoi
   loading: Se încarcă sesiunea…
-  saveError: Nu am putut salva acel răspuns. Încearcă din nou.
+  saveError: Nu am putut salva răspunsul. Încearcă din nou.
   unavailable: Această întrebare nu este disponibilă.
   progressLabel: Progres
   reviewing: Revizuirea unui răspuns anterior
@@ -46,44 +46,44 @@ summary:
     confidenceModerate: moderat
     confidenceFairlyHigh: destul de ridicat
     confidenceVeryHigh: foarte ridicat
-    personalYes: Consideri că Dumnezeu este o ființă personală care poate avea intenții și relații.
-    personalNo: Nu consideri că Dumnezeu este o ființă personală care poate avea intenții și relații.
-    personalUnsure: Nu ești sigur(ă) dacă Dumnezeu ar trebui înțeles ca o ființă personală.
-    attributeMaxPowerful: cu putere maximă
-    attributeAllKnowing: atotștiutor
-    attributeOmnipresent: omniprezent
+    personalYes: Crezi că Dumnezeu este o ființă personală, care are intenții și poate avea relații.
+    personalNo: Nu crezi că Dumnezeu este o ființă personală, care are intenții și poate avea relații.
+    personalUnsure: Nu ești sigur(ă) dacă Dumnezeu este o ființă personală.
+    attributeMaxPowerful: cu cea mai mare putere posibilă
+    attributeAllKnowing: care știe tot ce poate fi cunoscut
+    attributeOmnipresent: prezent peste tot
     attributePerfectlyGood: perfect bun
-    attributesAffirmed: Dintre atributele analizate aici, îl descrii pe Dumnezeu ca fiind {attributes}.
+    attributesAffirmed: Îl descrii pe Dumnezeu ca fiind {attributes}.
     attributesRejected: Nu îl descrii pe Dumnezeu ca fiind {attributes}.
-    attributesUnsure: "Nu ești sigur(ă) dacă lui Dumnezeu i se pot atribui următoarele: {attributes}."
+    attributesUnsure: "Nu ești sigur(ă) dacă Dumnezeu este {attributes}."
     timeOutside: Crezi că Dumnezeu există în afara timpului.
     timeWithin: Crezi că Dumnezeu există în timp.
-    timeBoth: Crezi că Dumnezeu se raportează la timp în ambele moduri, într-un anumit sens.
-    timeOther: Ai o altă perspectivă asupra modului în care Dumnezeu se raportează la timp.
-    timeUnsure: Nu ești sigur(ă) cum se raportează Dumnezeu la timp.
-    actsYes: Crezi că Dumnezeu acționează în lume în moduri care pot influența evenimentele.
-    actsNo: Nu crezi că Dumnezeu acționează în lume în moduri care influențează evenimentele.
-    revealsYes: Crezi că Dumnezeu le poate revela în mod intenționat oamenilor informații despre sine.
-    revealsNo: Nu crezi că Dumnezeu le revelează în mod intenționat oamenilor informații despre sine.
+    timeBoth: Crezi că Dumnezeu există atât în timp, cât și în afara timpului, într-un anumit sens.
+    timeOther: Ai o altă perspectivă despre Dumnezeu și timp.
+    timeUnsure: Nu ești sigur(ă) cum există Dumnezeu în raport cu timpul.
+    actsYes: Crezi că Dumnezeu acționează în lume și poate influența ceea ce se întâmplă.
+    actsNo: Nu crezi că Dumnezeu acționează în lume și influențează ceea ce se întâmplă.
+    revealsYes: Crezi că Dumnezeu le arată în mod intenționat oamenilor cine este.
+    revealsNo: Nu crezi că Dumnezeu le arată în mod intenționat oamenilor cine este.
     conceptionImpersonalMind: o minte sau inteligență impersonală
-    conceptionGroundOfBeing: temeiul sau fundamentul existenței
+    conceptionGroundOfBeing: fundamentul a tot ceea ce există
     conceptionForceOrPrinciple: o forță sau un principiu impersonal
     conceptionOther: o altă concepție
-    conceptionSentence: Când descrii un Dumnezeu nepersonal, ideea de {description} se apropie cel mai mult de perspectiva ta.
-    powerLogical: Dumnezeu nu poate face ceea ce este imposibil din punct de vedere logic
-    powerSelfImposed: Dumnezeu își poate limita în mod voluntar propria putere
-    powerExternal: ceva din afara lui Dumnezeu îi poate limita puterea
+    conceptionSentence: Dintre opțiuni, {description} se apropie cel mai mult de ceea ce crezi despre un Dumnezeu nepersonal.
+    powerLogical: Dumnezeu nu poate face lucruri imposibile din punct de vedere logic
+    powerSelfImposed: Dumnezeu alege să își limiteze propria putere
+    powerExternal: ceva din afara lui Dumnezeu îi limitează puterea
     powerOther: înțelegi limitele puterii lui Dumnezeu într-un alt mod
-    powerSentence: În privința limitelor puterii lui Dumnezeu, perspectiva ta este că {description}.
+    powerSentence: În ceea ce privește limitele puterii lui Dumnezeu, crezi că {description}.
     goodnessMostlyGood: Dumnezeu este bun, dar nu perfect bun
-    goodnessMixed: Dumnezeu poate fi atât moral bun, cât și moral rău
-    goodnessBeyondMorality: categoriile morale umane nu se aplică lui Dumnezeu
+    goodnessMixed: Dumnezeu poate fi atât bun, cât și rău din punct de vedere moral
+    goodnessBeyondMorality: noțiunile omenești de bine și rău nu se aplică lui Dumnezeu
     goodnessOther: înțelegi caracterul moral al lui Dumnezeu într-un alt mod
-    goodnessSentence: În privința caracterului moral al lui Dumnezeu, perspectiva ta este că {description}.
+    goodnessSentence: În ceea ce privește caracterul moral al lui Dumnezeu, crezi că {description}.
 clarification:
   title: Un punct de clarificat
-  intro: Pentru a înțelege mai bine perspectiva ta, am dori să analizăm împreună două afirmații.
-  tension: Aceste răspunsuri par dificil de susținut împreună în forma actuală. Cum ți-ai descrie perspectiva?
+  intro: Ca să înțelegem mai bine ce crezi, vrem să comparăm două răspunsuri.
+  tension: Aceste două răspunsuri par greu de împăcat. Cum ai descrie ceea ce crezi?
   continue: Continuă
 common:
   yes: Da
