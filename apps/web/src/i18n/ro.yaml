@@ -59,8 +59,8 @@ summary:
     attributeAllKnowing: care știe tot ce poate fi cunoscut
     attributeOmnipresent: prezent(ă) peste tot
     attributePerfectlyGood: perfect bun(ă)
-    attributesAffirmed: Descrii Dumnezeu sau o realitate superioară ca fiind {attributes}.
-    attributesRejected: Nu descrii Dumnezeu sau o realitate superioară ca fiind {attributes}.
+    attributesAffirmed: Consideri că Dumnezeu sau o realitate superioară este {attributes}.
+    attributesRejected: Nu consideri că Dumnezeu sau o realitate superioară este {attributes}.
     attributesUnsure: "Nu ești sigur(ă) dacă următoarele însușiri se aplică lui Dumnezeu sau unei realități superioare: {attributes}."
     timeOutside: Crezi că Dumnezeu sau o realitate superioară există în afara timpului.
     timeWithin: Crezi că Dumnezeu sau o realitate superioară există în timp.
