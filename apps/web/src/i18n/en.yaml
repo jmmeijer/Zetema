@@ -49,6 +49,9 @@ summary:
     confidenceModerate: moderate
     confidenceFairlyHigh: fairly high
     confidenceVeryHigh: very high
+    personalLegacyYes: You understand God as a personal being who can have intentions and relationships.
+    personalLegacyNo: You do not understand God as a personal being who can have intentions and relationships.
+    personalLegacyUnsure: You are unsure whether God should be understood as a personal being.
     personalYes: You think God or a higher reality can have intentions of its own.
     personalNo: You do not think God or a higher reality can have intentions of its own.
     personalUnsure: You are unsure whether God or a higher reality can have intentions of its own.
