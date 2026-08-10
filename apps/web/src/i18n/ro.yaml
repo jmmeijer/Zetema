@@ -49,6 +49,9 @@ summary:
     confidenceModerate: moderat
     confidenceFairlyHigh: destul de ridicat
     confidenceVeryHigh: foarte ridicat
+    personalLegacyYes: Crezi că Dumnezeu este o ființă personală, care are intenții și poate avea relații.
+    personalLegacyNo: Nu crezi că Dumnezeu este o ființă personală, care are intenții și poate avea relații.
+    personalLegacyUnsure: Nu ești sigur(ă) dacă Dumnezeu este o ființă personală.
     personalYes: Crezi că Dumnezeu sau o realitate superioară poate avea propriile intenții.
     personalNo: Nu crezi că Dumnezeu sau o realitate superioară poate avea propriile intenții.
     personalUnsure: Nu ești sigur(ă) dacă Dumnezeu sau o realitate superioară poate avea propriile intenții.
