@@ -3,40 +3,60 @@
  */
 
 /*
- * The watercolor image itself contains a large quiet paper field with the
- * pigment concentrated toward the right/top edge. On mobile, positioning a
- * wide <img> with a large negative right offset exposed the blank part of the
- * source and pushed the actual watercolor off-screen.
- *
- * Use it as a viewport-sized decorative background instead. Right/top
- * anchoring keeps the painted part visible at every aspect ratio, while
- * sizing by viewport height crops horizontally on narrow screens instead of
- * shrinking the artwork. Explicit scroll attachment avoids mobile browser
- * quirks around fixed backgrounds.
+ * Reuse the verified watercolor artwork across the application. The source
+ * already contains a warm paper field with pigment concentrated at the
+ * top-right, so keep that corner anchored and let the image scale by width.
+ * This shows the full composition more reliably on narrow screens than the
+ * earlier height-based crop.
  */
-.landing-page::before {
+.landing-page::before,
+.interview-page::before,
+.summary-page::before {
   content: "";
   position: absolute;
   z-index: 0;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100svh;
-  min-height: 620px;
+  inset: 0;
   background-image: url("../assets/brand/zetema-watercolor-background.webp");
   background-repeat: no-repeat;
   background-position: right top;
-  background-size: auto 100%;
+  background-size: 100% auto;
   background-attachment: scroll;
   pointer-events: none;
   user-select: none;
+}
+
+/* Keep the landing page atmospheric and closest to the source artwork. */
+.landing-page::before {
+  background-color: transparent;
+  background-blend-mode: normal;
   opacity: 1;
 }
 
+/* On content-heavy pages, soften the watercolor with a translucent white
+ * overlay so controls and long-form text retain strong contrast. */
+.interview-page::before,
+.summary-page::before {
+  background-color: rgba(255, 255, 255, 0.5);
+  background-blend-mode: overlay;
+  opacity: 0.78;
+}
+
+/* All functional content stays above the decorative background layer. */
+.landing-language,
+.landing-card,
+.landing-facts,
+.landing-footer,
+.app-header,
+.content-shell {
+  position: relative;
+  z-index: 1;
+}
+
 @media (max-width: 720px) {
-  .landing-page::before {
-    min-height: 100svh;
+  .landing-page::before,
+  .interview-page::before,
+  .summary-page::before {
     background-position: right top;
-    background-size: auto 100%;
+    background-size: 100% auto;
   }
 }
