@@ -4,7 +4,7 @@ import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 
 import type { StructuredAnswer } from "@zetema/domain";
-import zetemaLogoSymbol from "../assets/brand/zetema-logo-symbol.png";
+import zetemaLogoSymbol from "../assets/brand/zetema-logo-organic";
 import LanguageSelector from "../components/LanguageSelector.vue";
 import { useInterviewStore } from "../stores/interview";
 
