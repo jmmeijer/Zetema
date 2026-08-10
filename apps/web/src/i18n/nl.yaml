@@ -49,6 +49,9 @@ summary:
     confidenceModerate: gemiddeld
     confidenceFairlyHigh: vrij hoog
     confidenceVeryHigh: zeer hoog
+    personalLegacyYes: Je begrijpt God als een persoonlijk wezen dat bedoelingen kan hebben en relaties kan aangaan.
+    personalLegacyNo: Je begrijpt God niet als een persoonlijk wezen dat bedoelingen kan hebben en relaties kan aangaan.
+    personalLegacyUnsure: Je weet niet zeker of God als een persoonlijk wezen moet worden begrepen.
     personalYes: Je denkt dat God of een hogere werkelijkheid eigen bedoelingen kan hebben.
     personalNo: Je denkt niet dat God of een hogere werkelijkheid eigen bedoelingen kan hebben.
     personalUnsure: Je weet niet zeker of God of een hogere werkelijkheid eigen bedoelingen kan hebben.
