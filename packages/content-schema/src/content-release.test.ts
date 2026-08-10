@@ -35,20 +35,20 @@ function mutableRules(release: ContentRelease): FollowUpRule[] {
 }
 
 describe("MVP-0.1 content release", () => {
-  it("validates the canonical English Nature of God release", () => {
+  it("validates the expanded demo release", () => {
     const result = parseAndValidateContentReleaseYaml(loadFixtureSource());
 
     expect(result.valid).toBe(true);
     if (result.valid) {
-      expect(result.value.questions).toHaveLength(13);
+      expect(result.value.questions).toHaveLength(28);
       expect(
         result.value.questions.filter((question) => question.flow === "base"),
-      ).toHaveLength(10);
+      ).toHaveLength(19);
       expect(
         result.value.questions.filter(
           (question) => question.flow === "follow_up",
         ),
-      ).toHaveLength(3);
+      ).toHaveLength(9);
     }
   });
 
@@ -78,32 +78,23 @@ describe("MVP-0.1 content release", () => {
     }
   });
 
-  it("rejects branching from a follow-up question", () => {
-    const invalid = structuredClone(loadFixture()) as ContentRelease;
-    const rules = mutableRules(invalid);
-    const firstRule = rules[0];
+  it("accepts branching from a follow-up question", () => {
+    const nested = structuredClone(loadFixture()) as ContentRelease;
+    const rules = mutableRules(nested);
 
-    expect(firstRule).toBeDefined();
-    if (firstRule === undefined) {
-      throw new Error("Canonical fixture must contain at least one follow-up rule.");
-    }
-
-    rules[0] = {
-      ...firstRule,
+    rules.push({
+      id: "god-conception.ground.goodness-conception",
       sourceQuestionId: "god-conception",
       when: {
         kind: "single_choice",
         optionId: "ground-of-being",
       },
-    };
+      targetQuestionId: "goodness-conception",
+    });
 
-    const result = validateContentRelease(invalid);
+    const result = validateContentRelease(nested);
 
-    expect(result.valid).toBe(false);
-    if (!result.valid) {
-      expect(result.issues.some((entry) => entry.code === "follow_up_cannot_branch"))
-        .toBe(true);
-    }
+    expect(result.valid).toBe(true);
   });
 
   it("rejects a single-choice rule that references a missing option", () => {
