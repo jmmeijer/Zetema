@@ -1,8 +1,9 @@
-import { computed, ref } from "vue";
+import { computed, ref, shallowRef } from "vue";
 import { defineStore } from "pinia";
 
 import {
   parseAndValidateContentReleaseYaml,
+  type ContentRelease,
   type QuestionDefinition,
 } from "@zetema/content-schema";
 import type { QuestionExposure, StructuredAnswer } from "@zetema/domain";
@@ -14,7 +15,7 @@ import {
   IndexedDbLocalStore,
   type LocalSessionState,
 } from "@zetema/sync-engine";
-import releaseSource from "../../../../content/releases/mvp-0.1/beliefs-and-background.en.yaml?raw";
+import releaseSource from "../../../../content/releases/mvp-0.2/beliefs-and-background.en.yaml?raw";
 import { currentLocale, translate } from "../i18n";
 import { localizeContentText } from "../i18n/content";
 
@@ -28,7 +29,7 @@ if (!parsedRelease.valid) {
   );
 }
 
-const release = parsedRelease.value;
+const bundledRelease = parsedRelease.value;
 const localStore = new IndexedDbLocalStore();
 const LAST_SESSION_KEY = "zetema.lastSessionId";
 
@@ -48,6 +49,7 @@ function naturalList(items: readonly string[]): string {
 }
 
 export const useInterviewStore = defineStore("interview", () => {
+  const activeRelease = shallowRef<ContentRelease>(bundledRelease);
   const sessionId = ref<string | null>(null);
   const sessionState = ref<LocalSessionState | null>(null);
   const currentQuestionId = ref<string | null>(null);
@@ -59,14 +61,21 @@ export const useInterviewStore = defineStore("interview", () => {
   const finished = ref(false);
   const resumeAvailable = ref(false);
 
-  const baseQuestions = release.questions.filter((question) => question.flow === "base");
-  const baseQuestionIds = new Set(baseQuestions.map((question) => question.id));
+  const release = computed(() => activeRelease.value);
+  const baseQuestions = computed(() =>
+    activeRelease.value.questions.filter((question) => question.flow === "base"),
+  );
+  const baseQuestionIds = computed(
+    () => new Set(baseQuestions.value.map((question) => question.id)),
+  );
 
   const currentQuestion = computed<QuestionDefinition | undefined>(() => {
     if (currentQuestionId.value === null) {
       return undefined;
     }
-    return release.questions.find((question) => question.id === currentQuestionId.value);
+    return activeRelease.value.questions.find(
+      (question) => question.id === currentQuestionId.value,
+    );
   });
 
   const responseMap = computed(() =>
@@ -74,15 +83,21 @@ export const useInterviewStore = defineStore("interview", () => {
   );
 
   const answeredBaseCount = computed(
-    () => effectiveResponses.value.filter((response) => baseQuestionIds.has(response.questionId)).length,
+    () =>
+      effectiveResponses.value.filter((response) =>
+        baseQuestionIds.value.has(response.questionId),
+      ).length,
   );
 
   const answeredCount = computed(() => effectiveResponses.value.length);
 
   const progressPercent = computed(() =>
-    baseQuestions.length === 0
+    baseQuestions.value.length === 0
       ? 0
-      : Math.min(100, Math.round((answeredBaseCount.value / baseQuestions.length) * 100)),
+      : Math.min(
+          100,
+          Math.round((answeredBaseCount.value / baseQuestions.value.length) * 100),
+        ),
   );
 
   function getAnswer(questionId: string): StructuredAnswer | undefined {
@@ -90,7 +105,31 @@ export const useInterviewStore = defineStore("interview", () => {
   }
 
   function getQuestion(questionId: string): QuestionDefinition | undefined {
-    return release.questions.find((question) => question.id === questionId);
+    return activeRelease.value.questions.find((question) => question.id === questionId);
+  }
+
+  async function selectReleaseForSession(id: string): Promise<void> {
+    const session = await localStore.getSession(id);
+    if (session === undefined) {
+      throw new Error(translate("errors.loadSession"));
+    }
+
+    if (session.contentReleaseId === bundledRelease.releaseId) {
+      activeRelease.value = bundledRelease;
+      return;
+    }
+
+    const cached = await localStore.getCachedContentRelease(session.contentReleaseId);
+    if (cached === undefined) {
+      throw new Error(translate("errors.missingContentRelease"));
+    }
+
+    const parsed = parseAndValidateContentReleaseYaml(JSON.stringify(cached.payload));
+    if (!parsed.valid || parsed.value.releaseId !== session.contentReleaseId) {
+      throw new Error(translate("errors.missingContentRelease"));
+    }
+
+    activeRelease.value = parsed.value;
   }
 
   async function hydrateSession(): Promise<LocalSessionState> {
@@ -123,7 +162,7 @@ export const useInterviewStore = defineStore("interview", () => {
     }
 
     const result = selectNextQuestion({
-      release,
+      release: activeRelease.value,
       responses: effectiveResponses.value,
       exposures: exposures.value,
     });
@@ -178,19 +217,20 @@ export const useInterviewStore = defineStore("interview", () => {
     errorMessage.value = null;
 
     try {
+      activeRelease.value = bundledRelease;
       const id = newId();
       const timestamp = now();
 
       await localStore.cacheContentRelease({
-        releaseId: release.releaseId,
-        locale: release.defaultLocale,
+        releaseId: bundledRelease.releaseId,
+        locale: bundledRelease.defaultLocale,
         cachedAt: timestamp,
-        payload: release,
+        payload: bundledRelease,
       });
 
       await localStore.createSession({
         sessionId: id,
-        contentReleaseId: release.releaseId,
+        contentReleaseId: bundledRelease.releaseId,
         operationId: newId(),
         startedAt: timestamp,
       });
@@ -247,6 +287,7 @@ export const useInterviewStore = defineStore("interview", () => {
     try {
       sessionId.value = id;
       finished.value = false;
+      await selectReleaseForSession(id);
       const state = await hydrateSession();
       if (state === "active") {
         await refreshFlow();
@@ -338,6 +379,19 @@ export const useInterviewStore = defineStore("interview", () => {
       first.push(translate("summary.generated.existenceUnsure"));
     }
 
+    const higherPower = getAnswer("higher-power-belief");
+    if (higherPower?.kind === "yes_no") {
+      first.push(
+        translate(
+          higherPower.value === "yes"
+            ? "summary.generated.higherPowerYes"
+            : "summary.generated.higherPowerNo",
+        ),
+      );
+    } else if (higherPower?.kind === "special" && higherPower.value === "unsure") {
+      first.push(translate("summary.generated.higherPowerUnsure"));
+    }
+
     const confidence = getAnswer("existence-confidence");
     if (confidence?.kind === "likert") {
       const labels: Record<number, string> = {
@@ -367,6 +421,19 @@ export const useInterviewStore = defineStore("interview", () => {
       );
     } else if (personal?.kind === "special" && personal.value === "unsure") {
       first.push(translate("summary.generated.personalUnsure"));
+    }
+
+    const relationship = getAnswer("relationship-with-people");
+    if (relationship?.kind === "yes_no") {
+      first.push(
+        translate(
+          relationship.value === "yes"
+            ? "summary.generated.relationshipYes"
+            : "summary.generated.relationshipNo",
+        ),
+      );
+    } else if (relationship?.kind === "special" && relationship.value === "unsure") {
+      first.push(translate("summary.generated.relationshipUnsure"));
     }
 
     if (first.length > 0) {
@@ -435,6 +502,19 @@ export const useInterviewStore = defineStore("interview", () => {
       third.push(translate("summary.generated.timeUnsure"));
     }
 
+    const creator = getAnswer("creator-of-universe");
+    if (creator?.kind === "yes_no") {
+      third.push(
+        translate(
+          creator.value === "yes"
+            ? "summary.generated.creatorYes"
+            : "summary.generated.creatorNo",
+        ),
+      );
+    } else if (creator?.kind === "special" && creator.value === "unsure") {
+      third.push(translate("summary.generated.creatorUnsure"));
+    }
+
     const acts = getAnswer("acts-in-world");
     if (acts?.kind === "yes_no") {
       third.push(
@@ -463,6 +543,7 @@ export const useInterviewStore = defineStore("interview", () => {
     const conception = getAnswer("god-conception");
     if (conception?.kind === "single_choice") {
       const keys: Record<string, string> = {
+        "personal-being": "summary.generated.conceptionPersonalBeing",
         "impersonal-mind": "summary.generated.conceptionImpersonalMind",
         "ground-of-being": "summary.generated.conceptionGroundOfBeing",
         "force-or-principle": "summary.generated.conceptionForceOrPrinciple",
@@ -472,6 +553,25 @@ export const useInterviewStore = defineStore("interview", () => {
       if (key !== undefined) {
         qualifications.push(
           translate("summary.generated.conceptionSentence", {
+            description: translate(key),
+          }),
+        );
+      }
+    }
+
+    const higherConception = getAnswer("higher-power-conception");
+    if (higherConception?.kind === "single_choice") {
+      const keys: Record<string, string> = {
+        "personal-being": "summary.generated.higherConceptionPersonalBeing",
+        "impersonal-intelligence": "summary.generated.higherConceptionImpersonalIntelligence",
+        "spiritual-force": "summary.generated.higherConceptionSpiritualForce",
+        "ground-of-being": "summary.generated.higherConceptionGroundOfBeing",
+        other: "summary.generated.higherConceptionOther",
+      };
+      const key = keys[higherConception.optionId];
+      if (key !== undefined) {
+        qualifications.push(
+          translate("summary.generated.higherConceptionSentence", {
             description: translate(key),
           }),
         );
@@ -522,7 +622,7 @@ export const useInterviewStore = defineStore("interview", () => {
   });
 
   const reviewItems = computed(() =>
-    release.questions.flatMap((question) => {
+    activeRelease.value.questions.flatMap((question) => {
       const answer = getAnswer(question.id);
       if (answer === undefined) {
         return [];
