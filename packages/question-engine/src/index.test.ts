@@ -203,6 +203,49 @@ describe("selectNextQuestion", () => {
     });
   });
 
+  it("supports a follow-up branching to another follow-up", () => {
+    const release = structuredClone(loadRelease());
+    release.followUpRules = [
+      ...release.followUpRules,
+      {
+        id: "god-conception.ground.goodness-conception",
+        sourceQuestionId: "god-conception",
+        when: { kind: "single_choice", optionId: "ground-of-being" },
+        targetQuestionId: "goodness-conception",
+      },
+    ];
+
+    const path = pathThroughPersonalGod(no());
+    const result = selectNextQuestion({
+      release,
+      exposures: [
+        ...path.exposures,
+        followUpExposure(
+          "god-conception",
+          "personal-god.no.god-conception",
+          "personal-god",
+        ),
+      ],
+      responses: [
+        ...path.responses,
+        response("god-conception", {
+          kind: "single_choice",
+          optionId: "ground-of-being",
+        }),
+      ],
+    });
+
+    expect(result).toEqual({
+      status: "question",
+      questionId: "goodness-conception",
+      reason: {
+        kind: "follow_up_rule",
+        ruleId: "god-conception.ground.goodness-conception",
+        sourceQuestionId: "god-conception",
+      },
+    });
+  });
+
   it("does not insert the follow-up when the triggering answer does not match", () => {
     const result = selectNextQuestion({
       release: loadRelease(),
@@ -325,7 +368,18 @@ describe("selectNextQuestion", () => {
     const release = loadRelease();
     const exposures = release.questions
       .filter((question) => question.flow === "base")
-      .map((question) => baseExposure(question.id));
+      .flatMap((question) =>
+        question.id === "bible-contradictions"
+          ? [
+              baseExposure(question.id),
+              followUpExposure(
+                "bible-contradictions-authority",
+                "bible-contradictions.yes.authority",
+                "bible-contradictions",
+              ),
+            ]
+          : [baseExposure(question.id)],
+      );
 
     const responses: EffectiveResponse[] = [
       response("god-exists", yes()),
@@ -341,28 +395,40 @@ describe("selectNextQuestion", () => {
       }),
       response("acts-in-world", yes()),
       response("reveals-self", yes()),
+      response("bible-inspired", yes()),
+      response("bible-authority", { kind: "likert", value: 4 }),
+      response("bible-infallible", yes()),
+      response("bible-inerrant", yes()),
+      response("gospels-reliability", { kind: "likert", value: 4 }),
+      response("bible-contradictions", yes()),
+      response("bible-contradictions-authority", no()),
+      response("bible-interpretation", {
+        kind: "single_choice",
+        optionId: "mixed",
+      }),
+      response("profile-age-group", {
+        kind: "single_choice",
+        optionId: "35-44",
+      }),
+      response("profile-religion", {
+        kind: "single_choice",
+        optionId: "atheist",
+      }),
     ];
 
     const result = selectNextQuestion({ release, exposures, responses });
 
     expect(result.status).toBe("complete");
     if (result.status === "complete") {
-      expect(result.nonPresented).toEqual([
-        {
-          questionId: "god-conception",
-          outcome: "not_presented_not_eligible",
-          reason: { kind: "not_eligible" },
-        },
-        {
-          questionId: "power-limits",
-          outcome: "not_presented_not_eligible",
-          reason: { kind: "not_eligible" },
-        },
-        {
-          questionId: "goodness-conception",
-          outcome: "not_presented_not_eligible",
-          reason: { kind: "not_eligible" },
-        },
+      expect(result.nonPresented.map((entry) => entry.questionId)).toEqual([
+        "god-conception",
+        "power-limits",
+        "goodness-conception",
+        "bible-apparent-contradictions",
+        "profile-christian-tradition",
+        "profile-catholic-tradition",
+        "profile-orthodox-tradition",
+        "profile-protestant-family",
       ]);
     }
   });
