@@ -28,3 +28,86 @@ question.goodness-conception.prompt: Care descriere se apropie cel mai mult de p
 option.goodness-conception.mostly-good: Dumnezeu este bun, dar nu perfect bun
 option.goodness-conception.morally-mixed: Dumnezeu poate fi atât moral bun, cât și moral rău
 option.goodness-conception.beyond-morality: Categoriile morale umane nu se aplică lui Dumnezeu
+theme.beliefs-and-background.title: Convingeri și context
+theme.beliefs-and-background.description: Întrebări despre Dumnezeu, Biblie și contextul tău religios sau nereligios.
+question.bible-inspired.prompt: Crezi că Biblia este inspirată de Dumnezeu?
+question.bible-authority.prompt: Câtă autoritate consideri că are Biblia în chestiuni de credință și practică?
+scale.bible-authority.low: Fără autoritate
+scale.bible-authority.high: Autoritate deplină
+question.bible-infallible.prompt: Crezi că Biblia este infailibilă, în sensul că nu învață eroare în ceea ce intenționează să învețe?
+question.bible-inerrant.prompt: Crezi că Biblia este fără eroare, în sensul că ceea ce afirmă textele ei este lipsit de eroare, inclusiv în afirmațiile istorice și factuale?
+question.gospels-reliable.prompt: Cât de fiabile consideri Evangheliile canonice ca surse despre viața și învățăturile lui Isus?
+scale.gospels-reliable.low: Deloc fiabile
+scale.gospels-reliable.high: Foarte fiabile
+question.bible-contradictions.prompt: Crezi că Biblia conține contradicții reale?
+question.bible-interpretation.prompt: Care abordare descrie cel mai bine felul în care crezi că Biblia ar trebui interpretată în general?
+option.bible-interpretation.historical-literary: În contextul ei istoric și literar
+option.bible-interpretation.literal-unless-indicated: Cât mai literal posibil, cu excepția cazului în care textul indică în mod clar altceva
+option.bible-interpretation.faith-tradition: În principal prin învățătura și tradiția unei comunități de credință
+option.bible-interpretation.personal-discernment: Prin lectură personală și discernământ
+option.bible-interpretation.combination: O combinație a acestor abordări
+option.bible-interpretation.other: O altă abordare
+question.contradictions-impact.prompt: Dacă Biblia conține contradicții reale, în ce măsură crezi că acestea îi afectează autoritatea religioasă?
+scale.contradictions-impact.low: Deloc
+scale.contradictions-impact.high: Foarte mult
+question.apparent-contradictions-view.prompt: Când două pasaje biblice par greu de reconciliat, care perspectivă se apropie cel mai mult de a ta?
+option.apparent-contradictions.harmonizable: De obicei pot fi armonizate
+option.apparent-contradictions.different-perspectives: Pot reflecta perspective diferite fără a fi contradictorii
+option.apparent-contradictions.unresolved: Unele pot rămâne nerezolvate
+option.apparent-contradictions.other: O altă perspectivă
+question.age-group.prompt: Care este grupa ta de vârstă?
+option.age-group.under-18: Sub 18 ani
+option.age-group.18-24: 18–24
+option.age-group.25-34: 25–34
+option.age-group.35-44: 35–44
+option.age-group.45-54: 45–54
+option.age-group.55-64: 55–64
+option.age-group.65-74: 65–74
+option.age-group.75-plus: 75 de ani sau mai mult
+question.religious-identity.prompt: Care descriere se potrivește cel mai bine identității tale religioase sau nereligioase?
+option.religious-identity.christian-catholic: Creștin(ă) — Catolic(ă)
+option.religious-identity.christian-orthodox: Creștin(ă) — Ortodox(ă)
+option.religious-identity.christian-protestant: Creștin(ă) — Protestant(ă)
+option.religious-identity.christian-anglican: Creștin(ă) — Anglican(ă) / Episcopal(ă)
+option.religious-identity.christian-nondenominational: Creștin(ă) — Neconfesional(ă)
+option.religious-identity.christian-other: Creștin(ă) — Altă tradiție
+option.religious-identity.jewish: Evreu / Evreică
+option.religious-identity.muslim: Musulman(ă)
+option.religious-identity.hindu: Hindus(ă)
+option.religious-identity.buddhist: Budist(ă)
+option.religious-identity.sikh: Sikh
+option.religious-identity.bahai: Bahá’í
+option.religious-identity.spiritual-not-religious: Spiritual(ă), dar nu religios / religioasă
+option.religious-identity.agnostic: Agnostic(ă)
+option.religious-identity.atheist: Ateu / Atee
+option.religious-identity.none: Fără identitate religioasă
+option.religious-identity.other: O altă identitate
+question.catholic-tradition.prompt: Care tradiție catolică te descrie cel mai bine?
+option.catholic-tradition.latin: Latină / Romano-catolică
+option.catholic-tradition.eastern: Catolică orientală
+option.catholic-tradition.other: O altă tradiție catolică
+question.protestant-family.prompt: Care familie sau mișcare protestantă te descrie cel mai bine?
+option.protestant-family.evangelical: Evanghelică
+option.protestant-family.reformed-presbyterian: Reformată / Prezbiteriană
+option.protestant-family.lutheran: Luterană
+option.protestant-family.baptist: Baptistă
+option.protestant-family.methodist-wesleyan: Metodistă / Wesleyană
+option.protestant-family.pentecostal-charismatic: Penticostală / Carismatică
+option.protestant-family.adventist: Adventistă
+option.protestant-family.anabaptist-mennonite: Anabaptistă / Menonită
+option.protestant-family.other: O altă familie protestantă
+question.orthodox-denomination.prompt: Care biserică sau tradiție ortodoxă te descrie cel mai bine?
+option.orthodox-denomination.greek: Ortodoxă Greacă
+option.orthodox-denomination.romanian: Ortodoxă Română
+option.orthodox-denomination.russian: Ortodoxă Rusă
+option.orthodox-denomination.serbian: Ortodoxă Sârbă
+option.orthodox-denomination.bulgarian: Ortodoxă Bulgară
+option.orthodox-denomination.georgian: Ortodoxă Georgiană
+option.orthodox-denomination.antiochian: Ortodoxă Antiohiană
+option.orthodox-denomination.oca: Biserica Ortodoxă din America
+option.orthodox-denomination.coptic: Ortodoxă Coptă
+option.orthodox-denomination.armenian: Apostolică Armeană
+option.orthodox-denomination.syriac: Ortodoxă Siriacă
+option.orthodox-denomination.ethiopian: Ortodoxă Etiopiană Tewahedo
+option.orthodox-denomination.church-of-east: Biserica Răsăritului
+option.orthodox-denomination.other: O altă tradiție ortodoxă
