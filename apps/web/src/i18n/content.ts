@@ -1,8 +1,8 @@
 import type { LocalizedText } from "@zetema/content-schema";
 import YAML from "yaml";
 
-import nlSource from "../../../../content/releases/mvp-0.1/locales/nl.yaml?raw";
-import roSource from "../../../../content/releases/mvp-0.1/locales/ro.yaml?raw";
+import nlSource from "../../../../content/releases/mvp-0.2/locales/nl.yaml?raw";
+import roSource from "../../../../content/releases/mvp-0.2/locales/ro.yaml?raw";
 import { currentLocale, type SupportedLocale } from "./index";
 
 type TranslationMap = Readonly<Record<string, string>>;
