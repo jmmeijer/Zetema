@@ -1,6 +1,6 @@
 schemaVersion: 1
 releaseId: mvp-0.1.nature-of-god.v1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 defaultLocale: en
 specialResponses:
   - unsure
@@ -11,10 +11,10 @@ theme:
   id: nature-of-god
   title:
     key: theme.nature-of-god.title
-    source: Nature of God
+    source: Beliefs and Background
   description:
     key: theme.nature-of-god.description
-    source: Questions about what God is like and which attributes you believe God has.
+    source: Questions about God, the Bible, and your religious background.
 
 questions:
   - id: god-exists
@@ -113,6 +113,194 @@ questions:
       key: question.reveals-self.prompt
       source: Do you believe God intentionally reveals information about himself to human beings?
 
+  - id: bible-inspired
+    flow: base
+    type: yes_no
+    prompt:
+      key: question.bible-inspired.prompt
+      source: Do you believe the Bible is inspired by God?
+
+  - id: bible-authority
+    flow: base
+    type: likert
+    prompt:
+      key: question.bible-authority.prompt
+      source: How authoritative do you consider the Bible for matters of faith and practice?
+    scale:
+      min: 1
+      max: 5
+      lowLabel:
+        key: scale.bible-authority.low
+        source: Not authoritative
+      highLabel:
+        key: scale.bible-authority.high
+        source: Completely authoritative
+
+  - id: bible-infallible
+    flow: base
+    type: yes_no
+    prompt:
+      key: question.bible-infallible.prompt
+      source: Do you believe the Bible is incapable of teaching error in what it intends to teach?
+
+  - id: bible-inerrant
+    flow: base
+    type: yes_no
+    prompt:
+      key: question.bible-inerrant.prompt
+      source: Do you believe the Bible is without error in everything its texts affirm, including historical and factual claims?
+
+  - id: gospels-reliability
+    flow: base
+    type: likert
+    prompt:
+      key: question.gospels-reliability.prompt
+      source: How reliable do you consider the canonical Gospels as sources about the life and teachings of Jesus?
+    scale:
+      min: 1
+      max: 5
+      lowLabel:
+        key: scale.gospels-reliability.low
+        source: Not reliable
+      highLabel:
+        key: scale.gospels-reliability.high
+        source: Very reliable
+
+  - id: bible-contradictions
+    flow: base
+    type: yes_no
+    prompt:
+      key: question.bible-contradictions.prompt
+      source: Do you believe the Bible contains genuine contradictions?
+
+  - id: bible-interpretation
+    flow: base
+    type: single_choice
+    prompt:
+      key: question.bible-interpretation.prompt
+      source: Which best describes how you think the Bible should generally be interpreted?
+    options:
+      - id: historical-literary
+        label:
+          key: option.bible-interpretation.historical-literary
+          source: With close attention to historical and literary context
+      - id: mostly-literal
+        label:
+          key: option.bible-interpretation.mostly-literal
+          source: Primarily literally where the text allows it
+      - id: church-tradition
+        label:
+          key: option.bible-interpretation.church-tradition
+          source: Through the interpretive tradition of a church or faith community
+      - id: personal-discernment
+        label:
+          key: option.bible-interpretation.personal-discernment
+          source: Primarily through personal study and discernment
+      - id: mixed
+        label:
+          key: option.bible-interpretation.mixed
+          source: Using a combination of approaches
+      - id: other
+        label:
+          key: option.common.other
+          source: Another view
+
+  - id: profile-age-group
+    flow: base
+    type: single_choice
+    prompt:
+      key: question.profile-age-group.prompt
+      source: What is your age group?
+    options:
+      - id: under-18
+        label:
+          key: option.profile-age-group.under-18
+          source: Under 18
+      - id: 18-24
+        label:
+          key: option.profile-age-group.18-24
+          source: 18–24
+      - id: 25-34
+        label:
+          key: option.profile-age-group.25-34
+          source: 25–34
+      - id: 35-44
+        label:
+          key: option.profile-age-group.35-44
+          source: 35–44
+      - id: 45-54
+        label:
+          key: option.profile-age-group.45-54
+          source: 45–54
+      - id: 55-64
+        label:
+          key: option.profile-age-group.55-64
+          source: 55–64
+      - id: 65-74
+        label:
+          key: option.profile-age-group.65-74
+          source: 65–74
+      - id: 75-plus
+        label:
+          key: option.profile-age-group.75-plus
+          source: 75 or older
+
+  - id: profile-religion
+    flow: base
+    type: single_choice
+    prompt:
+      key: question.profile-religion.prompt
+      source: Which best describes your current religious or non-religious identity?
+    options:
+      - id: christian
+        label:
+          key: option.profile-religion.christian
+          source: Christian
+      - id: jewish
+        label:
+          key: option.profile-religion.jewish
+          source: Jewish
+      - id: muslim
+        label:
+          key: option.profile-religion.muslim
+          source: Muslim
+      - id: hindu
+        label:
+          key: option.profile-religion.hindu
+          source: Hindu
+      - id: buddhist
+        label:
+          key: option.profile-religion.buddhist
+          source: Buddhist
+      - id: sikh
+        label:
+          key: option.profile-religion.sikh
+          source: Sikh
+      - id: another-religion
+        label:
+          key: option.profile-religion.another-religion
+          source: Another religion
+      - id: spiritual-not-religious
+        label:
+          key: option.profile-religion.spiritual-not-religious
+          source: Spiritual but not religious
+      - id: agnostic
+        label:
+          key: option.profile-religion.agnostic
+          source: Agnostic
+      - id: atheist
+        label:
+          key: option.profile-religion.atheist
+          source: Atheist
+      - id: none
+        label:
+          key: option.profile-religion.none
+          source: No religious identity
+      - id: other
+        label:
+          key: option.common.other
+          source: Another identity
+
   - id: god-conception
     flow: follow_up
     type: single_choice
@@ -185,6 +373,185 @@ questions:
           key: option.common.other
           source: Another view
 
+  - id: bible-contradictions-authority
+    flow: follow_up
+    type: yes_no
+    prompt:
+      key: question.bible-contradictions-authority.prompt
+      source: Do the contradictions you see significantly affect the Bible's religious authority for you?
+
+  - id: bible-apparent-contradictions
+    flow: follow_up
+    type: single_choice
+    prompt:
+      key: question.bible-apparent-contradictions.prompt
+      source: When two biblical passages appear difficult to reconcile, which description comes closest to your view?
+    options:
+      - id: usually-harmonizable
+        label:
+          key: option.bible-apparent-contradictions.usually-harmonizable
+          source: They can usually be reconciled with enough context
+      - id: complementary-perspectives
+        label:
+          key: option.bible-apparent-contradictions.complementary-perspectives
+          source: They often reflect different perspectives rather than contradictions
+      - id: some-unresolved
+        label:
+          key: option.bible-apparent-contradictions.some-unresolved
+          source: Some apparent conflicts remain unresolved for me
+      - id: case-by-case
+        label:
+          key: option.bible-apparent-contradictions.case-by-case
+          source: It depends on the passages
+      - id: other
+        label:
+          key: option.common.other
+          source: Another view
+
+  - id: profile-christian-tradition
+    flow: follow_up
+    type: single_choice
+    prompt:
+      key: question.profile-christian-tradition.prompt
+      source: Which broad Christian tradition best describes you?
+    options:
+      - id: catholic
+        label:
+          key: option.profile-christian-tradition.catholic
+          source: Catholic
+      - id: orthodox
+        label:
+          key: option.profile-christian-tradition.orthodox
+          source: Orthodox
+      - id: protestant
+        label:
+          key: option.profile-christian-tradition.protestant
+          source: Protestant
+      - id: restorationist
+        label:
+          key: option.profile-christian-tradition.restorationist
+          source: Restorationist
+      - id: latter-day-saint
+        label:
+          key: option.profile-christian-tradition.latter-day-saint
+          source: Latter-day Saint
+      - id: other-christian
+        label:
+          key: option.profile-christian-tradition.other-christian
+          source: Another Christian tradition
+
+  - id: profile-catholic-tradition
+    flow: follow_up
+    type: single_choice
+    prompt:
+      key: question.profile-catholic-tradition.prompt
+      source: Which Catholic tradition best describes you?
+    options:
+      - id: latin-catholic
+        label:
+          key: option.profile-catholic-tradition.latin-catholic
+          source: Latin or Roman Catholic
+      - id: eastern-catholic
+        label:
+          key: option.profile-catholic-tradition.eastern-catholic
+          source: Eastern Catholic
+      - id: other-catholic
+        label:
+          key: option.profile-catholic-tradition.other-catholic
+          source: Another Catholic tradition
+
+  - id: profile-orthodox-tradition
+    flow: follow_up
+    type: single_choice
+    prompt:
+      key: question.profile-orthodox-tradition.prompt
+      source: Which Orthodox church or tradition best describes you?
+    options:
+      - id: greek-orthodox
+        label:
+          key: option.profile-orthodox-tradition.greek-orthodox
+          source: Greek Orthodox
+      - id: romanian-orthodox
+        label:
+          key: option.profile-orthodox-tradition.romanian-orthodox
+          source: Romanian Orthodox
+      - id: russian-orthodox
+        label:
+          key: option.profile-orthodox-tradition.russian-orthodox
+          source: Russian Orthodox
+      - id: serbian-orthodox
+        label:
+          key: option.profile-orthodox-tradition.serbian-orthodox
+          source: Serbian Orthodox
+      - id: antiochian-orthodox
+        label:
+          key: option.profile-orthodox-tradition.antiochian-orthodox
+          source: Antiochian Orthodox
+      - id: other-eastern-orthodox
+        label:
+          key: option.profile-orthodox-tradition.other-eastern-orthodox
+          source: Another Eastern Orthodox church
+      - id: oriental-orthodox
+        label:
+          key: option.profile-orthodox-tradition.oriental-orthodox
+          source: Oriental Orthodox
+      - id: church-of-the-east
+        label:
+          key: option.profile-orthodox-tradition.church-of-the-east
+          source: Church of the East
+      - id: other-orthodox
+        label:
+          key: option.profile-orthodox-tradition.other-orthodox
+          source: Another Orthodox tradition
+
+  - id: profile-protestant-family
+    flow: follow_up
+    type: single_choice
+    prompt:
+      key: question.profile-protestant-family.prompt
+      source: Which Protestant family or label comes closest to how you identify?
+    options:
+      - id: anglican-episcopal
+        label:
+          key: option.profile-protestant-family.anglican-episcopal
+          source: Anglican or Episcopal
+      - id: baptist
+        label:
+          key: option.profile-protestant-family.baptist
+          source: Baptist
+      - id: lutheran
+        label:
+          key: option.profile-protestant-family.lutheran
+          source: Lutheran
+      - id: methodist-wesleyan
+        label:
+          key: option.profile-protestant-family.methodist-wesleyan
+          source: Methodist or Wesleyan
+      - id: reformed-presbyterian
+        label:
+          key: option.profile-protestant-family.reformed-presbyterian
+          source: Reformed or Presbyterian
+      - id: pentecostal-charismatic
+        label:
+          key: option.profile-protestant-family.pentecostal-charismatic
+          source: Pentecostal or Charismatic
+      - id: evangelical-nondenominational
+        label:
+          key: option.profile-protestant-family.evangelical-nondenominational
+          source: Evangelical or non-denominational
+      - id: adventist
+        label:
+          key: option.profile-protestant-family.adventist
+          source: Adventist
+      - id: anabaptist-mennonite
+        label:
+          key: option.profile-protestant-family.anabaptist-mennonite
+          source: Anabaptist or Mennonite
+      - id: other-protestant
+        label:
+          key: option.profile-protestant-family.other-protestant
+          source: Another Protestant tradition
+
 followUpRules:
   - id: personal-god.no.god-conception
     sourceQuestionId: personal-god
@@ -206,3 +573,52 @@ followUpRules:
       kind: yes_no
       value: no
     targetQuestionId: goodness-conception
+
+  - id: bible-contradictions.yes.authority
+    sourceQuestionId: bible-contradictions
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: bible-contradictions-authority
+
+  - id: bible-contradictions.no.apparent
+    sourceQuestionId: bible-contradictions
+    when:
+      kind: yes_no
+      value: no
+    targetQuestionId: bible-apparent-contradictions
+
+  - id: bible-contradictions.unsure.apparent
+    sourceQuestionId: bible-contradictions
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: bible-apparent-contradictions
+
+  - id: profile-religion.christian.tradition
+    sourceQuestionId: profile-religion
+    when:
+      kind: single_choice
+      optionId: christian
+    targetQuestionId: profile-christian-tradition
+
+  - id: profile-christian-tradition.catholic.detail
+    sourceQuestionId: profile-christian-tradition
+    when:
+      kind: single_choice
+      optionId: catholic
+    targetQuestionId: profile-catholic-tradition
+
+  - id: profile-christian-tradition.orthodox.detail
+    sourceQuestionId: profile-christian-tradition
+    when:
+      kind: single_choice
+      optionId: orthodox
+    targetQuestionId: profile-orthodox-tradition
+
+  - id: profile-christian-tradition.protestant.detail
+    sourceQuestionId: profile-christian-tradition
+    when:
+      kind: single_choice
+      optionId: protestant
+    targetQuestionId: profile-protestant-family
