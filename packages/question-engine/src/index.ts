@@ -344,29 +344,23 @@ function findEligibleFollowUp(
   release: ContentRelease,
   responsesById: ReadonlyMap<QuestionId, EffectiveResponse>,
   presentedIds: ReadonlySet<QuestionId>,
-  nextBasePosition: number,
+  presentedInOrder: readonly QuestionExposure[],
 ): FollowUpRule | undefined {
-  const baseQuestions = release.questions.filter(
-    (question) => question.flow === "base",
-  );
-  const basePositionById = new Map<QuestionId, number>();
+  const presentedPositionById = new Map<QuestionId, number>();
 
-  for (const [index, question] of baseQuestions.entries()) {
-    basePositionById.set(question.id, index);
+  for (const [index, exposure] of presentedInOrder.entries()) {
+    presentedPositionById.set(exposure.questionId, index);
   }
 
   const candidates = release.followUpRules
     .map((rule, rulePosition) => ({
       rule,
       rulePosition,
-      sourcePosition: basePositionById.get(rule.sourceQuestionId),
+      sourcePosition: presentedPositionById.get(rule.sourceQuestionId),
     }))
     .filter((candidate) => {
       const { rule, sourcePosition } = candidate;
-      if (sourcePosition === undefined || sourcePosition >= nextBasePosition) {
-        return false;
-      }
-      if (!presentedIds.has(rule.sourceQuestionId)) {
+      if (sourcePosition === undefined) {
         return false;
       }
       if (presentedIds.has(rule.targetQuestionId)) {
@@ -437,14 +431,12 @@ export function selectNextQuestion(
   const nextBasePosition = baseQuestions.findIndex(
     (question) => !state.presentedIds.has(question.id),
   );
-  const effectiveNextBasePosition =
-    nextBasePosition === -1 ? Number.POSITIVE_INFINITY : nextBasePosition;
 
   const eligibleFollowUp = findEligibleFollowUp(
     input.release,
     state.responsesById,
     state.presentedIds,
-    effectiveNextBasePosition,
+    state.presentedInOrder,
   );
 
   if (eligibleFollowUp !== undefined) {
