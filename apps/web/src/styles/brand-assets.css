@@ -42,7 +42,6 @@
 }
 
 /* All functional content stays above the decorative background layer. */
-.landing-language,
 .landing-card,
 .landing-facts,
 .landing-footer,
@@ -50,6 +49,28 @@
 .content-shell {
   position: relative;
   z-index: 1;
+}
+
+/* The landing selector is deliberately detached from the centered content
+ * column. Keep it pinned to the top-right instead of allowing the flex page
+ * layout to stretch it across the viewport. */
+.landing-language {
+  position: absolute;
+  z-index: 3;
+}
+
+/* Match the style-board tagline treatment: the invitation remains in deep
+ * ink, while the reflective second sentence is blush and italic. */
+.landing-tagline > span,
+.landing-tagline > em {
+  display: block;
+}
+
+.landing-tagline > em {
+  margin-top: 0.04em;
+  color: var(--zetema-blush);
+  font-style: italic;
+  font-weight: 400;
 }
 
 @media (max-width: 720px) {
