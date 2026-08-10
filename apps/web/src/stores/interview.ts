@@ -4,6 +4,7 @@ import { defineStore } from "pinia";
 import {
   parseAndValidateContentReleaseYaml,
   type ContentRelease,
+  type LocalizedText,
   type QuestionDefinition,
 } from "@zetema/content-schema";
 import type { QuestionExposure, StructuredAnswer } from "@zetema/domain";
@@ -17,7 +18,7 @@ import {
 } from "@zetema/sync-engine";
 import releaseSource from "../../../../content/releases/mvp-0.2/beliefs-and-background.en.yaml?raw";
 import { currentLocale, translate } from "../i18n";
-import { localizeContentText } from "../i18n/content";
+import { localizeContentText as localizeContentTextForRelease } from "../i18n/content";
 
 const parsedRelease = parseAndValidateContentReleaseYaml(releaseSource);
 
@@ -99,6 +100,10 @@ export const useInterviewStore = defineStore("interview", () => {
           Math.round((answeredBaseCount.value / baseQuestions.value.length) * 100),
         ),
   );
+
+  function localizeContentText(text: LocalizedText): string {
+    return localizeContentTextForRelease(text, activeRelease.value.releaseId);
+  }
 
   function getAnswer(questionId: string): StructuredAnswer | undefined {
     return responseMap.value.get(questionId);
@@ -412,15 +417,26 @@ export const useInterviewStore = defineStore("interview", () => {
 
     const personal = getAnswer("personal-god");
     if (personal?.kind === "yes_no") {
+      const legacy = activeRelease.value.releaseId.startsWith("mvp-0.1.");
       first.push(
         translate(
           personal.value === "yes"
-            ? "summary.generated.personalYes"
-            : "summary.generated.personalNo",
+            ? legacy
+              ? "summary.generated.personalLegacyYes"
+              : "summary.generated.personalYes"
+            : legacy
+              ? "summary.generated.personalLegacyNo"
+              : "summary.generated.personalNo",
         ),
       );
     } else if (personal?.kind === "special" && personal.value === "unsure") {
-      first.push(translate("summary.generated.personalUnsure"));
+      first.push(
+        translate(
+          activeRelease.value.releaseId.startsWith("mvp-0.1.")
+            ? "summary.generated.personalLegacyUnsure"
+            : "summary.generated.personalUnsure",
+        ),
+      );
     }
 
     const relationship = getAnswer("relationship-with-people");
