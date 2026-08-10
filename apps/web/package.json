@@ -5,8 +5,8 @@
   "type": "module",
   "description": "Zetema Vue web application.",
   "scripts": {
-    "dev": "vite",
-    "build": "node scripts/validate-locales.mjs && vue-tsc -p tsconfig.json --noEmit && vite build",
+    "dev": "node scripts/prepare-pwa-assets.mjs && vite",
+    "build": "node scripts/prepare-pwa-assets.mjs && node scripts/validate-locales.mjs && vue-tsc -p tsconfig.json --noEmit && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
