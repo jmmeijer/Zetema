@@ -28,3 +28,86 @@ question.goodness-conception.prompt: Welke beschrijving komt het dichtst bij jou
 option.goodness-conception.mostly-good: God is goed, maar niet volmaakt goed
 option.goodness-conception.morally-mixed: God kan zowel moreel goed als moreel slecht zijn
 option.goodness-conception.beyond-morality: Menselijke morele categorieën zijn niet op God van toepassing
+theme.beliefs-and-background.title: Overtuigingen en achtergrond
+theme.beliefs-and-background.description: Vragen over God, de Bijbel en je religieuze of niet-religieuze achtergrond.
+question.bible-inspired.prompt: Geloof je dat de Bijbel door God geïnspireerd is?
+question.bible-authority.prompt: Hoe gezaghebbend vind je de Bijbel voor zaken van geloof en geloofspraktijk?
+scale.bible-authority.low: Niet gezaghebbend
+scale.bible-authority.high: Volledig gezaghebbend
+question.bible-infallible.prompt: Geloof je dat de Bijbel onfeilbaar is, in de betekenis dat hij geen dwaling leert in wat hij beoogt te leren?
+question.bible-inerrant.prompt: Geloof je dat de Bijbel foutloos is, in de betekenis dat wat de teksten bevestigen zonder fouten is, ook in historische en feitelijke beweringen?
+question.gospels-reliable.prompt: Hoe betrouwbaar vind je de canonieke evangeliën als bronnen over het leven en de leer van Jezus?
+scale.gospels-reliable.low: Niet betrouwbaar
+scale.gospels-reliable.high: Zeer betrouwbaar
+question.bible-contradictions.prompt: Geloof je dat de Bijbel echte tegenstrijdigheden bevat?
+question.bible-interpretation.prompt: Welke benadering beschrijft het best hoe de Bijbel volgens jou in het algemeen geïnterpreteerd moet worden?
+option.bible-interpretation.historical-literary: In zijn historische en literaire context
+option.bible-interpretation.literal-unless-indicated: Zo letterlijk mogelijk, tenzij de tekst duidelijk iets anders aangeeft
+option.bible-interpretation.faith-tradition: Vooral via de leer en traditie van een geloofsgemeenschap
+option.bible-interpretation.personal-discernment: Door persoonlijke lezing en onderscheiding
+option.bible-interpretation.combination: Een combinatie van deze benaderingen
+option.bible-interpretation.other: Een andere benadering
+question.contradictions-impact.prompt: Als de Bijbel echte tegenstrijdigheden bevat, in welke mate tast dit volgens jou zijn religieuze gezag aan?
+scale.contradictions-impact.low: Helemaal niet
+scale.contradictions-impact.high: Zeer sterk
+question.apparent-contradictions-view.prompt: Wanneer twee Bijbelpassages moeilijk met elkaar te verenigen lijken, welke opvatting komt het dichtst bij die van jou?
+option.apparent-contradictions.harmonizable: Ze kunnen doorgaans met elkaar in overeenstemming worden gebracht
+option.apparent-contradictions.different-perspectives: Ze kunnen verschillende perspectieven weerspiegelen zonder tegenstrijdig te zijn
+option.apparent-contradictions.unresolved: Sommige blijven mogelijk onopgelost
+option.apparent-contradictions.other: Een andere opvatting
+question.age-group.prompt: Wat is je leeftijdsgroep?
+option.age-group.under-18: Jonger dan 18
+option.age-group.18-24: 18–24
+option.age-group.25-34: 25–34
+option.age-group.35-44: 35–44
+option.age-group.45-54: 45–54
+option.age-group.55-64: 55–64
+option.age-group.65-74: 65–74
+option.age-group.75-plus: 75 of ouder
+question.religious-identity.prompt: Welke omschrijving past het best bij je religieuze of niet-religieuze identiteit?
+option.religious-identity.christian-catholic: Christelijk — Katholiek
+option.religious-identity.christian-orthodox: Christelijk — Orthodox
+option.religious-identity.christian-protestant: Christelijk — Protestants
+option.religious-identity.christian-anglican: Christelijk — Anglicaans / Episcopaals
+option.religious-identity.christian-nondenominational: Christelijk — Niet-confessioneel
+option.religious-identity.christian-other: Christelijk — Andere traditie
+option.religious-identity.jewish: Joods
+option.religious-identity.muslim: Moslim
+option.religious-identity.hindu: Hindoe
+option.religious-identity.buddhist: Boeddhist
+option.religious-identity.sikh: Sikh
+option.religious-identity.bahai: Bahá’í
+option.religious-identity.spiritual-not-religious: Spiritueel maar niet religieus
+option.religious-identity.agnostic: Agnostisch
+option.religious-identity.atheist: Atheïstisch
+option.religious-identity.none: Geen religieuze identiteit
+option.religious-identity.other: Een andere identiteit
+question.catholic-tradition.prompt: Welke katholieke traditie past het best bij je?
+option.catholic-tradition.latin: Latijns / Rooms-katholiek
+option.catholic-tradition.eastern: Oosters-katholiek
+option.catholic-tradition.other: Een andere katholieke traditie
+question.protestant-family.prompt: Welke protestantse stroming of beweging past het best bij je?
+option.protestant-family.evangelical: Evangelisch
+option.protestant-family.reformed-presbyterian: Gereformeerd / Presbyteriaans
+option.protestant-family.lutheran: Luthers
+option.protestant-family.baptist: Baptistisch
+option.protestant-family.methodist-wesleyan: Methodistisch / Wesleyaans
+option.protestant-family.pentecostal-charismatic: Pinkster / Charismatisch
+option.protestant-family.adventist: Adventistisch
+option.protestant-family.anabaptist-mennonite: Anabaptistisch / Mennonitisch
+option.protestant-family.other: Een andere protestantse stroming
+question.orthodox-denomination.prompt: Welke orthodoxe kerk of traditie past het best bij je?
+option.orthodox-denomination.greek: Grieks-orthodox
+option.orthodox-denomination.romanian: Roemeens-orthodox
+option.orthodox-denomination.russian: Russisch-orthodox
+option.orthodox-denomination.serbian: Servisch-orthodox
+option.orthodox-denomination.bulgarian: Bulgaars-orthodox
+option.orthodox-denomination.georgian: Georgisch-orthodox
+option.orthodox-denomination.antiochian: Antiochisch-orthodox
+option.orthodox-denomination.oca: Orthodoxe Kerk in Amerika
+option.orthodox-denomination.coptic: Koptisch-orthodox
+option.orthodox-denomination.armenian: Armeens-Apostolisch
+option.orthodox-denomination.syriac: Syrisch-orthodox
+option.orthodox-denomination.ethiopian: Ethiopisch-Orthodoxe Tewahedo
+option.orthodox-denomination.church-of-east: Kerk van het Oosten
+option.orthodox-denomination.other: Een andere orthodoxe traditie
