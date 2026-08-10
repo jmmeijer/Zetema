@@ -1,13 +1,13 @@
 theme.nature-of-god.title: Natura lui Dumnezeu
 theme.nature-of-god.description: Întrebări despre cum este Dumnezeu și ce crezi despre el.
 question.god-exists.prompt: Crezi că Dumnezeu există?
-question.existence-confidence.prompt: Cât de sigur(ă) ești că răspunsul tău este corect?
+question.existence-confidence.prompt: Cât de sigur(ă) ești de răspunsul tău?
 scale.confidence.low: Deloc sigur(ă)
 scale.confidence.high: Foarte sigur(ă)
 question.personal-god.prompt: Crezi că Dumnezeu este o ființă personală, care are intenții și poate avea relații?
 question.omnipotent.prompt: Crezi că Dumnezeu are cea mai mare putere posibilă?
 question.omniscient.prompt: Crezi că Dumnezeu știe tot ce poate fi cunoscut?
-question.omnipresent.prompt: Crezi că Dumnezeu este prezent pretutindeni?
+question.omnipresent.prompt: Crezi că Dumnezeu este prezent peste tot?
 question.perfectly-good.prompt: Crezi că Dumnezeu este perfect bun?
 question.relation-to-time.prompt: Care variantă descrie cel mai bine cum există Dumnezeu în raport cu timpul?
 option.relation-to-time.outside-time: Dumnezeu există în afara timpului
@@ -27,18 +27,18 @@ option.power-limits.external-limits: Ceva din afara lui Dumnezeu îi limitează 
 question.goodness-conception.prompt: Cum ai descrie cel mai bine caracterul moral al lui Dumnezeu?
 option.goodness-conception.mostly-good: Dumnezeu este bun, dar nu perfect bun
 option.goodness-conception.morally-mixed: Dumnezeu poate fi atât bun, cât și rău din punct de vedere moral
-option.goodness-conception.beyond-morality: Regulile morale omenești nu se aplică lui Dumnezeu
+option.goodness-conception.beyond-morality: Noțiunile omenești de bine și rău nu se aplică lui Dumnezeu
 
 theme.beliefs-and-background.title: Convingeri și context
 theme.beliefs-and-background.description: Întrebări despre Dumnezeu, Biblie și contextul tău religios.
 question.bible-inspired.prompt: Crezi că Biblia este inspirată de Dumnezeu?
 question.bible-word-of-god.prompt: Crezi că Biblia este Cuvântul lui Dumnezeu?
-question.bible-authority.prompt: Câtă autoritate crezi că are Biblia în ceea ce privește credința și felul în care ar trebui trăită viața?
+question.bible-authority.prompt: Câtă autoritate crezi că are Biblia în credință și practică religioasă?
 scale.bible-authority.low: Fără autoritate
 scale.bible-authority.high: Autoritate deplină
 question.bible-infallible.prompt: Crezi că Biblia nu greșește în ceea ce vrea să ne învețe?
 question.bible-inerrant.prompt: Crezi că Biblia nu conține nicio greșeală în ceea ce afirmă, inclusiv despre istorie și fapte?
-question.gospels-reliable.prompt: Cât de de încredere crezi că sunt Evangheliile din Biblie ca surse despre viața și învățăturile lui Isus?
+question.gospels-reliable.prompt: Câtă încredere ai în Evangheliile din Biblie ca surse despre viața și învățăturile lui Isus?
 scale.gospels-reliable.low: Deloc de încredere
 scale.gospels-reliable.high: Foarte de încredere
 question.bible-contradictions.prompt: Crezi că Biblia conține contradicții reale?
