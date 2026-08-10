@@ -14,7 +14,7 @@ import {
   IndexedDbLocalStore,
   type LocalSessionState,
 } from "@zetema/sync-engine";
-import releaseSource from "../../../../content/releases/mvp-0.1/nature-of-god.en.yaml?raw";
+import releaseSource from "../../../../content/releases/mvp-0.1/beliefs-and-background.en.yaml?raw";
 import { currentLocale, translate } from "../i18n";
 import { localizeContentText } from "../i18n/content";
 
