@@ -1,5 +1,5 @@
-theme.nature-of-god.title: Natura lui Dumnezeu
-theme.nature-of-god.description: Întrebări despre cum este Dumnezeu și ce atribute crezi că are.
+theme.nature-of-god.title: Credințe și context
+theme.nature-of-god.description: Întrebări despre Dumnezeu, Biblie și contextul tău religios.
 question.god-exists.prompt: Crezi că Dumnezeu există?
 question.existence-confidence.prompt: Cât de sigur(ă) ești de răspunsul tău la întrebarea dacă Dumnezeu există?
 scale.confidence.low: Deloc sigur(ă)
@@ -28,3 +28,80 @@ question.goodness-conception.prompt: Care descriere se apropie cel mai mult de p
 option.goodness-conception.mostly-good: Dumnezeu este bun, dar nu perfect bun
 option.goodness-conception.morally-mixed: Dumnezeu poate fi atât moral bun, cât și moral rău
 option.goodness-conception.beyond-morality: Categoriile morale umane nu se aplică lui Dumnezeu
+
+question.bible-inspired.prompt: Crezi că Biblia este inspirată de Dumnezeu?
+question.bible-authority.prompt: Câtă autoritate consideri că are Biblia în chestiuni de credință și practică religioasă?
+scale.bible-authority.low: Fără autoritate
+scale.bible-authority.high: Cu autoritate deplină
+question.bible-infallible.prompt: Crezi că Biblia este incapabilă să învețe ceva eronat în ceea ce intenționează să transmită?
+question.bible-inerrant.prompt: Crezi că Biblia este fără eroare în tot ceea ce afirmă textele ei, inclusiv în afirmațiile istorice și factuale?
+question.gospels-reliability.prompt: Cât de fiabile consideri că sunt Evangheliile canonice ca surse despre viața și învățăturile lui Isus?
+scale.gospels-reliability.low: Deloc fiabile
+scale.gospels-reliability.high: Foarte fiabile
+question.bible-contradictions.prompt: Crezi că Biblia conține contradicții reale?
+question.bible-interpretation.prompt: Care descriere se potrivește cel mai bine cu modul în care crezi că Biblia ar trebui interpretată în general?
+option.bible-interpretation.historical-literary: Cu atenție deosebită la contextul istoric și literar
+option.bible-interpretation.mostly-literal: În principal literal, acolo unde textul permite acest lucru
+option.bible-interpretation.church-tradition: Prin tradiția de interpretare a unei biserici sau comunități de credință
+option.bible-interpretation.personal-discernment: În principal prin studiu personal și discernământ
+option.bible-interpretation.mixed: Folosind o combinație de abordări
+question.bible-contradictions-authority.prompt: Contradicțiile pe care le vezi afectează semnificativ autoritatea religioasă a Bibliei pentru tine?
+question.bible-apparent-contradictions.prompt: Când două pasaje biblice par greu de împăcat, care descriere se apropie cel mai mult de perspectiva ta?
+option.bible-apparent-contradictions.usually-harmonizable: De obicei pot fi împăcate dacă se ține cont de suficient context
+option.bible-apparent-contradictions.complementary-perspectives: Adesea reflectă perspective diferite, mai degrabă decât contradicții
+option.bible-apparent-contradictions.some-unresolved: Unele conflicte aparente rămân pentru mine nerezolvate
+option.bible-apparent-contradictions.case-by-case: Depinde de pasajele respective
+
+question.profile-age-group.prompt: Care este grupa ta de vârstă?
+option.profile-age-group.under-18: Sub 18 ani
+option.profile-age-group.18-24: 18–24
+option.profile-age-group.25-34: 25–34
+option.profile-age-group.35-44: 35–44
+option.profile-age-group.45-54: 45–54
+option.profile-age-group.55-64: 55–64
+option.profile-age-group.65-74: 65–74
+option.profile-age-group.75-plus: 75 de ani sau mai mult
+question.profile-religion.prompt: Care descriere se potrivește cel mai bine cu identitatea ta religioasă sau nereligioasă actuală?
+option.profile-religion.christian: Creștin(ă)
+option.profile-religion.jewish: Evreu/Evreică
+option.profile-religion.muslim: Musulman(ă)
+option.profile-religion.hindu: Hindus(ă)
+option.profile-religion.buddhist: Budist(ă)
+option.profile-religion.sikh: Sikh
+option.profile-religion.another-religion: O altă religie
+option.profile-religion.spiritual-not-religious: Spiritual(ă), dar nu religios/religioasă
+option.profile-religion.agnostic: Agnostic(ă)
+option.profile-religion.atheist: Ateu/Atee
+option.profile-religion.none: Fără identitate religioasă
+question.profile-christian-tradition.prompt: Care tradiție creștină largă te descrie cel mai bine?
+option.profile-christian-tradition.catholic: Catolică
+option.profile-christian-tradition.orthodox: Ortodoxă
+option.profile-christian-tradition.protestant: Protestantă
+option.profile-christian-tradition.restorationist: Restauraționistă
+option.profile-christian-tradition.latter-day-saint: Sfinții din Zilele din Urmă
+option.profile-christian-tradition.other-christian: O altă tradiție creștină
+question.profile-catholic-tradition.prompt: Care tradiție catolică te descrie cel mai bine?
+option.profile-catholic-tradition.latin-catholic: Catolică latină sau romano-catolică
+option.profile-catholic-tradition.eastern-catholic: Catolică orientală
+option.profile-catholic-tradition.other-catholic: O altă tradiție catolică
+question.profile-orthodox-tradition.prompt: Care biserică sau tradiție ortodoxă te descrie cel mai bine?
+option.profile-orthodox-tradition.greek-orthodox: Ortodoxă greacă
+option.profile-orthodox-tradition.romanian-orthodox: Ortodoxă română
+option.profile-orthodox-tradition.russian-orthodox: Ortodoxă rusă
+option.profile-orthodox-tradition.serbian-orthodox: Ortodoxă sârbă
+option.profile-orthodox-tradition.antiochian-orthodox: Ortodoxă antiohiană
+option.profile-orthodox-tradition.other-eastern-orthodox: O altă biserică ortodoxă răsăriteană
+option.profile-orthodox-tradition.oriental-orthodox: Ortodoxă orientală
+option.profile-orthodox-tradition.church-of-the-east: Biserica Răsăritului
+option.profile-orthodox-tradition.other-orthodox: O altă tradiție ortodoxă
+question.profile-protestant-family.prompt: Care familie sau etichetă protestantă se apropie cel mai mult de modul în care te identifici?
+option.profile-protestant-family.anglican-episcopal: Anglicană sau episcopală
+option.profile-protestant-family.baptist: Baptistă
+option.profile-protestant-family.lutheran: Luterană
+option.profile-protestant-family.methodist-wesleyan: Metodistă sau wesleyană
+option.profile-protestant-family.reformed-presbyterian: Reformată sau prezbiteriană
+option.profile-protestant-family.pentecostal-charismatic: Penticostală sau carismatică
+option.profile-protestant-family.evangelical-nondenominational: Evanghelică sau neconfesională
+option.profile-protestant-family.adventist: Adventistă
+option.profile-protestant-family.anabaptist-mennonite: Anabaptistă sau menonită
+option.profile-protestant-family.other-protestant: O altă tradiție protestantă
