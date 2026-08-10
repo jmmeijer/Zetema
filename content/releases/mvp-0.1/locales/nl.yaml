@@ -1,5 +1,5 @@
-theme.nature-of-god.title: Aard van God
-theme.nature-of-god.description: Vragen over hoe God is en welke eigenschappen je aan God toeschrijft.
+theme.nature-of-god.title: Geloof en achtergrond
+theme.nature-of-god.description: Vragen over God, de Bijbel en je religieuze achtergrond.
 question.god-exists.prompt: Geloof je dat God bestaat?
 question.existence-confidence.prompt: Hoe zeker ben je van je antwoord op de vraag of God bestaat?
 scale.confidence.low: Helemaal niet zeker
@@ -28,3 +28,80 @@ question.goodness-conception.prompt: Welke beschrijving komt het dichtst bij jou
 option.goodness-conception.mostly-good: God is goed, maar niet volmaakt goed
 option.goodness-conception.morally-mixed: God kan zowel moreel goed als moreel slecht zijn
 option.goodness-conception.beyond-morality: Menselijke morele categorieën zijn niet op God van toepassing
+
+question.bible-inspired.prompt: Geloof je dat de Bijbel door God geïnspireerd is?
+question.bible-authority.prompt: Hoe gezaghebbend vind je de Bijbel voor zaken van geloof en geloofspraktijk?
+scale.bible-authority.low: Niet gezaghebbend
+scale.bible-authority.high: Volledig gezaghebbend
+question.bible-infallible.prompt: Geloof je dat de Bijbel geen dwaling kan leren in wat de Bijbel beoogt te leren?
+question.bible-inerrant.prompt: Geloof je dat de Bijbel zonder fouten is in alles wat de teksten bevestigen, inclusief historische en feitelijke beweringen?
+question.gospels-reliability.prompt: Hoe betrouwbaar vind je de canonieke evangeliën als bronnen over het leven en de leer van Jezus?
+scale.gospels-reliability.low: Niet betrouwbaar
+scale.gospels-reliability.high: Zeer betrouwbaar
+question.bible-contradictions.prompt: Geloof je dat de Bijbel echte tegenstrijdigheden bevat?
+question.bible-interpretation.prompt: Welke beschrijving past het best bij hoe de Bijbel volgens jou in het algemeen geïnterpreteerd moet worden?
+option.bible-interpretation.historical-literary: Met veel aandacht voor de historische en literaire context
+option.bible-interpretation.mostly-literal: Voornamelijk letterlijk waar de tekst dat toelaat
+option.bible-interpretation.church-tradition: Vanuit de interpretatietraditie van een kerk of geloofsgemeenschap
+option.bible-interpretation.personal-discernment: Voornamelijk door persoonlijke studie en onderscheiding
+option.bible-interpretation.mixed: Met een combinatie van benaderingen
+question.bible-contradictions-authority.prompt: Hebben de tegenstrijdigheden die je ziet een wezenlijke invloed op het religieuze gezag van de Bijbel voor jou?
+question.bible-apparent-contradictions.prompt: Als twee Bijbelpassages moeilijk met elkaar te verenigen lijken, welke beschrijving komt dan het dichtst bij jouw opvatting?
+option.bible-apparent-contradictions.usually-harmonizable: Ze kunnen meestal met voldoende context met elkaar worden verenigd
+option.bible-apparent-contradictions.complementary-perspectives: Ze weerspiegelen vaak verschillende perspectieven in plaats van tegenstrijdigheden
+option.bible-apparent-contradictions.some-unresolved: Sommige schijnbare conflicten blijven voor mij onopgelost
+option.bible-apparent-contradictions.case-by-case: Dat hangt af van de passages
+
+question.profile-age-group.prompt: Wat is je leeftijdsgroep?
+option.profile-age-group.under-18: Jonger dan 18
+option.profile-age-group.18-24: 18–24
+option.profile-age-group.25-34: 25–34
+option.profile-age-group.35-44: 35–44
+option.profile-age-group.45-54: 45–54
+option.profile-age-group.55-64: 55–64
+option.profile-age-group.65-74: 65–74
+option.profile-age-group.75-plus: 75 jaar of ouder
+question.profile-religion.prompt: Welke beschrijving past het best bij je huidige religieuze of niet-religieuze identiteit?
+option.profile-religion.christian: Christelijk
+option.profile-religion.jewish: Joods
+option.profile-religion.muslim: Moslim
+option.profile-religion.hindu: Hindoe
+option.profile-religion.buddhist: Boeddhistisch
+option.profile-religion.sikh: Sikh
+option.profile-religion.another-religion: Een andere religie
+option.profile-religion.spiritual-not-religious: Spiritueel maar niet religieus
+option.profile-religion.agnostic: Agnostisch
+option.profile-religion.atheist: Atheïstisch
+option.profile-religion.none: Geen religieuze identiteit
+question.profile-christian-tradition.prompt: Welke brede christelijke traditie beschrijft je het best?
+option.profile-christian-tradition.catholic: Katholiek
+option.profile-christian-tradition.orthodox: Orthodox
+option.profile-christian-tradition.protestant: Protestants
+option.profile-christian-tradition.restorationist: Restorationistisch
+option.profile-christian-tradition.latter-day-saint: Heilige der Laatste Dagen
+option.profile-christian-tradition.other-christian: Een andere christelijke traditie
+question.profile-catholic-tradition.prompt: Welke katholieke traditie beschrijft je het best?
+option.profile-catholic-tradition.latin-catholic: Latijns- of rooms-katholiek
+option.profile-catholic-tradition.eastern-catholic: Oosters-katholiek
+option.profile-catholic-tradition.other-catholic: Een andere katholieke traditie
+question.profile-orthodox-tradition.prompt: Welke orthodoxe kerk of traditie beschrijft je het best?
+option.profile-orthodox-tradition.greek-orthodox: Grieks-orthodox
+option.profile-orthodox-tradition.romanian-orthodox: Roemeens-orthodox
+option.profile-orthodox-tradition.russian-orthodox: Russisch-orthodox
+option.profile-orthodox-tradition.serbian-orthodox: Servisch-orthodox
+option.profile-orthodox-tradition.antiochian-orthodox: Antiocheens-orthodox
+option.profile-orthodox-tradition.other-eastern-orthodox: Een andere oosters-orthodoxe kerk
+option.profile-orthodox-tradition.oriental-orthodox: Oriëntaals-orthodox
+option.profile-orthodox-tradition.church-of-the-east: Kerk van het Oosten
+option.profile-orthodox-tradition.other-orthodox: Een andere orthodoxe traditie
+question.profile-protestant-family.prompt: Welke protestantse familie of benaming komt het dichtst bij hoe je jezelf identificeert?
+option.profile-protestant-family.anglican-episcopal: Anglicaans of episcopaals
+option.profile-protestant-family.baptist: Baptistisch
+option.profile-protestant-family.lutheran: Luthers
+option.profile-protestant-family.methodist-wesleyan: Methodistisch of wesleyaans
+option.profile-protestant-family.reformed-presbyterian: Gereformeerd of presbyteriaans
+option.profile-protestant-family.pentecostal-charismatic: Pinkster- of charismatisch
+option.profile-protestant-family.evangelical-nondenominational: Evangelisch of niet-confessioneel
+option.profile-protestant-family.adventist: Adventistisch
+option.profile-protestant-family.anabaptist-mennonite: Anabaptistisch of mennonitisch
+option.profile-protestant-family.other-protestant: Een andere protestantse traditie
