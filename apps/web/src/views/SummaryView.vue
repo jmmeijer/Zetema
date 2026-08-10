@@ -3,7 +3,7 @@ import { onMounted, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
 
-import zetemaLogoSymbol from "../assets/brand/zetema-logo-symbol-organic.svg";
+import zetemaLogoSymbol from "../assets/brand/zetema-logo-symbol.png";
 import LanguageSelector from "../components/LanguageSelector.vue";
 import { useInterviewStore } from "../stores/interview";
 
