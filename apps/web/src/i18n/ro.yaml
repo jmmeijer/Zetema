@@ -51,7 +51,7 @@ summary:
     personalUnsure: Nu ești sigur(ă) dacă Dumnezeu este o ființă personală.
     attributeMaxPowerful: cu cea mai mare putere posibilă
     attributeAllKnowing: care știe tot ce poate fi cunoscut
-    attributeOmnipresent: prezent pretutindeni
+    attributeOmnipresent: prezent peste tot
     attributePerfectlyGood: perfect bun
     attributesAffirmed: Îl descrii pe Dumnezeu ca fiind {attributes}.
     attributesRejected: Nu îl descrii pe Dumnezeu ca fiind {attributes}.
@@ -77,7 +77,7 @@ summary:
     powerSentence: În ceea ce privește limitele puterii lui Dumnezeu, crezi că {description}.
     goodnessMostlyGood: Dumnezeu este bun, dar nu perfect bun
     goodnessMixed: Dumnezeu poate fi atât bun, cât și rău din punct de vedere moral
-    goodnessBeyondMorality: regulile morale omenești nu se aplică lui Dumnezeu
+    goodnessBeyondMorality: noțiunile omenești de bine și rău nu se aplică lui Dumnezeu
     goodnessOther: înțelegi caracterul moral al lui Dumnezeu într-un alt mod
     goodnessSentence: În ceea ce privește caracterul moral al lui Dumnezeu, crezi că {description}.
 clarification:
