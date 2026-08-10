@@ -1,0 +1,129 @@
+theme.nature-of-god.title: Natura lui Dumnezeu
+theme.nature-of-god.description: Întrebări despre cum este Dumnezeu și ce crezi despre el.
+question.god-exists.prompt: Crezi că Dumnezeu există?
+question.existence-confidence.prompt: Cât de sigur(ă) ești de răspunsul tău?
+scale.confidence.low: Deloc sigur(ă)
+scale.confidence.high: Foarte sigur(ă)
+question.personal-god.prompt: Crezi că Dumnezeu sau o realitate superioară poate avea propriile intenții?
+question.relationship-with-people.prompt: Crezi că Dumnezeu sau o realitate superioară poate avea o relație personală cu oamenii?
+question.omnipotent.prompt: Crezi că Dumnezeu sau o realitate superioară are cea mai mare putere posibilă?
+question.omniscient.prompt: Crezi că Dumnezeu sau o realitate superioară știe tot ce poate fi cunoscut?
+question.omnipresent.prompt: Crezi că Dumnezeu sau o realitate superioară este pretutindeni?
+question.perfectly-good.prompt: Crezi că Dumnezeu sau o realitate superioară este perfect bun(ă)?
+question.relation-to-time.prompt: Care variantă descrie cel mai bine cum se raportează Dumnezeu sau o realitate superioară la timp?
+option.relation-to-time.outside-time: Există în afara timpului
+option.relation-to-time.within-time: Există în timp
+option.relation-to-time.both: Ambele, într-un anumit sens
+option.common.other: O altă perspectivă
+question.creator-of-universe.prompt: Crezi că Dumnezeu sau o realitate superioară este cauza existenței universului?
+question.acts-in-world.prompt: Crezi că Dumnezeu sau o realitate superioară acționează uneori în lume și influențează ce se întâmplă?
+question.reveals-self.prompt: Crezi că Dumnezeu sau o realitate superioară comunică intenționat cu oamenii sau le dezvăluie informații?
+question.god-conception.prompt: Când spui „Dumnezeu”, care variantă se apropie cel mai mult de ceea ce ai în minte?
+option.god-conception.personal-being: O ființă personală sau o minte cu intenții proprii
+option.god-conception.impersonal-mind: O inteligență sau conștiință impersonală
+option.god-conception.ground-of-being: Fundamentul a tot ceea ce există
+option.god-conception.force-or-principle: O forță, putere sau un principiu impersonal
+option.god-conception.other: O altă perspectivă
+question.higher-power-belief.prompt: Crezi că există o putere superioară, o forță spirituală sau o realitate divină, chiar dacă nu ai numi-o Dumnezeu?
+question.higher-power-conception.prompt: Care variantă se apropie cel mai mult de ceea ce înțelegi prin acea putere sau realitate spirituală?
+option.higher-power-conception.personal-being: O ființă personală sau o minte
+option.higher-power-conception.impersonal-intelligence: O inteligență sau conștiință impersonală
+option.higher-power-conception.spiritual-force: O forță sau putere spirituală impersonală
+option.higher-power-conception.ground-of-being: Fundamentul a tot ceea ce există
+option.higher-power-conception.other: O altă perspectivă
+question.power-limits.prompt: Ce fel de limită a puterii lui Dumnezeu sau a unei realități superioare se potrivește cel mai bine cu ceea ce crezi?
+option.power-limits.logical-limits: Nu poate face lucruri imposibile din punct de vedere logic
+option.power-limits.self-imposed-limits: Își limitează în mod voluntar propria putere
+option.power-limits.external-limits: Altceva îi limitează puterea
+option.power-limits.other: O altă perspectivă
+question.goodness-conception.prompt: Cum ai descrie cel mai bine caracterul moral al lui Dumnezeu sau al unei realități superioare?
+option.goodness-conception.mostly-good: Bun(ă), dar nu perfect bun(ă)
+option.goodness-conception.morally-mixed: Poate fi atât bun(ă), cât și rău/rea din punct de vedere moral
+option.goodness-conception.beyond-morality: Noțiunile omenești de bine și rău nu se aplică
+option.goodness-conception.other: O altă perspectivă
+
+theme.beliefs-and-background.title: Convingeri și context
+theme.beliefs-and-background.description: Întrebări despre Dumnezeu, puteri superioare, Biblie și contextul tău religios.
+question.religious-identity.prompt: Ce identitate religioasă, dacă ai una, te descrie cel mai bine?
+option.religious-identity.christian: Creștin(ă)
+option.religious-identity.jewish: Evreu/Evreică
+option.religious-identity.muslim: Musulman(ă)
+option.religious-identity.hindu: Hindus(ă)
+option.religious-identity.buddhist: Budist(ă)
+option.religious-identity.sikh: Sikh
+option.religious-identity.another-religion: O altă religie
+option.religious-identity.spiritual-not-religious: Spiritual(ă), dar nu religios/religioasă
+option.religious-identity.agnostic: Agnostic(ă)
+option.religious-identity.atheist: Ateu/Atee
+option.religious-identity.none: Fără identitate religioasă
+option.religious-identity.other: O altă identitate
+question.christian-tradition.prompt: Ce tradiție creștină te descrie cel mai bine?
+option.christian-tradition.catholic: Catolică
+option.christian-tradition.orthodox: Ortodoxă
+option.christian-tradition.protestant: Protestantă
+option.christian-tradition.other-christian: O altă tradiție creștină
+question.catholic-tradition.prompt: Ce tradiție catolică te descrie cel mai bine?
+option.catholic-tradition.latin-catholic: Catolică latină sau romano-catolică
+option.catholic-tradition.eastern-catholic: Catolică orientală
+option.catholic-tradition.other-catholic: O altă tradiție catolică
+question.orthodox-family.prompt: Ce tradiție ortodoxă te descrie cel mai bine?
+option.orthodox-family.eastern-orthodox: Ortodoxă răsăriteană
+option.orthodox-family.oriental-orthodox: Ortodoxă orientală
+option.orthodox-family.church-of-the-east: Biserica Răsăritului
+option.orthodox-family.other-orthodox: O altă tradiție ortodoxă
+question.eastern-orthodox-church.prompt: Ce biserică sau tradiție ortodoxă răsăriteană te descrie cel mai bine?
+option.eastern-orthodox-church.greek-orthodox: Ortodoxă Greacă
+option.eastern-orthodox-church.romanian-orthodox: Ortodoxă Română
+option.eastern-orthodox-church.russian-orthodox: Ortodoxă Rusă
+option.eastern-orthodox-church.serbian-orthodox: Ortodoxă Sârbă
+option.eastern-orthodox-church.bulgarian-orthodox: Ortodoxă Bulgară
+option.eastern-orthodox-church.georgian-orthodox: Ortodoxă Georgiană
+option.eastern-orthodox-church.antiochian-orthodox: Ortodoxă Antiohiană
+option.eastern-orthodox-church.other-eastern-orthodox: O altă biserică sau tradiție ortodoxă răsăriteană
+question.protestant-family.prompt: Ce familie sau tradiție protestantă te descrie cel mai bine?
+option.protestant-family.evangelical: Evanghelică
+option.protestant-family.anglican-episcopal: Anglicană sau Episcopală
+option.protestant-family.baptist: Baptistă
+option.protestant-family.lutheran: Luterană
+option.protestant-family.methodist-wesleyan: Metodistă sau Wesleyană
+option.protestant-family.reformed-presbyterian: Reformată sau Prezbiteriană
+option.protestant-family.pentecostal-charismatic: Penticostală sau Carismatică
+option.protestant-family.adventist: Adventistă
+option.protestant-family.anabaptist-mennonite: Anabaptistă sau Menonită
+option.protestant-family.non-denominational: Neconfesională
+option.protestant-family.other-protestant: O altă tradiție protestantă
+
+question.bible-inspired.prompt: Crezi că Biblia este inspirată de Dumnezeu?
+question.bible-word-of-god.prompt: Crezi că Biblia este Cuvântul lui Dumnezeu?
+question.bible-authority.prompt: Câtă autoritate crezi că are Biblia în credință și practică religioasă?
+scale.bible-authority.low: Fără autoritate
+scale.bible-authority.high: Autoritate deplină
+question.bible-infallible.prompt: Crezi că Biblia nu greșește în ceea ce vrea să ne învețe?
+question.bible-inerrant.prompt: Crezi că Biblia nu conține nicio greșeală în ceea ce afirmă, inclusiv despre istorie și fapte?
+question.gospels-reliable.prompt: Câtă încredere ai în Evanghelii ca surse despre viața și învățăturile lui Isus?
+scale.gospels-reliable.low: Deloc de încredere
+scale.gospels-reliable.high: Foarte de încredere
+question.bible-contradictions.prompt: Crezi că Biblia conține contradicții reale?
+question.bible-interpretation.prompt: Care variantă descrie cel mai bine cum crezi că ar trebui interpretată Biblia?
+option.bible-interpretation.historical-literary: Ținând cont în special de contextul istoric și de tipul de text
+option.bible-interpretation.literal-where-possible: În principal literal, atunci când textul permite acest lucru
+option.bible-interpretation.church-tradition: Urmând tradiția teologică și învățătura Bisericii
+option.bible-interpretation.individual-discernment: În principal prin studiu personal, rugăciune și discernământ
+option.bible-interpretation.mixed: O combinație a acestor abordări
+option.bible-interpretation.other: O altă abordare
+question.contradictions-authority.prompt: Dacă Biblia conține contradicții reale, crezi că acest lucru îi reduce autoritatea religioasă?
+question.apparent-contradictions.prompt: Când două pasaje din Biblie par să spună lucruri diferite, care variantă se apropie cel mai mult de ceea ce crezi?
+option.apparent-contradictions.harmonizable: De obicei pot fi împăcate dacă luăm în calcul suficient context
+option.apparent-contradictions.different-perspectives: Pot prezenta perspective diferite fără să se contrazică cu adevărat
+option.apparent-contradictions.unresolved: Unele diferențe pot rămâne neclare, chiar dacă nu sunt contradicții reale
+option.apparent-contradictions.other: O altă perspectivă
+
+question.age-group.prompt: Din ce grupă de vârstă faci parte?
+option.age-group.under-18: Sub 18 ani
+option.age-group.18-24: 18–24
+option.age-group.25-34: 25–34
+option.age-group.35-44: 35–44
+option.age-group.45-54: 45–54
+option.age-group.55-64: 55–64
+option.age-group.65-74: 65–74
+option.age-group.75-plus: 75 de ani sau mai mult

@@ -1,0 +1,129 @@
+theme.nature-of-god.title: Aard van God
+theme.nature-of-god.description: Vragen over hoe God is en welke eigenschappen je aan God toeschrijft.
+question.god-exists.prompt: Geloof je dat God bestaat?
+question.existence-confidence.prompt: Hoe zeker ben je van je antwoord op de vraag of God bestaat?
+scale.confidence.low: Helemaal niet zeker
+scale.confidence.high: Zeer zeker
+question.personal-god.prompt: Denk je dat God of een hogere werkelijkheid eigen bedoelingen kan hebben?
+question.relationship-with-people.prompt: Denk je dat God of een hogere werkelijkheid een persoonlijke relatie met mensen kan hebben?
+question.omnipotent.prompt: Denk je dat God of een hogere werkelijkheid de grootst mogelijke macht heeft?
+question.omniscient.prompt: Denk je dat God of een hogere werkelijkheid alles weet wat geweten kan worden?
+question.omnipresent.prompt: Denk je dat God of een hogere werkelijkheid overal aanwezig is?
+question.perfectly-good.prompt: Denk je dat God of een hogere werkelijkheid volmaakt goed is?
+question.relation-to-time.prompt: Welke beschrijving past het best bij hoe God of een hogere werkelijkheid zich volgens jou tot de tijd verhoudt?
+option.relation-to-time.outside-time: Bestaat buiten de tijd
+option.relation-to-time.within-time: Bestaat binnen de tijd
+option.relation-to-time.both: Beide, in zekere zin
+option.common.other: Een andere opvatting
+question.creator-of-universe.prompt: Denk je dat God of een hogere werkelijkheid verantwoordelijk is voor het bestaan van het universum?
+question.acts-in-world.prompt: Denk je dat God of een hogere werkelijkheid soms in de wereld handelt en gebeurtenissen beïnvloedt?
+question.reveals-self.prompt: Denk je dat God of een hogere werkelijkheid bewust met mensen communiceert of informatie aan hen openbaart?
+question.god-conception.prompt: Als je "God" zegt, welke beschrijving komt het dichtst bij wat je bedoelt?
+option.god-conception.personal-being: Een persoonlijk wezen of een geest met eigen bedoelingen
+option.god-conception.impersonal-mind: Een onpersoonlijke intelligentie of bewustzijn
+option.god-conception.ground-of-being: De grond of grondslag van het bestaan
+option.god-conception.force-or-principle: Een onpersoonlijke kracht, macht of beginsel
+option.god-conception.other: Een andere opvatting
+question.higher-power-belief.prompt: Geloof je dat er een hogere macht, spirituele kracht of goddelijke werkelijkheid bestaat, ook als je die niet God zou noemen?
+question.higher-power-conception.prompt: Welke beschrijving komt het dichtst bij wat je met die hogere macht of spirituele werkelijkheid bedoelt?
+option.higher-power-conception.personal-being: Een persoonlijk wezen of een geest
+option.higher-power-conception.impersonal-intelligence: Een onpersoonlijke intelligentie of bewustzijn
+option.higher-power-conception.spiritual-force: Een onpersoonlijke spirituele kracht of macht
+option.higher-power-conception.ground-of-being: De grond of grondslag van het bestaan
+option.higher-power-conception.other: Een andere opvatting
+question.power-limits.prompt: Welk soort beperking van de macht van God of een hogere werkelijkheid past het best bij jouw opvatting?
+option.power-limits.logical-limits: Kan niet doen wat logisch onmogelijk is
+option.power-limits.self-imposed-limits: Beperkt vrijwillig de eigen macht
+option.power-limits.external-limits: Iets anders beperkt die macht
+option.power-limits.other: Een andere opvatting
+question.goodness-conception.prompt: Welke beschrijving komt het dichtst bij jouw opvatting over het morele karakter van God of een hogere werkelijkheid?
+option.goodness-conception.mostly-good: Goed, maar niet volmaakt goed
+option.goodness-conception.morally-mixed: Kan zowel moreel goed als moreel slecht zijn
+option.goodness-conception.beyond-morality: Menselijke ideeën over goed en kwaad zijn niet van toepassing
+option.goodness-conception.other: Een andere opvatting
+
+theme.beliefs-and-background.title: Overtuigingen en achtergrond
+theme.beliefs-and-background.description: Vragen over God, hogere machten, de Bijbel en je religieuze achtergrond.
+question.religious-identity.prompt: Welke religieuze identiteit, als die er is, beschrijft jou het best?
+option.religious-identity.christian: Christelijk
+option.religious-identity.jewish: Joods
+option.religious-identity.muslim: Moslim
+option.religious-identity.hindu: Hindoe
+option.religious-identity.buddhist: Boeddhistisch
+option.religious-identity.sikh: Sikh
+option.religious-identity.another-religion: Een andere religie
+option.religious-identity.spiritual-not-religious: Spiritueel maar niet religieus
+option.religious-identity.agnostic: Agnostisch
+option.religious-identity.atheist: Atheïstisch
+option.religious-identity.none: Geen religieuze identiteit
+option.religious-identity.other: Een andere identiteit
+question.christian-tradition.prompt: Welke brede christelijke traditie beschrijft jou het best?
+option.christian-tradition.catholic: Katholiek
+option.christian-tradition.orthodox: Orthodox
+option.christian-tradition.protestant: Protestants
+option.christian-tradition.other-christian: Een andere christelijke traditie
+question.catholic-tradition.prompt: Welke katholieke traditie beschrijft jou het best?
+option.catholic-tradition.latin-catholic: Latijns- of rooms-katholiek
+option.catholic-tradition.eastern-catholic: Oosters-katholiek
+option.catholic-tradition.other-catholic: Een andere katholieke traditie
+question.orthodox-family.prompt: Welke orthodoxe traditie beschrijft jou het best?
+option.orthodox-family.eastern-orthodox: Oosters-orthodox
+option.orthodox-family.oriental-orthodox: Oriëntaals-orthodox
+option.orthodox-family.church-of-the-east: Kerk van het Oosten
+option.orthodox-family.other-orthodox: Een andere orthodoxe traditie
+question.eastern-orthodox-church.prompt: Welke oosters-orthodoxe kerk of traditie beschrijft jou het best?
+option.eastern-orthodox-church.greek-orthodox: Grieks-orthodox
+option.eastern-orthodox-church.romanian-orthodox: Roemeens-orthodox
+option.eastern-orthodox-church.russian-orthodox: Russisch-orthodox
+option.eastern-orthodox-church.serbian-orthodox: Servisch-orthodox
+option.eastern-orthodox-church.bulgarian-orthodox: Bulgaars-orthodox
+option.eastern-orthodox-church.georgian-orthodox: Georgisch-orthodox
+option.eastern-orthodox-church.antiochian-orthodox: Antiocheens-orthodox
+option.eastern-orthodox-church.other-eastern-orthodox: Een andere oosters-orthodoxe kerk of traditie
+question.protestant-family.prompt: Welke protestantse familie of traditie beschrijft jou het best?
+option.protestant-family.evangelical: Evangelisch
+option.protestant-family.anglican-episcopal: Anglicaans of episcopaals
+option.protestant-family.baptist: Baptistisch
+option.protestant-family.lutheran: Luthers
+option.protestant-family.methodist-wesleyan: Methodistisch of wesleyaans
+option.protestant-family.reformed-presbyterian: Gereformeerd of presbyteriaans
+option.protestant-family.pentecostal-charismatic: Pinkster- of charismatisch
+option.protestant-family.adventist: Adventistisch
+option.protestant-family.anabaptist-mennonite: Anabaptistisch of mennonitisch
+option.protestant-family.non-denominational: Niet-confessioneel
+option.protestant-family.other-protestant: Een andere protestantse traditie
+
+question.bible-inspired.prompt: Geloof je dat de Bijbel door God geïnspireerd is?
+question.bible-word-of-god.prompt: Geloof je dat de Bijbel terecht het Woord van God genoemd kan worden?
+question.bible-authority.prompt: Hoe gezaghebbend vind je de Bijbel voor geloof en geloofspraktijk?
+scale.bible-authority.low: Niet gezaghebbend
+scale.bible-authority.high: Volledig gezaghebbend
+question.bible-infallible.prompt: Geloof je dat de Bijbel geen dwaling onderwijst in wat hij wil leren?
+question.bible-inerrant.prompt: Geloof je dat de Bijbel geen fouten bevat in wat hij beweert, ook niet in historische en feitelijke uitspraken?
+question.gospels-reliable.prompt: Hoe betrouwbaar vind je de evangeliën als bronnen over het leven en de leer van Jezus?
+scale.gospels-reliable.low: Niet betrouwbaar
+scale.gospels-reliable.high: Zeer betrouwbaar
+question.bible-contradictions.prompt: Geloof je dat de Bijbel echte tegenstrijdigheden bevat?
+question.bible-interpretation.prompt: Welke beschrijving past het best bij hoe de Bijbel volgens jou in het algemeen geïnterpreteerd moet worden?
+option.bible-interpretation.historical-literary: Met veel aandacht voor de historische en literaire context
+option.bible-interpretation.literal-where-possible: Voornamelijk letterlijk waar de tekst dat toelaat
+option.bible-interpretation.church-tradition: Vanuit de theologische traditie en het onderricht van de Kerk
+option.bible-interpretation.individual-discernment: Voornamelijk door persoonlijke studie, gebed en onderscheiding
+option.bible-interpretation.mixed: Een combinatie van deze benaderingen
+option.bible-interpretation.other: Een andere benadering
+question.contradictions-authority.prompt: Als de Bijbel echte tegenstrijdigheden bevat, denk je dan dat die zijn religieuze gezag wezenlijk aantasten?
+question.apparent-contradictions.prompt: Wanneer twee bijbelpassages moeilijk met elkaar te verenigen lijken, welke beschrijving komt dan het dichtst bij jouw opvatting?
+option.apparent-contradictions.harmonizable: Met voldoende context kunnen ze meestal met elkaar in overeenstemming worden gebracht
+option.apparent-contradictions.different-perspectives: Ze geven vaak verschillende perspectieven weer in plaats van echte tegenstrijdigheden
+option.apparent-contradictions.unresolved: Sommige spanningen kunnen onopgelost blijven, ook als het geen echte tegenstrijdigheden zijn
+option.apparent-contradictions.other: Een andere opvatting
+
+question.age-group.prompt: Tot welke leeftijdsgroep behoor je?
+option.age-group.under-18: Jonger dan 18
+option.age-group.18-24: 18–24
+option.age-group.25-34: 25–34
+option.age-group.35-44: 35–44
+option.age-group.45-54: 45–54
+option.age-group.55-64: 55–64
+option.age-group.65-74: 65–74
+option.age-group.75-plus: 75 jaar of ouder

@@ -21,6 +21,10 @@ const expandedFixtureUrl = new URL(
   "../../../content/releases/mvp-0.1/beliefs-and-background.en.yaml",
   import.meta.url,
 );
+const mvp02FixtureUrl = new URL(
+  "../../../content/releases/mvp-0.2/beliefs-and-background.en.yaml",
+  import.meta.url,
+);
 
 function loadFixtureSource(): string {
   return readFileSync(fixtureUrl, "utf8");
@@ -38,7 +42,7 @@ function mutableRules(release: ContentRelease): FollowUpRule[] {
   return release.followUpRules as FollowUpRule[];
 }
 
-describe("MVP-0.1 content release", () => {
+describe("MVP content releases", () => {
   it("validates the canonical English Nature of God release", () => {
     const result = parseAndValidateContentReleaseYaml(loadFixtureSource());
 
@@ -56,7 +60,7 @@ describe("MVP-0.1 content release", () => {
     }
   });
 
-  it("validates the expanded beliefs and background demo release", () => {
+  it("validates the expanded MVP-0.1 beliefs and background release", () => {
     const result = parseAndValidateContentReleaseYaml(
       readFileSync(expandedFixtureUrl, "utf8"),
     );
@@ -73,6 +77,71 @@ describe("MVP-0.1 content release", () => {
           (question) => question.flow === "follow_up",
         ),
       ).toHaveLength(10);
+    }
+  });
+
+  it("validates the MVP-0.2 belief-first release and its intended base order", () => {
+    const result = parseAndValidateContentReleaseYaml(
+      readFileSync(mvp02FixtureUrl, "utf8"),
+    );
+
+    expect(result.valid).toBe(true);
+    if (result.valid) {
+      expect(result.value.releaseId).toBe("mvp-0.2.beliefs-and-background.v1");
+      expect(result.value.questions).toHaveLength(34);
+      expect(
+        result.value.questions.filter((question) => question.flow === "base"),
+      ).toHaveLength(22);
+      expect(
+        result.value.questions.filter(
+          (question) => question.flow === "follow_up",
+        ),
+      ).toHaveLength(12);
+
+      const baseIds = result.value.questions
+        .filter((question) => question.flow === "base")
+        .map((question) => question.id);
+
+      expect(baseIds.slice(0, 12)).toEqual([
+        "god-exists",
+        "existence-confidence",
+        "personal-god",
+        "relationship-with-people",
+        "omnipotent",
+        "omniscient",
+        "omnipresent",
+        "perfectly-good",
+        "relation-to-time",
+        "creator-of-universe",
+        "acts-in-world",
+        "reveals-self",
+      ]);
+      expect(baseIds.indexOf("religious-identity")).toBeLessThan(
+        baseIds.indexOf("bible-inspired"),
+      );
+      expect(baseIds.at(-1)).toBe("age-group");
+
+      expect(
+        result.value.followUpRules.some(
+          (rule) =>
+            rule.sourceQuestionId === "god-exists" &&
+            rule.targetQuestionId === "god-conception",
+        ),
+      ).toBe(true);
+      expect(
+        result.value.followUpRules.some(
+          (rule) =>
+            rule.sourceQuestionId === "god-exists" &&
+            rule.targetQuestionId === "higher-power-belief",
+        ),
+      ).toBe(true);
+      expect(
+        result.value.followUpRules.some(
+          (rule) =>
+            rule.sourceQuestionId === "higher-power-belief" &&
+            rule.targetQuestionId === "higher-power-conception",
+        ),
+      ).toBe(true);
     }
   });
 

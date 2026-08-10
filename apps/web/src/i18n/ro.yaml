@@ -39,6 +39,9 @@ summary:
     existenceYes: Crezi că Dumnezeu există.
     existenceNo: Nu crezi că Dumnezeu există.
     existenceUnsure: Nu ești sigur(ă) dacă Dumnezeu există.
+    higherPowerYes: Crezi că există totuși o altă putere superioară, forță spirituală sau realitate divină.
+    higherPowerNo: Nu crezi că există o altă putere superioară, forță spirituală sau realitate divină.
+    higherPowerUnsure: Nu ești sigur(ă) dacă există o altă putere superioară, forță spirituală sau realitate divină.
     confidence: Nivelul tău de încredere în acel răspuns este {level}.
     confidenceUnsure: Nu ești sigur(ă) câtă încredere ai în acel răspuns.
     confidenceVeryLow: foarte scăzut
@@ -46,40 +49,56 @@ summary:
     confidenceModerate: moderat
     confidenceFairlyHigh: destul de ridicat
     confidenceVeryHigh: foarte ridicat
-    personalYes: Crezi că Dumnezeu este o ființă personală, care are intenții și poate avea relații.
-    personalNo: Nu crezi că Dumnezeu este o ființă personală, care are intenții și poate avea relații.
-    personalUnsure: Nu ești sigur(ă) dacă Dumnezeu este o ființă personală.
+    personalLegacyYes: Crezi că Dumnezeu este o ființă personală, care are intenții și poate avea relații.
+    personalLegacyNo: Nu crezi că Dumnezeu este o ființă personală, care are intenții și poate avea relații.
+    personalLegacyUnsure: Nu ești sigur(ă) dacă Dumnezeu este o ființă personală.
+    personalYes: Crezi că Dumnezeu sau o realitate superioară poate avea propriile intenții.
+    personalNo: Nu crezi că Dumnezeu sau o realitate superioară poate avea propriile intenții.
+    personalUnsure: Nu ești sigur(ă) dacă Dumnezeu sau o realitate superioară poate avea propriile intenții.
+    relationshipYes: Crezi că Dumnezeu sau o realitate superioară poate avea o relație personală cu oamenii.
+    relationshipNo: Nu crezi că Dumnezeu sau o realitate superioară poate avea o relație personală cu oamenii.
+    relationshipUnsure: Nu ești sigur(ă) dacă Dumnezeu sau o realitate superioară poate avea o relație personală cu oamenii.
     attributeMaxPowerful: cu cea mai mare putere posibilă
     attributeAllKnowing: care știe tot ce poate fi cunoscut
-    attributeOmnipresent: prezent peste tot
-    attributePerfectlyGood: perfect bun
-    attributesAffirmed: Îl descrii pe Dumnezeu ca fiind {attributes}.
-    attributesRejected: Nu îl descrii pe Dumnezeu ca fiind {attributes}.
-    attributesUnsure: "Nu ești sigur(ă) dacă Dumnezeu este {attributes}."
-    timeOutside: Crezi că Dumnezeu există în afara timpului.
-    timeWithin: Crezi că Dumnezeu există în timp.
-    timeBoth: Crezi că Dumnezeu există atât în timp, cât și în afara timpului, într-un anumit sens.
-    timeOther: Ai o altă perspectivă despre Dumnezeu și timp.
-    timeUnsure: Nu ești sigur(ă) cum există Dumnezeu în raport cu timpul.
-    actsYes: Crezi că Dumnezeu acționează în lume și poate influența ceea ce se întâmplă.
-    actsNo: Nu crezi că Dumnezeu acționează în lume și influențează ceea ce se întâmplă.
-    revealsYes: Crezi că Dumnezeu le arată în mod intenționat oamenilor cine este.
-    revealsNo: Nu crezi că Dumnezeu le arată în mod intenționat oamenilor cine este.
-    conceptionImpersonalMind: o minte sau inteligență impersonală
+    attributeOmnipresent: prezent(ă) peste tot
+    attributePerfectlyGood: perfect bun(ă)
+    attributesAffirmed: Consideri că Dumnezeu sau o realitate superioară este {attributes}.
+    attributesRejected: Nu consideri că Dumnezeu sau o realitate superioară este {attributes}.
+    attributesUnsure: "Nu ești sigur(ă) dacă următoarele însușiri se aplică lui Dumnezeu sau unei realități superioare: {attributes}."
+    timeOutside: Crezi că Dumnezeu sau o realitate superioară există în afara timpului.
+    timeWithin: Crezi că Dumnezeu sau o realitate superioară există în timp.
+    timeBoth: Crezi că Dumnezeu sau o realitate superioară se raportează la timp în ambele moduri, într-un anumit sens.
+    timeOther: Ai o altă perspectivă despre relația dintre Dumnezeu sau o realitate superioară și timp.
+    timeUnsure: Nu ești sigur(ă) cum se raportează Dumnezeu sau o realitate superioară la timp.
+    creatorYes: Crezi că Dumnezeu sau o realitate superioară este cauza existenței universului.
+    creatorNo: Nu crezi că Dumnezeu sau o realitate superioară este cauza existenței universului.
+    creatorUnsure: Nu ești sigur(ă) dacă Dumnezeu sau o realitate superioară este cauza existenței universului.
+    actsYes: Crezi că Dumnezeu sau o realitate superioară acționează în lume și poate influența ceea ce se întâmplă.
+    actsNo: Nu crezi că Dumnezeu sau o realitate superioară acționează în lume și influențează ceea ce se întâmplă.
+    revealsYes: Crezi că Dumnezeu sau o realitate superioară comunică intenționat cu oamenii sau le dezvăluie informații.
+    revealsNo: Nu crezi că Dumnezeu sau o realitate superioară comunică intenționat cu oamenii sau le dezvăluie informații.
+    conceptionPersonalBeing: o ființă personală sau o minte cu intenții proprii
+    conceptionImpersonalMind: o inteligență sau conștiință impersonală
     conceptionGroundOfBeing: fundamentul a tot ceea ce există
-    conceptionForceOrPrinciple: o forță sau un principiu impersonal
+    conceptionForceOrPrinciple: o forță, putere sau un principiu impersonal
     conceptionOther: o altă concepție
-    conceptionSentence: Dintre opțiuni, {description} se apropie cel mai mult de ceea ce crezi despre un Dumnezeu nepersonal.
-    powerLogical: Dumnezeu nu poate face lucruri imposibile din punct de vedere logic
-    powerSelfImposed: Dumnezeu alege să își limiteze propria putere
-    powerExternal: ceva din afara lui Dumnezeu îi limitează puterea
-    powerOther: înțelegi limitele puterii lui Dumnezeu într-un alt mod
-    powerSentence: În ceea ce privește limitele puterii lui Dumnezeu, crezi că {description}.
-    goodnessMostlyGood: Dumnezeu este bun, dar nu perfect bun
-    goodnessMixed: Dumnezeu poate fi atât bun, cât și rău din punct de vedere moral
-    goodnessBeyondMorality: noțiunile omenești de bine și rău nu se aplică lui Dumnezeu
-    goodnessOther: înțelegi caracterul moral al lui Dumnezeu într-un alt mod
-    goodnessSentence: În ceea ce privește caracterul moral al lui Dumnezeu, crezi că {description}.
+    conceptionSentence: Când folosești cuvântul Dumnezeu, {description} se apropie cel mai mult de ceea ce ai în minte.
+    higherConceptionPersonalBeing: o ființă personală sau o minte
+    higherConceptionImpersonalIntelligence: o inteligență sau conștiință impersonală
+    higherConceptionSpiritualForce: o forță sau putere spirituală impersonală
+    higherConceptionGroundOfBeing: fundamentul a tot ceea ce există
+    higherConceptionOther: o altă concepție
+    higherConceptionSentence: Pentru acea putere sau realitate spirituală, {description} se apropie cel mai mult de ceea ce ai în minte.
+    powerLogical: nu poate face lucruri imposibile din punct de vedere logic
+    powerSelfImposed: își poate limita în mod voluntar propria putere
+    powerExternal: altceva îi poate limita puterea
+    powerOther: înțelegi limitele acelei puteri într-un alt mod
+    powerSentence: În ceea ce privește limitele acelei puteri, crezi că {description}.
+    goodnessMostlyGood: este bun(ă), dar nu perfect bun(ă)
+    goodnessMixed: poate fi atât bun(ă), cât și rău/rea din punct de vedere moral
+    goodnessBeyondMorality: noțiunile omenești de bine și rău nu i se aplică
+    goodnessOther: înțelegi caracterul moral într-un alt mod
+    goodnessSentence: În ceea ce privește caracterul moral, crezi că {description}.
 clarification:
   title: Un punct de clarificat
   intro: Ca să înțelegem mai bine ce crezi, vrem să comparăm două răspunsuri.
@@ -99,3 +118,4 @@ errors:
   saveAnswer: Acest răspuns nu a putut fi salvat.
   noActiveQuestion: Nu există nicio întrebare activă disponibilă.
   cannotFinish: Interviul nu poate fi finalizat încă.
+  missingContentRelease: Chestionarul exact folosit de această sesiune salvată nu mai este disponibil pe acest dispozitiv.

@@ -10,10 +10,11 @@ const uiLocaleFiles = [
 const canonicalContentFiles = [
   new URL("../../../content/releases/mvp-0.1/nature-of-god.en.yaml", import.meta.url),
   new URL("../../../content/releases/mvp-0.1/beliefs-and-background.en.yaml", import.meta.url),
+  new URL("../../../content/releases/mvp-0.2/beliefs-and-background.en.yaml", import.meta.url),
 ];
 const contentLocaleFiles = {
-  nl: new URL("../../../content/releases/mvp-0.1/locales/nl.yaml", import.meta.url),
-  ro: new URL("../../../content/releases/mvp-0.1/locales/ro.yaml", import.meta.url),
+  nl: new URL("../../../content/releases/mvp-0.2/locales/nl.yaml", import.meta.url),
+  ro: new URL("../../../content/releases/mvp-0.2/locales/ro.yaml", import.meta.url),
 };
 
 async function parseYaml(file) {
