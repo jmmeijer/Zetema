@@ -17,6 +17,10 @@ const fixtureUrl = new URL(
   "../../../content/releases/mvp-0.1/nature-of-god.en.yaml",
   import.meta.url,
 );
+const expandedFixtureUrl = new URL(
+  "../../../content/releases/mvp-0.1/beliefs-and-background.en.yaml",
+  import.meta.url,
+);
 
 function loadFixtureSource(): string {
   return readFileSync(fixtureUrl, "utf8");
@@ -52,6 +56,26 @@ describe("MVP-0.1 content release", () => {
     }
   });
 
+  it("validates the expanded beliefs and background demo release", () => {
+    const result = parseAndValidateContentReleaseYaml(
+      readFileSync(expandedFixtureUrl, "utf8"),
+    );
+
+    expect(result.valid).toBe(true);
+    if (result.valid) {
+      expect(result.value.releaseId).toBe("mvp-0.1.beliefs-and-background.v1");
+      expect(result.value.questions).toHaveLength(30);
+      expect(
+        result.value.questions.filter((question) => question.flow === "base"),
+      ).toHaveLength(20);
+      expect(
+        result.value.questions.filter(
+          (question) => question.flow === "follow_up",
+        ),
+      ).toHaveLength(10);
+    }
+  });
+
   it("rejects duplicate question ids", () => {
     const duplicate = structuredClone(loadFixture()) as ContentRelease;
     const questions = mutableQuestions(duplicate);
@@ -78,32 +102,23 @@ describe("MVP-0.1 content release", () => {
     }
   });
 
-  it("rejects branching from a follow-up question", () => {
-    const invalid = structuredClone(loadFixture()) as ContentRelease;
-    const rules = mutableRules(invalid);
-    const firstRule = rules[0];
+  it("allows a follow-up question to trigger a more granular follow-up", () => {
+    const valid = structuredClone(loadFixture()) as ContentRelease;
+    const rules = mutableRules(valid);
 
-    expect(firstRule).toBeDefined();
-    if (firstRule === undefined) {
-      throw new Error("Canonical fixture must contain at least one follow-up rule.");
-    }
-
-    rules[0] = {
-      ...firstRule,
+    rules.push({
+      id: "god-conception.ground.power-limits",
       sourceQuestionId: "god-conception",
       when: {
         kind: "single_choice",
         optionId: "ground-of-being",
       },
-    };
+      targetQuestionId: "power-limits",
+    });
 
-    const result = validateContentRelease(invalid);
+    const result = validateContentRelease(valid);
 
-    expect(result.valid).toBe(false);
-    if (!result.valid) {
-      expect(result.issues.some((entry) => entry.code === "follow_up_cannot_branch"))
-        .toBe(true);
-    }
+    expect(result.valid).toBe(true);
   });
 
   it("rejects a single-choice rule that references a missing option", () => {
