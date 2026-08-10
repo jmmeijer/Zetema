@@ -39,47 +39,63 @@ summary:
     existenceYes: Je gelooft dat God bestaat.
     existenceNo: Je gelooft niet dat God bestaat.
     existenceUnsure: Je weet niet zeker of God bestaat.
+    higherPowerYes: Je gelooft wel dat er een andere hogere macht, spirituele kracht of goddelijke werkelijkheid bestaat.
+    higherPowerNo: Je gelooft niet dat er een andere hogere macht, spirituele kracht of goddelijke werkelijkheid bestaat.
+    higherPowerUnsure: Je weet niet zeker of er een andere hogere macht, spirituele kracht of goddelijke werkelijkheid bestaat.
     confidence: Je vertrouwen in dat antwoord is {level}.
-    confidenceUnsure: Je weet niet zeker hoe veel vertrouwen je in dat antwoord hebt.
+    confidenceUnsure: Je weet niet zeker hoeveel vertrouwen je in dat antwoord hebt.
     confidenceVeryLow: zeer laag
     confidenceLow: laag
     confidenceModerate: gemiddeld
     confidenceFairlyHigh: vrij hoog
     confidenceVeryHigh: zeer hoog
-    personalYes: Je begrijpt God als een persoonlijk wezen dat bedoelingen kan hebben en relaties kan aangaan.
-    personalNo: Je begrijpt God niet als een persoonlijk wezen dat bedoelingen kan hebben en relaties kan aangaan.
-    personalUnsure: Je weet niet zeker of God als een persoonlijk wezen moet worden begrepen.
+    personalYes: Je denkt dat God of een hogere werkelijkheid eigen bedoelingen kan hebben.
+    personalNo: Je denkt niet dat God of een hogere werkelijkheid eigen bedoelingen kan hebben.
+    personalUnsure: Je weet niet zeker of God of een hogere werkelijkheid eigen bedoelingen kan hebben.
+    relationshipYes: Je denkt dat God of een hogere werkelijkheid een persoonlijke relatie met mensen kan hebben.
+    relationshipNo: Je denkt niet dat God of een hogere werkelijkheid een persoonlijke relatie met mensen kan hebben.
+    relationshipUnsure: Je weet niet zeker of God of een hogere werkelijkheid een persoonlijke relatie met mensen kan hebben.
     attributeMaxPowerful: maximaal machtig
     attributeAllKnowing: alwetend
-    attributeOmnipresent: alomtegenwoordig
+    attributeOmnipresent: overal aanwezig
     attributePerfectlyGood: volmaakt goed
-    attributesAffirmed: Onder de eigenschappen die hier aan bod kwamen, beschrijf je God als {attributes}.
-    attributesRejected: Je beschrijft God niet als {attributes}.
-    attributesUnsure: "Je bent onzeker over de vraag of de volgende eigenschappen op God van toepassing zijn: {attributes}."
-    timeOutside: Je denkt dat God buiten de tijd bestaat.
-    timeWithin: Je denkt dat God binnen de tijd bestaat.
-    timeBoth: Je denkt dat God zich in zekere zin op beide manieren tot de tijd verhoudt.
-    timeOther: Je hebt een andere opvatting over hoe God zich tot de tijd verhoudt.
-    timeUnsure: Je weet niet zeker hoe God zich tot de tijd verhoudt.
-    actsYes: Je denkt dat God in de wereld handelt op manieren die gebeurtenissen kunnen beïnvloeden.
-    actsNo: Je denkt niet dat God in de wereld handelt op manieren die gebeurtenissen beïnvloeden.
-    revealsYes: Je denkt dat God bewust informatie over zichzelf aan mensen kan openbaren.
-    revealsNo: Je denkt niet dat God bewust informatie over zichzelf aan mensen openbaart.
-    conceptionImpersonalMind: een onpersoonlijke geest of intelligentie
+    attributesAffirmed: Onder de eigenschappen die hier aan bod kwamen, beschrijf je God of een hogere werkelijkheid als {attributes}.
+    attributesRejected: Je beschrijft God of een hogere werkelijkheid niet als {attributes}.
+    attributesUnsure: "Je bent onzeker over de vraag of de volgende eigenschappen op God of een hogere werkelijkheid van toepassing zijn: {attributes}."
+    timeOutside: Je denkt dat God of een hogere werkelijkheid buiten de tijd bestaat.
+    timeWithin: Je denkt dat God of een hogere werkelijkheid binnen de tijd bestaat.
+    timeBoth: Je denkt dat God of een hogere werkelijkheid zich in zekere zin op beide manieren tot de tijd verhoudt.
+    timeOther: Je hebt een andere opvatting over hoe God of een hogere werkelijkheid zich tot de tijd verhoudt.
+    timeUnsure: Je weet niet zeker hoe God of een hogere werkelijkheid zich tot de tijd verhoudt.
+    creatorYes: Je denkt dat God of een hogere werkelijkheid verantwoordelijk is voor het bestaan van het universum.
+    creatorNo: Je denkt niet dat God of een hogere werkelijkheid verantwoordelijk is voor het bestaan van het universum.
+    creatorUnsure: Je weet niet zeker of God of een hogere werkelijkheid verantwoordelijk is voor het bestaan van het universum.
+    actsYes: Je denkt dat God of een hogere werkelijkheid in de wereld handelt op manieren die gebeurtenissen kunnen beïnvloeden.
+    actsNo: Je denkt niet dat God of een hogere werkelijkheid in de wereld handelt op manieren die gebeurtenissen beïnvloeden.
+    revealsYes: Je denkt dat God of een hogere werkelijkheid bewust met mensen kan communiceren of informatie aan hen kan openbaren.
+    revealsNo: Je denkt niet dat God of een hogere werkelijkheid bewust met mensen communiceert of informatie aan hen openbaart.
+    conceptionPersonalBeing: een persoonlijk wezen of een geest met eigen bedoelingen
+    conceptionImpersonalMind: een onpersoonlijke intelligentie of bewustzijn
     conceptionGroundOfBeing: de grond of grondslag van het bestaan
-    conceptionForceOrPrinciple: een onpersoonlijke kracht of beginsel
+    conceptionForceOrPrinciple: een onpersoonlijke kracht, macht of beginsel
     conceptionOther: een andere opvatting
-    conceptionSentence: Als je een niet-persoonlijke God beschrijft, komt {description} het dichtst bij jouw opvatting.
-    powerLogical: God kan niet doen wat logisch onmogelijk is
-    powerSelfImposed: God kan vrijwillig zijn eigen macht beperken
-    powerExternal: iets buiten God kan zijn macht beperken
-    powerOther: je begrijpt grenzen aan Gods macht op een andere manier
-    powerSentence: Wat grenzen aan Gods macht betreft, is jouw opvatting dat {description}.
-    goodnessMostlyGood: God is goed, maar niet volmaakt goed
-    goodnessMixed: God kan zowel moreel goed als moreel slecht zijn
-    goodnessBeyondMorality: menselijke morele categorieën zijn niet op God van toepassing
-    goodnessOther: je begrijpt Gods morele karakter op een andere manier
-    goodnessSentence: Wat Gods morele karakter betreft, is jouw opvatting dat {description}.
+    conceptionSentence: Als je het woord God gebruikt, komt {description} het dichtst bij wat je bedoelt.
+    higherConceptionPersonalBeing: een persoonlijk wezen of een geest
+    higherConceptionImpersonalIntelligence: een onpersoonlijke intelligentie of bewustzijn
+    higherConceptionSpiritualForce: een onpersoonlijke spirituele kracht of macht
+    higherConceptionGroundOfBeing: de grond of grondslag van het bestaan
+    higherConceptionOther: een andere opvatting
+    higherConceptionSentence: Voor die hogere macht of spirituele werkelijkheid komt {description} het dichtst bij wat je bedoelt.
+    powerLogical: die kan niet doen wat logisch onmogelijk is
+    powerSelfImposed: die kan vrijwillig de eigen macht beperken
+    powerExternal: iets anders kan die macht beperken
+    powerOther: je begrijpt grenzen aan die macht op een andere manier
+    powerSentence: Wat grenzen aan die macht betreft, is jouw opvatting dat {description}.
+    goodnessMostlyGood: die is goed, maar niet volmaakt goed
+    goodnessMixed: die kan zowel moreel goed als moreel slecht zijn
+    goodnessBeyondMorality: menselijke ideeën over goed en kwaad zijn daarop niet van toepassing
+    goodnessOther: je begrijpt het morele karakter op een andere manier
+    goodnessSentence: Wat het morele karakter betreft, is jouw opvatting dat {description}.
 clarification:
   title: Eén punt om te verduidelijken
   intro: Om je perspectief beter te begrijpen, willen we twee uitspraken samen bekijken.
@@ -99,3 +115,4 @@ errors:
   saveAnswer: Dit antwoord kon niet worden opgeslagen.
   noActiveQuestion: Er is geen actieve vraag beschikbaar.
   cannotFinish: Het interview kan nog niet worden afgerond.
+  missingContentRelease: De exacte vragenlijst van deze opgeslagen sessie is niet meer beschikbaar op dit apparaat.
