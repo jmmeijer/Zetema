@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { computed, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 
@@ -10,6 +10,20 @@ import { useInterviewStore } from "../stores/interview";
 const { t } = useI18n();
 const router = useRouter();
 const interview = useInterviewStore();
+
+const taglineParts = computed(() => {
+  const tagline = t("brand.tagline");
+  const sentenceBoundary = tagline.indexOf(". ");
+
+  if (sentenceBoundary === -1) {
+    return { primary: tagline, emphasis: "" };
+  }
+
+  return {
+    primary: tagline.slice(0, sentenceBoundary + 1),
+    emphasis: tagline.slice(sentenceBoundary + 2),
+  };
+});
 
 onMounted(() => interview.checkResume());
 
@@ -36,7 +50,10 @@ async function resume(): Promise<void> {
         <p class="brand-name">{{ t("brand.name") }}</p>
       </div>
 
-      <h1>{{ t("brand.tagline") }}</h1>
+      <h1 class="landing-tagline">
+        <span>{{ taglineParts.primary }}</span>
+        <em v-if="taglineParts.emphasis">{{ taglineParts.emphasis }}</em>
+      </h1>
       <p class="lead">{{ t("landing.intro") }}</p>
 
       <button class="button button-primary button-large" :disabled="interview.busy" @click="start">
