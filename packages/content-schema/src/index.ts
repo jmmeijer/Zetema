@@ -261,16 +261,6 @@ function validateSemanticConstraints(release: ContentRelease): ContentValidation
       );
     }
 
-    if (source !== undefined && source.flow !== "base") {
-      issues.push(
-        issue(
-          "follow_up_cannot_branch",
-          `/followUpRules/${ruleIndex}/sourceQuestionId`,
-          `Follow-up question '${source.id}' cannot itself trigger another follow-up in MVP-0.1.`,
-        ),
-      );
-    }
-
     if (target !== undefined && target.flow !== "follow_up") {
       issues.push(
         issue(
