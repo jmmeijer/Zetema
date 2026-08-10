@@ -120,6 +120,13 @@ questions:
       key: question.bible-inspired.prompt
       source: Do you believe the Bible is inspired by God?
 
+  - id: bible-word-of-god
+    flow: base
+    type: yes_no
+    prompt:
+      key: question.bible-word-of-god.prompt
+      source: Do you believe the Bible can properly be described as the Word of God?
+
   - id: bible-authority
     flow: base
     type: likert
@@ -409,80 +416,160 @@ questions:
     type: single_choice
     prompt:
       key: question.christian-tradition.prompt
-      source: Which Christian tradition or denomination best describes you?
+      source: Which broad Christian tradition best describes you?
     options:
-      - id: orthodox-greek
+      - id: catholic
         label:
-          key: option.christian-tradition.orthodox-greek
-          source: Orthodox — Greek Orthodox
-      - id: orthodox-romanian
+          key: option.christian-tradition.catholic
+          source: Catholic
+      - id: orthodox
         label:
-          key: option.christian-tradition.orthodox-romanian
-          source: Orthodox — Romanian Orthodox
-      - id: orthodox-russian
+          key: option.christian-tradition.orthodox
+          source: Orthodox
+      - id: protestant
         label:
-          key: option.christian-tradition.orthodox-russian
-          source: Orthodox — Russian Orthodox
-      - id: orthodox-other-eastern
+          key: option.christian-tradition.protestant
+          source: Protestant
+      - id: other-christian
         label:
-          key: option.christian-tradition.orthodox-other-eastern
-          source: Orthodox — another Eastern Orthodox church
-      - id: orthodox-oriental
-        label:
-          key: option.christian-tradition.orthodox-oriental
-          source: Orthodox — Oriental Orthodox
-      - id: catholic-latin
-        label:
-          key: option.christian-tradition.catholic-latin
-          source: Catholic — Latin or Roman Catholic
-      - id: catholic-eastern
-        label:
-          key: option.christian-tradition.catholic-eastern
-          source: Catholic — Eastern Catholic
-      - id: protestant-evangelical
-        label:
-          key: option.christian-tradition.protestant-evangelical
-          source: Protestant — Evangelical or non-denominational
-      - id: protestant-reformed
-        label:
-          key: option.christian-tradition.protestant-reformed
-          source: Protestant — Reformed or Presbyterian
-      - id: protestant-baptist
-        label:
-          key: option.christian-tradition.protestant-baptist
-          source: Protestant — Baptist
-      - id: protestant-lutheran
-        label:
-          key: option.christian-tradition.protestant-lutheran
-          source: Protestant — Lutheran
-      - id: protestant-methodist
-        label:
-          key: option.christian-tradition.protestant-methodist
-          source: Protestant — Methodist or Wesleyan
-      - id: protestant-anglican
-        label:
-          key: option.christian-tradition.protestant-anglican
-          source: Protestant — Anglican or Episcopal
-      - id: protestant-pentecostal
-        label:
-          key: option.christian-tradition.protestant-pentecostal
-          source: Protestant — Pentecostal or Charismatic
-      - id: protestant-adventist
-        label:
-          key: option.christian-tradition.protestant-adventist
-          source: Protestant — Adventist
-      - id: protestant-anabaptist
-        label:
-          key: option.christian-tradition.protestant-anabaptist
-          source: Protestant — Anabaptist or Mennonite
-      - id: protestant-other
-        label:
-          key: option.christian-tradition.protestant-other
-          source: Protestant — another Protestant tradition
-      - id: christian-other
-        label:
-          key: option.christian-tradition.christian-other
+          key: option.christian-tradition.other-christian
           source: Another Christian tradition
+
+  - id: catholic-tradition
+    flow: follow_up
+    type: single_choice
+    prompt:
+      key: question.catholic-tradition.prompt
+      source: Which Catholic tradition best describes you?
+    options:
+      - id: latin-catholic
+        label:
+          key: option.catholic-tradition.latin-catholic
+          source: Latin or Roman Catholic
+      - id: eastern-catholic
+        label:
+          key: option.catholic-tradition.eastern-catholic
+          source: Eastern Catholic
+      - id: other-catholic
+        label:
+          key: option.catholic-tradition.other-catholic
+          source: Another Catholic tradition
+
+  - id: orthodox-family
+    flow: follow_up
+    type: single_choice
+    prompt:
+      key: question.orthodox-family.prompt
+      source: Which Orthodox tradition best describes you?
+    options:
+      - id: eastern-orthodox
+        label:
+          key: option.orthodox-family.eastern-orthodox
+          source: Eastern Orthodox
+      - id: oriental-orthodox
+        label:
+          key: option.orthodox-family.oriental-orthodox
+          source: Oriental Orthodox
+      - id: church-of-the-east
+        label:
+          key: option.orthodox-family.church-of-the-east
+          source: Church of the East
+      - id: other-orthodox
+        label:
+          key: option.orthodox-family.other-orthodox
+          source: Another Orthodox tradition
+
+  - id: eastern-orthodox-church
+    flow: follow_up
+    type: single_choice
+    prompt:
+      key: question.eastern-orthodox-church.prompt
+      source: Which Eastern Orthodox church or tradition best describes you?
+    options:
+      - id: greek-orthodox
+        label:
+          key: option.eastern-orthodox-church.greek-orthodox
+          source: Greek Orthodox
+      - id: romanian-orthodox
+        label:
+          key: option.eastern-orthodox-church.romanian-orthodox
+          source: Romanian Orthodox
+      - id: russian-orthodox
+        label:
+          key: option.eastern-orthodox-church.russian-orthodox
+          source: Russian Orthodox
+      - id: serbian-orthodox
+        label:
+          key: option.eastern-orthodox-church.serbian-orthodox
+          source: Serbian Orthodox
+      - id: bulgarian-orthodox
+        label:
+          key: option.eastern-orthodox-church.bulgarian-orthodox
+          source: Bulgarian Orthodox
+      - id: georgian-orthodox
+        label:
+          key: option.eastern-orthodox-church.georgian-orthodox
+          source: Georgian Orthodox
+      - id: antiochian-orthodox
+        label:
+          key: option.eastern-orthodox-church.antiochian-orthodox
+          source: Antiochian Orthodox
+      - id: other-eastern-orthodox
+        label:
+          key: option.eastern-orthodox-church.other-eastern-orthodox
+          source: Another Eastern Orthodox church or tradition
+
+  - id: protestant-family
+    flow: follow_up
+    type: single_choice
+    prompt:
+      key: question.protestant-family.prompt
+      source: Which Protestant family or tradition best describes you?
+    options:
+      - id: evangelical
+        label:
+          key: option.protestant-family.evangelical
+          source: Evangelical
+      - id: anglican-episcopal
+        label:
+          key: option.protestant-family.anglican-episcopal
+          source: Anglican or Episcopal
+      - id: baptist
+        label:
+          key: option.protestant-family.baptist
+          source: Baptist
+      - id: lutheran
+        label:
+          key: option.protestant-family.lutheran
+          source: Lutheran
+      - id: methodist-wesleyan
+        label:
+          key: option.protestant-family.methodist-wesleyan
+          source: Methodist or Wesleyan
+      - id: reformed-presbyterian
+        label:
+          key: option.protestant-family.reformed-presbyterian
+          source: Reformed or Presbyterian
+      - id: pentecostal-charismatic
+        label:
+          key: option.protestant-family.pentecostal-charismatic
+          source: Pentecostal or Charismatic
+      - id: adventist
+        label:
+          key: option.protestant-family.adventist
+          source: Adventist
+      - id: anabaptist-mennonite
+        label:
+          key: option.protestant-family.anabaptist-mennonite
+          source: Anabaptist or Mennonite
+      - id: non-denominational
+        label:
+          key: option.protestant-family.non-denominational
+          source: Non-denominational
+      - id: other-protestant
+        label:
+          key: option.protestant-family.other-protestant
+          source: Another Protestant tradition
 
 followUpRules:
   - id: personal-god.no.god-conception
@@ -533,3 +620,31 @@ followUpRules:
       kind: single_choice
       optionId: christian
     targetQuestionId: christian-tradition
+
+  - id: christian-tradition.catholic.detail
+    sourceQuestionId: christian-tradition
+    when:
+      kind: single_choice
+      optionId: catholic
+    targetQuestionId: catholic-tradition
+
+  - id: christian-tradition.orthodox.family
+    sourceQuestionId: christian-tradition
+    when:
+      kind: single_choice
+      optionId: orthodox
+    targetQuestionId: orthodox-family
+
+  - id: christian-tradition.protestant.family
+    sourceQuestionId: christian-tradition
+    when:
+      kind: single_choice
+      optionId: protestant
+    targetQuestionId: protestant-family
+
+  - id: orthodox-family.eastern.church
+    sourceQuestionId: orthodox-family
+    when:
+      kind: single_choice
+      optionId: eastern-orthodox
+    targetQuestionId: eastern-orthodox-church
