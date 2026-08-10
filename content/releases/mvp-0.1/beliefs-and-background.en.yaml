@@ -1,0 +1,589 @@
+schemaVersion: 1
+releaseId: mvp-0.1.beliefs-and-background.v1
+contentVersion: 1.0.0
+defaultLocale: en
+specialResponses:
+- unsure
+- skip
+- prefer_not_to_answer
+theme:
+  id: beliefs-and-background
+  title:
+    key: theme.beliefs-and-background.title
+    source: Beliefs and Background
+  description:
+    key: theme.beliefs-and-background.description
+    source: Questions about God, the Bible, and your religious or non-religious background.
+questions:
+- id: god-exists
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.god-exists.prompt
+    source: Do you believe that God exists?
+- id: existence-confidence
+  flow: base
+  type: likert
+  prompt:
+    key: question.existence-confidence.prompt
+    source: How confident are you in your answer about whether God exists?
+  scale:
+    min: 1
+    max: 5
+    lowLabel:
+      key: scale.confidence.low
+      source: Not confident
+    highLabel:
+      key: scale.confidence.high
+      source: Very confident
+- id: personal-god
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.personal-god.prompt
+    source: Do you believe God is a personal being who can have intentions and relationships?
+- id: omnipotent
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.omnipotent.prompt
+    source: Do you believe God is omnipotent, meaning maximally powerful?
+- id: omniscient
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.omniscient.prompt
+    source: Do you believe God is omniscient, meaning that God knows all truths?
+- id: omnipresent
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.omnipresent.prompt
+    source: Do you believe God is omnipresent?
+- id: perfectly-good
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.perfectly-good.prompt
+    source: Do you believe God is perfectly good?
+- id: relation-to-time
+  flow: base
+  type: single_choice
+  prompt:
+    key: question.relation-to-time.prompt
+    source: Which best describes how you think God relates to time?
+  options:
+  - id: outside-time
+    label:
+      key: option.relation-to-time.outside-time
+      source: God exists outside time
+  - id: within-time
+    label:
+      key: option.relation-to-time.within-time
+      source: God exists within time
+  - id: both
+    label:
+      key: option.relation-to-time.both
+      source: Both, in some sense
+  - id: other
+    label:
+      key: option.common.other
+      source: Another view
+- id: acts-in-world
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.acts-in-world.prompt
+    source: Do you believe God sometimes acts within the world in ways that affect events?
+- id: reveals-self
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.reveals-self.prompt
+    source: Do you believe God intentionally reveals information about himself to human beings?
+- id: bible-inspired
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.bible-inspired.prompt
+    source: Do you believe the Bible is inspired by God?
+- id: bible-authority
+  flow: base
+  type: likert
+  prompt:
+    key: question.bible-authority.prompt
+    source: How authoritative do you consider the Bible for matters of faith and practice?
+  scale:
+    min: 1
+    max: 5
+    lowLabel:
+      key: scale.bible-authority.low
+      source: Not authoritative
+    highLabel:
+      key: scale.bible-authority.high
+      source: Completely authoritative
+- id: bible-infallible
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.bible-infallible.prompt
+    source: Do you believe the Bible is infallible, meaning that it does not teach error in what it intends to teach?
+- id: bible-inerrant
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.bible-inerrant.prompt
+    source: Do you believe the Bible is inerrant, meaning that what its texts affirm is without error, including historical and factual claims?
+- id: gospels-reliable
+  flow: base
+  type: likert
+  prompt:
+    key: question.gospels-reliable.prompt
+    source: How reliable do you consider the canonical Gospels as sources about the life and teachings of Jesus?
+  scale:
+    min: 1
+    max: 5
+    lowLabel:
+      key: scale.gospels-reliable.low
+      source: Not reliable
+    highLabel:
+      key: scale.gospels-reliable.high
+      source: Very reliable
+- id: bible-contradictions
+  flow: base
+  type: yes_no
+  prompt:
+    key: question.bible-contradictions.prompt
+    source: Do you believe the Bible contains genuine contradictions?
+- id: bible-interpretation
+  flow: base
+  type: single_choice
+  prompt:
+    key: question.bible-interpretation.prompt
+    source: Which approach best describes how you generally think the Bible should be interpreted?
+  options:
+  - id: historical-literary
+    label:
+      key: option.bible-interpretation.historical-literary
+      source: In its historical and literary context
+  - id: literal-unless-indicated
+    label:
+      key: option.bible-interpretation.literal-unless-indicated
+      source: As literally as possible unless the text clearly indicates otherwise
+  - id: faith-tradition
+    label:
+      key: option.bible-interpretation.faith-tradition
+      source: Primarily through the teaching and tradition of a faith community
+  - id: personal-discernment
+    label:
+      key: option.bible-interpretation.personal-discernment
+      source: Through personal reading and discernment
+  - id: combination
+    label:
+      key: option.bible-interpretation.combination
+      source: A combination of these approaches
+  - id: other
+    label:
+      key: option.bible-interpretation.other
+      source: Another approach
+- id: age-group
+  flow: base
+  type: single_choice
+  prompt:
+    key: question.age-group.prompt
+    source: What is your age group?
+  options:
+  - id: under-18
+    label:
+      key: option.age-group.under-18
+      source: Under 18
+  - id: 18-24
+    label:
+      key: option.age-group.18-24
+      source: 18–24
+  - id: 25-34
+    label:
+      key: option.age-group.25-34
+      source: 25–34
+  - id: 35-44
+    label:
+      key: option.age-group.35-44
+      source: 35–44
+  - id: 45-54
+    label:
+      key: option.age-group.45-54
+      source: 45–54
+  - id: 55-64
+    label:
+      key: option.age-group.55-64
+      source: 55–64
+  - id: 65-74
+    label:
+      key: option.age-group.65-74
+      source: 65–74
+  - id: 75-plus
+    label:
+      key: option.age-group.75-plus
+      source: 75 or older
+- id: religious-identity
+  flow: base
+  type: single_choice
+  prompt:
+    key: question.religious-identity.prompt
+    source: Which best describes your religious or non-religious identity?
+  options:
+  - id: christian-catholic
+    label:
+      key: option.religious-identity.christian-catholic
+      source: Christian — Catholic
+  - id: christian-orthodox
+    label:
+      key: option.religious-identity.christian-orthodox
+      source: Christian — Orthodox
+  - id: christian-protestant
+    label:
+      key: option.religious-identity.christian-protestant
+      source: Christian — Protestant
+  - id: christian-anglican
+    label:
+      key: option.religious-identity.christian-anglican
+      source: Christian — Anglican / Episcopal
+  - id: christian-nondenominational
+    label:
+      key: option.religious-identity.christian-nondenominational
+      source: Christian — Non-denominational
+  - id: christian-other
+    label:
+      key: option.religious-identity.christian-other
+      source: Christian — Another tradition
+  - id: jewish
+    label:
+      key: option.religious-identity.jewish
+      source: Jewish
+  - id: muslim
+    label:
+      key: option.religious-identity.muslim
+      source: Muslim
+  - id: hindu
+    label:
+      key: option.religious-identity.hindu
+      source: Hindu
+  - id: buddhist
+    label:
+      key: option.religious-identity.buddhist
+      source: Buddhist
+  - id: sikh
+    label:
+      key: option.religious-identity.sikh
+      source: Sikh
+  - id: bahai
+    label:
+      key: option.religious-identity.bahai
+      source: Bahá’í
+  - id: spiritual-not-religious
+    label:
+      key: option.religious-identity.spiritual-not-religious
+      source: Spiritual but not religious
+  - id: agnostic
+    label:
+      key: option.religious-identity.agnostic
+      source: Agnostic
+  - id: atheist
+    label:
+      key: option.religious-identity.atheist
+      source: Atheist
+  - id: none
+    label:
+      key: option.religious-identity.none
+      source: No religious identity
+  - id: other
+    label:
+      key: option.religious-identity.other
+      source: Another identity
+- id: god-conception
+  flow: follow_up
+  type: single_choice
+  prompt:
+    key: question.god-conception.prompt
+    source: If God is not personal, which description comes closest to your view?
+  options:
+  - id: impersonal-mind
+    label:
+      key: option.god-conception.impersonal-mind
+      source: An impersonal mind or intelligence
+  - id: ground-of-being
+    label:
+      key: option.god-conception.ground-of-being
+      source: The ground or foundation of existence
+  - id: force-or-principle
+    label:
+      key: option.god-conception.force-or-principle
+      source: An impersonal force or principle
+  - id: other
+    label:
+      key: option.common.other
+      source: Another view
+- id: power-limits
+  flow: follow_up
+  type: single_choice
+  prompt:
+    key: question.power-limits.prompt
+    source: What kind of limitation on God's power best matches your view?
+  options:
+  - id: logical-limits
+    label:
+      key: option.power-limits.logical-limits
+      source: God cannot do what is logically impossible
+  - id: self-imposed-limits
+    label:
+      key: option.power-limits.self-imposed-limits
+      source: God voluntarily limits his own power
+  - id: external-limits
+    label:
+      key: option.power-limits.external-limits
+      source: Something outside God limits his power
+  - id: other
+    label:
+      key: option.common.other
+      source: Another view
+- id: goodness-conception
+  flow: follow_up
+  type: single_choice
+  prompt:
+    key: question.goodness-conception.prompt
+    source: Which description comes closest to your view of God's moral character?
+  options:
+  - id: mostly-good
+    label:
+      key: option.goodness-conception.mostly-good
+      source: God is good, but not perfectly good
+  - id: morally-mixed
+    label:
+      key: option.goodness-conception.morally-mixed
+      source: God can be both morally good and morally bad
+  - id: beyond-morality
+    label:
+      key: option.goodness-conception.beyond-morality
+      source: Human moral categories do not apply to God
+  - id: other
+    label:
+      key: option.common.other
+      source: Another view
+- id: contradictions-impact
+  flow: follow_up
+  type: likert
+  prompt:
+    key: question.contradictions-impact.prompt
+    source: If the Bible contains genuine contradictions, how much do you think this affects its religious authority?
+  scale:
+    min: 1
+    max: 5
+    lowLabel:
+      key: scale.contradictions-impact.low
+      source: Not at all
+    highLabel:
+      key: scale.contradictions-impact.high
+      source: Very strongly
+- id: apparent-contradictions-view
+  flow: follow_up
+  type: single_choice
+  prompt:
+    key: question.apparent-contradictions-view.prompt
+    source: When two biblical passages appear difficult to reconcile, which view comes closest to yours?
+  options:
+  - id: harmonizable
+    label:
+      key: option.apparent-contradictions.harmonizable
+      source: They can usually be harmonized
+  - id: different-perspectives
+    label:
+      key: option.apparent-contradictions.different-perspectives
+      source: They may reflect different perspectives without being contradictory
+  - id: unresolved
+    label:
+      key: option.apparent-contradictions.unresolved
+      source: Some may remain unresolved
+  - id: other
+    label:
+      key: option.apparent-contradictions.other
+      source: Another view
+- id: catholic-tradition
+  flow: follow_up
+  type: single_choice
+  prompt:
+    key: question.catholic-tradition.prompt
+    source: Which Catholic tradition best describes you?
+  options:
+  - id: latin
+    label:
+      key: option.catholic-tradition.latin
+      source: Latin / Roman Catholic
+  - id: eastern
+    label:
+      key: option.catholic-tradition.eastern
+      source: Eastern Catholic
+  - id: other
+    label:
+      key: option.catholic-tradition.other
+      source: Another Catholic tradition
+- id: protestant-family
+  flow: follow_up
+  type: single_choice
+  prompt:
+    key: question.protestant-family.prompt
+    source: Which Protestant family or movement best describes you?
+  options:
+  - id: evangelical
+    label:
+      key: option.protestant-family.evangelical
+      source: Evangelical
+  - id: reformed-presbyterian
+    label:
+      key: option.protestant-family.reformed-presbyterian
+      source: Reformed / Presbyterian
+  - id: lutheran
+    label:
+      key: option.protestant-family.lutheran
+      source: Lutheran
+  - id: baptist
+    label:
+      key: option.protestant-family.baptist
+      source: Baptist
+  - id: methodist-wesleyan
+    label:
+      key: option.protestant-family.methodist-wesleyan
+      source: Methodist / Wesleyan
+  - id: pentecostal-charismatic
+    label:
+      key: option.protestant-family.pentecostal-charismatic
+      source: Pentecostal / Charismatic
+  - id: adventist
+    label:
+      key: option.protestant-family.adventist
+      source: Adventist
+  - id: anabaptist-mennonite
+    label:
+      key: option.protestant-family.anabaptist-mennonite
+      source: Anabaptist / Mennonite
+  - id: other
+    label:
+      key: option.protestant-family.other
+      source: Another Protestant family
+- id: orthodox-denomination
+  flow: follow_up
+  type: single_choice
+  prompt:
+    key: question.orthodox-denomination.prompt
+    source: Which Orthodox church or tradition best describes you?
+  options:
+  - id: greek
+    label:
+      key: option.orthodox-denomination.greek
+      source: Greek Orthodox
+  - id: romanian
+    label:
+      key: option.orthodox-denomination.romanian
+      source: Romanian Orthodox
+  - id: russian
+    label:
+      key: option.orthodox-denomination.russian
+      source: Russian Orthodox
+  - id: serbian
+    label:
+      key: option.orthodox-denomination.serbian
+      source: Serbian Orthodox
+  - id: bulgarian
+    label:
+      key: option.orthodox-denomination.bulgarian
+      source: Bulgarian Orthodox
+  - id: georgian
+    label:
+      key: option.orthodox-denomination.georgian
+      source: Georgian Orthodox
+  - id: antiochian
+    label:
+      key: option.orthodox-denomination.antiochian
+      source: Antiochian Orthodox
+  - id: oca
+    label:
+      key: option.orthodox-denomination.oca
+      source: Orthodox Church in America
+  - id: coptic
+    label:
+      key: option.orthodox-denomination.coptic
+      source: Coptic Orthodox
+  - id: armenian
+    label:
+      key: option.orthodox-denomination.armenian
+      source: Armenian Apostolic
+  - id: syriac
+    label:
+      key: option.orthodox-denomination.syriac
+      source: Syriac Orthodox
+  - id: ethiopian
+    label:
+      key: option.orthodox-denomination.ethiopian
+      source: Ethiopian Orthodox Tewahedo
+  - id: church-of-east
+    label:
+      key: option.orthodox-denomination.church-of-east
+      source: Church of the East
+  - id: other
+    label:
+      key: option.orthodox-denomination.other
+      source: Another Orthodox tradition
+followUpRules:
+- id: personal-god.no.god-conception
+  sourceQuestionId: personal-god
+  when:
+    kind: yes_no
+    value: 'no'
+  targetQuestionId: god-conception
+- id: omnipotent.no.power-limits
+  sourceQuestionId: omnipotent
+  when:
+    kind: yes_no
+    value: 'no'
+  targetQuestionId: power-limits
+- id: perfectly-good.no.goodness-conception
+  sourceQuestionId: perfectly-good
+  when:
+    kind: yes_no
+    value: 'no'
+  targetQuestionId: goodness-conception
+- id: bible-contradictions.yes.impact
+  sourceQuestionId: bible-contradictions
+  when:
+    kind: yes_no
+    value: 'yes'
+  targetQuestionId: contradictions-impact
+- id: bible-contradictions.no.apparent-view
+  sourceQuestionId: bible-contradictions
+  when:
+    kind: yes_no
+    value: 'no'
+  targetQuestionId: apparent-contradictions-view
+- id: bible-contradictions.unsure.apparent-view
+  sourceQuestionId: bible-contradictions
+  when:
+    kind: special
+    value: unsure
+  targetQuestionId: apparent-contradictions-view
+- id: religious-identity.catholic.detail
+  sourceQuestionId: religious-identity
+  when:
+    kind: single_choice
+    optionId: christian-catholic
+  targetQuestionId: catholic-tradition
+- id: religious-identity.orthodox.detail
+  sourceQuestionId: religious-identity
+  when:
+    kind: single_choice
+    optionId: christian-orthodox
+  targetQuestionId: orthodox-denomination
+- id: religious-identity.protestant.detail
+  sourceQuestionId: religious-identity
+  when:
+    kind: single_choice
+    optionId: christian-protestant
+  targetQuestionId: protestant-family
