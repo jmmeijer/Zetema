@@ -26,9 +26,13 @@ await cp(buildDirectory, deployBuildDirectory, { recursive: true });
 for (const dependency of runtimeDependencies) {
   const source = path.join(localNodeModulesDirectory, dependency);
   const target = path.join(deployNodeModulesDirectory, dependency);
+  const linkTarget =
+    process.platform === "win32"
+      ? source
+      : path.relative(deployNodeModulesDirectory, source);
 
   await access(source);
-  await symlink(path.relative(deployNodeModulesDirectory, source), target, "dir");
+  await symlink(linkTarget, target, process.platform === "win32" ? "junction" : "dir");
 }
 
 const deployRequire = createRequire(path.join(deployDirectory, "package.json"));
