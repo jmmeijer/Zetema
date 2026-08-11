@@ -83,6 +83,9 @@ jobs:
       - name: Build Functions for emulator
         run: pnpm --dir apps/functions run build
 
+      - name: Prepare Firebase deployment artifact
+        run: node apps/functions/scripts/prepare-deploy.mjs
+
       - name: Run Firebase emulator smoke test
         env:
           FUNCTIONS_EMULATOR: "true"
