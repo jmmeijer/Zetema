@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "description": "Zetema Firebase Cloud Functions command gateway.",
   "engines": {
-    "node": "22"
+    "node": "24"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json"
