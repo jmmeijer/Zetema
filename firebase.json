@@ -3,6 +3,7 @@
     {
       "source": "apps/functions/deploy",
       "codebase": "default",
+      "runtime": "nodejs24",
       "ignore": [
         "node_modules",
         ".git",
