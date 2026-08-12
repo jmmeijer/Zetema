@@ -90,7 +90,7 @@ jobs:
         env:
           FUNCTIONS_EMULATOR: "true"
         run: >-
-          npx --yes firebase-tools@15.21.0 emulators:exec
+          npx --yes firebase-tools@15.26.0 emulators:exec
           --config firebase.emulator.json
           --project demo-zetema
           --only auth,firestore,functions
