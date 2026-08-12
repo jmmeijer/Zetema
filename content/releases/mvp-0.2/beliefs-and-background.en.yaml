@@ -1,6 +1,6 @@
 schemaVersion: 1
-releaseId: mvp-0.2.beliefs-and-background.v1
-contentVersion: 2.0.0
+releaseId: mvp-0.2.beliefs-and-background.v2
+contentVersion: 2.1.0
 defaultLocale: en
 specialResponses:
   - unsure
@@ -41,53 +41,53 @@ questions:
         source: Very confident
 
   - id: personal-god
-    flow: base
+    flow: follow_up
     type: yes_no
     prompt:
-      key: question.personal-god.prompt
-      source: Do you think God or a higher reality can have intentions of its own?
+      key: question.personal-god.v2.prompt
+      source: Do you think God can have intentions of its own?
 
   - id: relationship-with-people
-    flow: base
+    flow: follow_up
     type: yes_no
     prompt:
-      key: question.relationship-with-people.prompt
-      source: Do you think God or a higher reality can have a personal relationship with people?
+      key: question.relationship-with-people.v2.prompt
+      source: Do you think God can have a personal relationship with people?
 
   - id: omnipotent
-    flow: base
+    flow: follow_up
     type: yes_no
     prompt:
-      key: question.omnipotent.prompt
-      source: Do you think God or a higher reality has the greatest power possible?
+      key: question.omnipotent.v2.prompt
+      source: Do you think God has the greatest power possible?
 
   - id: omniscient
-    flow: base
+    flow: follow_up
     type: yes_no
     prompt:
-      key: question.omniscient.prompt
-      source: Do you think God or a higher reality knows everything that can be known?
+      key: question.omniscient.v2.prompt
+      source: Do you think God knows everything that can be known?
 
   - id: omnipresent
-    flow: base
+    flow: follow_up
     type: yes_no
     prompt:
-      key: question.omnipresent.prompt
-      source: Do you think God or a higher reality is present everywhere?
+      key: question.omnipresent.v2.prompt
+      source: Do you think God is present everywhere?
 
   - id: perfectly-good
-    flow: base
+    flow: follow_up
     type: yes_no
     prompt:
-      key: question.perfectly-good.prompt
-      source: Do you think God or a higher reality is perfectly good?
+      key: question.perfectly-good.v2.prompt
+      source: Do you think God is perfectly good?
 
   - id: relation-to-time
-    flow: base
+    flow: follow_up
     type: single_choice
     prompt:
-      key: question.relation-to-time.prompt
-      source: Which best describes how you think God or a higher reality relates to time?
+      key: question.relation-to-time.v2.prompt
+      source: Which best describes how you think God relates to time?
     options:
       - id: outside-time
         label:
@@ -107,25 +107,25 @@ questions:
           source: Another view
 
   - id: creator-of-universe
-    flow: base
+    flow: follow_up
     type: yes_no
     prompt:
-      key: question.creator-of-universe.prompt
-      source: Do you think God or a higher reality is responsible for the existence of the universe?
+      key: question.creator-of-universe.v2.prompt
+      source: Do you think God is responsible for the existence of the universe?
 
   - id: acts-in-world
-    flow: base
+    flow: follow_up
     type: yes_no
     prompt:
-      key: question.acts-in-world.prompt
-      source: Do you think God or a higher reality sometimes acts in the world in ways that affect events?
+      key: question.acts-in-world.v2.prompt
+      source: Do you think God sometimes acts in the world in ways that affect events?
 
   - id: reveals-self
-    flow: base
+    flow: follow_up
     type: yes_no
     prompt:
-      key: question.reveals-self.prompt
-      source: Do you think God or a higher reality intentionally communicates or reveals information to people?
+      key: question.reveals-self.v2.prompt
+      source: Do you think God intentionally communicates or reveals information to people?
 
   - id: religious-identity
     flow: base
@@ -389,8 +389,8 @@ questions:
     flow: follow_up
     type: single_choice
     prompt:
-      key: question.power-limits.prompt
-      source: What kind of limitation on God's or a higher reality's power best matches your view?
+      key: question.power-limits.v2.prompt
+      source: What kind of limitation on God's power best matches your view?
     options:
       - id: logical-limits
         label:
@@ -413,8 +413,8 @@ questions:
     flow: follow_up
     type: single_choice
     prompt:
-      key: question.goodness-conception.prompt
-      source: Which description comes closest to your view of God's or a higher reality's moral character?
+      key: question.goodness-conception.v2.prompt
+      source: Which description comes closest to your view of God's moral character?
     options:
       - id: mostly-good
         label:
@@ -645,6 +645,146 @@ followUpRules:
       kind: yes_no
       value: no
     targetQuestionId: higher-power-belief
+
+  - id: god-exists.yes.personal-god
+    sourceQuestionId: god-exists
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: personal-god
+
+  - id: god-exists.unsure.personal-god
+    sourceQuestionId: god-exists
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: personal-god
+
+  - id: god-exists.yes.relationship-with-people
+    sourceQuestionId: god-exists
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: relationship-with-people
+
+  - id: god-exists.unsure.relationship-with-people
+    sourceQuestionId: god-exists
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: relationship-with-people
+
+  - id: god-exists.yes.omnipotent
+    sourceQuestionId: god-exists
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: omnipotent
+
+  - id: god-exists.unsure.omnipotent
+    sourceQuestionId: god-exists
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: omnipotent
+
+  - id: god-exists.yes.omniscient
+    sourceQuestionId: god-exists
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: omniscient
+
+  - id: god-exists.unsure.omniscient
+    sourceQuestionId: god-exists
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: omniscient
+
+  - id: god-exists.yes.omnipresent
+    sourceQuestionId: god-exists
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: omnipresent
+
+  - id: god-exists.unsure.omnipresent
+    sourceQuestionId: god-exists
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: omnipresent
+
+  - id: god-exists.yes.perfectly-good
+    sourceQuestionId: god-exists
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: perfectly-good
+
+  - id: god-exists.unsure.perfectly-good
+    sourceQuestionId: god-exists
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: perfectly-good
+
+  - id: god-exists.yes.relation-to-time
+    sourceQuestionId: god-exists
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: relation-to-time
+
+  - id: god-exists.unsure.relation-to-time
+    sourceQuestionId: god-exists
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: relation-to-time
+
+  - id: god-exists.yes.creator-of-universe
+    sourceQuestionId: god-exists
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: creator-of-universe
+
+  - id: god-exists.unsure.creator-of-universe
+    sourceQuestionId: god-exists
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: creator-of-universe
+
+  - id: god-exists.yes.acts-in-world
+    sourceQuestionId: god-exists
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: acts-in-world
+
+  - id: god-exists.unsure.acts-in-world
+    sourceQuestionId: god-exists
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: acts-in-world
+
+  - id: god-exists.yes.reveals-self
+    sourceQuestionId: god-exists
+    when:
+      kind: yes_no
+      value: yes
+    targetQuestionId: reveals-self
+
+  - id: god-exists.unsure.reveals-self
+    sourceQuestionId: god-exists
+    when:
+      kind: special
+      value: unsure
+    targetQuestionId: reveals-self
 
   - id: higher-power.yes.conception
     sourceQuestionId: higher-power-belief

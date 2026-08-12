@@ -62,7 +62,7 @@ describe("MVP-0.2 belief-first opening", () => {
     });
   });
 
-  it("clarifies what God means after a yes answer before continuing the base sequence", () => {
+  it("clarifies what God means after a yes answer before entering the God block", () => {
     const result = selectNextQuestion({
       release: loadRelease(),
       exposures: [baseExposure("god-exists")],
@@ -75,6 +75,68 @@ describe("MVP-0.2 belief-first opening", () => {
       reason: {
         kind: "follow_up_rule",
         ruleId: "god-exists.yes.god-conception",
+        sourceQuestionId: "god-exists",
+      },
+    });
+  });
+
+  it("uses the God-specific nature block after the participant defines God", () => {
+    const result = selectNextQuestion({
+      release: loadRelease(),
+      exposures: [
+        baseExposure("god-exists"),
+        followUpExposure(
+          "god-conception",
+          "god-exists.yes.god-conception",
+          "god-exists",
+        ),
+      ],
+      responses: [
+        response("god-exists", { kind: "yes_no", value: "yes" }),
+        response("god-conception", {
+          kind: "single_choice",
+          optionId: "ground-of-being",
+        }),
+      ],
+    });
+
+    expect(result).toEqual({
+      status: "question",
+      questionId: "personal-god",
+      reason: {
+        kind: "follow_up_rule",
+        ruleId: "god-exists.yes.personal-god",
+        sourceQuestionId: "god-exists",
+      },
+    });
+  });
+
+  it("also explores the God block when existence itself is unsure", () => {
+    const result = selectNextQuestion({
+      release: loadRelease(),
+      exposures: [
+        baseExposure("god-exists"),
+        followUpExposure(
+          "god-conception",
+          "god-exists.unsure.god-conception",
+          "god-exists",
+        ),
+      ],
+      responses: [
+        response("god-exists", { kind: "special", value: "unsure" }),
+        response("god-conception", {
+          kind: "single_choice",
+          optionId: "personal-being",
+        }),
+      ],
+    });
+
+    expect(result).toEqual({
+      status: "question",
+      questionId: "personal-god",
+      reason: {
+        kind: "follow_up_rule",
+        ruleId: "god-exists.unsure.personal-god",
         sourceQuestionId: "god-exists",
       },
     });
@@ -155,6 +217,32 @@ describe("MVP-0.2 belief-first opening", () => {
     expect(result).toEqual({
       status: "question",
       questionId: "existence-confidence",
+      reason: { kind: "base_sequence" },
+    });
+  });
+
+  it("skips the God-nature block when the participant rejects God", () => {
+    const result = selectNextQuestion({
+      release: loadRelease(),
+      exposures: [
+        baseExposure("god-exists"),
+        followUpExposure(
+          "higher-power-belief",
+          "god-exists.no.higher-power",
+          "god-exists",
+        ),
+        baseExposure("existence-confidence"),
+      ],
+      responses: [
+        response("god-exists", { kind: "yes_no", value: "no" }),
+        response("higher-power-belief", { kind: "yes_no", value: "no" }),
+        response("existence-confidence", { kind: "likert", value: 4 }),
+      ],
+    });
+
+    expect(result).toEqual({
+      status: "question",
+      questionId: "religious-identity",
       reason: { kind: "base_sequence" },
     });
   });
