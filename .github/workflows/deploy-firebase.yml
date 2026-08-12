@@ -54,7 +54,7 @@ jobs:
       - name: Configure Functions artifact cleanup policy
         if: ${{ inputs.target == 'full' }}
         run: |
-          npx --yes firebase-tools@15.21.0 functions:artifacts:setpolicy \
+          npx --yes firebase-tools@15.26.0 functions:artifacts:setpolicy \
             --project zetema-4853d \
             --location europe-west4 \
             --days 1 \
@@ -70,7 +70,7 @@ jobs:
             ONLY="functions,firestore:rules,firestore:indexes"
           fi
 
-          npx --yes firebase-tools@15.21.0 deploy \
+          npx --yes firebase-tools@15.26.0 deploy \
             --project zetema-4853d \
             --only "$ONLY" \
             --non-interactive
