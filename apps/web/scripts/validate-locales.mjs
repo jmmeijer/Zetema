@@ -13,8 +13,14 @@ const canonicalContentFiles = [
   new URL("../../../content/releases/mvp-0.2/beliefs-and-background.en.yaml", import.meta.url),
 ];
 const contentLocaleFiles = {
-  nl: new URL("../../../content/releases/mvp-0.2/locales/nl.yaml", import.meta.url),
-  ro: new URL("../../../content/releases/mvp-0.2/locales/ro.yaml", import.meta.url),
+  nl: [
+    new URL("../../../content/releases/mvp-0.2/locales/nl.yaml", import.meta.url),
+    new URL("../../../content/releases/mvp-0.2/locales/v2.nl.yaml", import.meta.url),
+  ],
+  ro: [
+    new URL("../../../content/releases/mvp-0.2/locales/ro.yaml", import.meta.url),
+    new URL("../../../content/releases/mvp-0.2/locales/v2.ro.yaml", import.meta.url),
+  ],
 };
 
 async function parseYaml(file) {
@@ -59,10 +65,15 @@ for (const file of canonicalContentFiles) {
   collectLocalizedKeys(await parseYaml(file), requiredContentKeys);
 }
 
-for (const [locale, file] of Object.entries(contentLocaleFiles)) {
-  const translations = await parseYaml(file);
-  if (typeof translations !== "object" || translations === null || Array.isArray(translations)) {
-    throw new Error(`Content translations for '${locale}' must be a key/value mapping.`);
+for (const [locale, files] of Object.entries(contentLocaleFiles)) {
+  const translations = {};
+
+  for (const file of files) {
+    const parsed = await parseYaml(file);
+    if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+      throw new Error(`Content translations for '${locale}' must be key/value mappings.`);
+    }
+    Object.assign(translations, parsed);
   }
 
   const missing = [...requiredContentKeys].filter(
