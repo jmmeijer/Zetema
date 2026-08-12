@@ -80,31 +80,45 @@ describe("MVP content releases", () => {
     }
   });
 
-  it("validates the MVP-0.2 belief-first release and its intended base order", () => {
+  it("validates the MVP-0.2 v2 belief-first release and conditional God block", () => {
     const result = parseAndValidateContentReleaseYaml(
       readFileSync(mvp02FixtureUrl, "utf8"),
     );
 
     expect(result.valid).toBe(true);
     if (result.valid) {
-      expect(result.value.releaseId).toBe("mvp-0.2.beliefs-and-background.v1");
+      expect(result.value.releaseId).toBe("mvp-0.2.beliefs-and-background.v2");
+      expect(result.value.contentVersion).toBe("2.1.0");
       expect(result.value.questions).toHaveLength(34);
       expect(
         result.value.questions.filter((question) => question.flow === "base"),
-      ).toHaveLength(22);
+      ).toHaveLength(12);
       expect(
         result.value.questions.filter(
           (question) => question.flow === "follow_up",
         ),
-      ).toHaveLength(12);
+      ).toHaveLength(22);
 
       const baseIds = result.value.questions
         .filter((question) => question.flow === "base")
         .map((question) => question.id);
 
-      expect(baseIds.slice(0, 12)).toEqual([
+      expect(baseIds).toEqual([
         "god-exists",
         "existence-confidence",
+        "religious-identity",
+        "bible-inspired",
+        "bible-word-of-god",
+        "bible-authority",
+        "bible-infallible",
+        "bible-inerrant",
+        "gospels-reliable",
+        "bible-contradictions",
+        "bible-interpretation",
+        "age-group",
+      ]);
+
+      const godNatureIds = [
         "personal-god",
         "relationship-with-people",
         "omnipotent",
@@ -115,11 +129,31 @@ describe("MVP content releases", () => {
         "creator-of-universe",
         "acts-in-world",
         "reveals-self",
-      ]);
-      expect(baseIds.indexOf("religious-identity")).toBeLessThan(
-        baseIds.indexOf("bible-inspired"),
-      );
-      expect(baseIds.at(-1)).toBe("age-group");
+      ];
+
+      for (const questionId of godNatureIds) {
+        expect(
+          result.value.questions.find((question) => question.id === questionId)?.flow,
+        ).toBe("follow_up");
+        expect(
+          result.value.followUpRules.some(
+            (rule) =>
+              rule.sourceQuestionId === "god-exists" &&
+              rule.targetQuestionId === questionId &&
+              rule.when.kind === "yes_no" &&
+              rule.when.value === "yes",
+          ),
+        ).toBe(true);
+        expect(
+          result.value.followUpRules.some(
+            (rule) =>
+              rule.sourceQuestionId === "god-exists" &&
+              rule.targetQuestionId === questionId &&
+              rule.when.kind === "special" &&
+              rule.when.value === "unsure",
+          ),
+        ).toBe(true);
+      }
 
       expect(
         result.value.followUpRules.some(
