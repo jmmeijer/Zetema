@@ -20,6 +20,16 @@ service cloud.firestore {
         allow create, update, delete: if false;
       }
 
+      match /eligibilityEvents/{eventId} {
+        allow read: if ownsSession(sessionId);
+        allow create, update, delete: if false;
+      }
+
+      match /participationEvents/{eventId} {
+        allow read: if ownsSession(sessionId);
+        allow create, update, delete: if false;
+      }
+
       match /operations/{operationId} {
         allow read, write: if false;
       }
