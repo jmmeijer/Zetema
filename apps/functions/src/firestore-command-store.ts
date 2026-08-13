@@ -102,7 +102,7 @@ class FirestoreCommandTransaction implements CommandTransaction {
       this.database
         .collection(SESSIONS_COLLECTION)
         .doc(sessionId)
-        .collection("consentEvents")
+        .collection("participationEvents")
         .doc(event.eventId),
       event,
     );
