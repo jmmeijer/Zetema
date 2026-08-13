@@ -41,11 +41,20 @@ async function sendCommand(gateway: FirebaseCommandGateway, command: OutboxComma
 }
 
 function toStartRequest(command: StartInterviewSessionOutboxCommand) {
+  const { eligibility, consent } = command.payload;
+  if (eligibility === undefined || consent === undefined) {
+    throw new Error(
+      "This legacy local session was created before participant consent evidence was required and cannot start server synchronization.",
+    );
+  }
+
   return {
     sessionId: command.sessionId,
     operationId: command.operationId,
     contentReleaseId: command.payload.contentReleaseId,
     startedAt: command.payload.startedAt,
+    eligibility,
+    consent,
   };
 }
 
