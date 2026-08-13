@@ -1,6 +1,6 @@
 schemaVersion: 1
-releaseId: mvp-0.2.beliefs-and-background.v2
-contentVersion: 2.1.0
+releaseId: mvp-0.2.beliefs-and-background.v3
+contentVersion: 2.2.0
 defaultLocale: en
 specialResponses:
   - unsure
@@ -289,10 +289,6 @@ questions:
       key: question.age-group.prompt
       source: Which age group are you in?
     options:
-      - id: under-18
-        label:
-          key: option.age-group.under-18
-          source: Under 18
       - id: 18-24
         label:
           key: option.age-group.18-24
