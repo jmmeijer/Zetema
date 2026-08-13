@@ -28,8 +28,42 @@ export interface StoredSession {
   lastServerSequence: number;
   startedAt: IsoDateTime;
   createdAt: IsoDateTime;
+  eligibilityState: "age_18_or_over";
+  consentState: "confirmed";
+  consentPurposeId: string;
+  consentTextVersion: string;
   completedAt?: IsoDateTime;
   finalizedAt?: IsoDateTime;
+}
+
+export interface StoredEligibilityEvent {
+  eventId: OperationId;
+  sessionId: SessionId;
+  actorUid: string;
+  minimumAge: 18;
+  declaration: "age_18_or_over";
+  mechanism: "self_declaration";
+  clientConfirmedAt: IsoDateTime;
+  occurredAt: IsoDateTime;
+  operationId: OperationId;
+  schemaVersion: 1;
+}
+
+export interface StoredConsentEvent {
+  eventId: OperationId;
+  sessionId: SessionId;
+  subjectUid: string;
+  purposeId: string;
+  consentTextVersion: string;
+  scopes: readonly string[];
+  previousState: "pending";
+  newState: "confirmed";
+  mechanism: "in_app_explicit";
+  actorUid: string;
+  clientAcceptedAt: IsoDateTime;
+  occurredAt: IsoDateTime;
+  operationId: OperationId;
+  schemaVersion: 1;
 }
 
 export type StoredCommandResult =
@@ -69,6 +103,8 @@ export interface CommandTransaction {
   putSession(session: StoredSession): Promise<void>;
   putOperation(sessionId: SessionId, operation: StoredOperation): Promise<void>;
   putRevision(revision: StoredRevision): Promise<void>;
+  putEligibilityEvent(sessionId: SessionId, event: StoredEligibilityEvent): Promise<void>;
+  putConsentEvent(sessionId: SessionId, event: StoredConsentEvent): Promise<void>;
 }
 
 export interface CommandStore {
@@ -104,6 +140,18 @@ function startFingerprint(request: StartInterviewSessionRequest): string {
     request.sessionId,
     request.contentReleaseId,
     request.startedAt,
+    [
+      request.eligibility.minimumAge,
+      request.eligibility.declaration,
+      request.eligibility.confirmedAt,
+    ],
+    [
+      request.consent.purposeId,
+      request.consent.textVersion,
+      [...request.consent.scopes],
+      request.consent.mechanism,
+      request.consent.acceptedAt,
+    ],
   ]);
 }
 
@@ -242,6 +290,40 @@ export class CommandGatewayService {
         lastServerSequence: 0,
         startedAt: request.startedAt,
         createdAt: serverNow,
+        eligibilityState: "age_18_or_over",
+        consentState: "confirmed",
+        consentPurposeId: request.consent.purposeId,
+        consentTextVersion: request.consent.textVersion,
+      };
+
+      const eligibilityEvent: StoredEligibilityEvent = {
+        eventId: request.operationId,
+        sessionId: request.sessionId,
+        actorUid: uid,
+        minimumAge: request.eligibility.minimumAge,
+        declaration: request.eligibility.declaration,
+        mechanism: "self_declaration",
+        clientConfirmedAt: request.eligibility.confirmedAt,
+        occurredAt: serverNow,
+        operationId: request.operationId,
+        schemaVersion: 1,
+      };
+
+      const consentEvent: StoredConsentEvent = {
+        eventId: request.operationId,
+        sessionId: request.sessionId,
+        subjectUid: uid,
+        purposeId: request.consent.purposeId,
+        consentTextVersion: request.consent.textVersion,
+        scopes: [...request.consent.scopes],
+        previousState: "pending",
+        newState: "confirmed",
+        mechanism: request.consent.mechanism,
+        actorUid: uid,
+        clientAcceptedAt: request.consent.acceptedAt,
+        occurredAt: serverNow,
+        operationId: request.operationId,
+        schemaVersion: 1,
       };
 
       const storedOperation: StoredOperation = {
@@ -253,6 +335,8 @@ export class CommandGatewayService {
       };
 
       await transaction.putSession(storedSession);
+      await transaction.putEligibilityEvent(request.sessionId, eligibilityEvent);
+      await transaction.putConsentEvent(request.sessionId, consentEvent);
       await transaction.putOperation(request.sessionId, storedOperation);
 
       return result;
