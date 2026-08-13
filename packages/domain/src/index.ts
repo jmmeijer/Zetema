@@ -32,6 +32,20 @@ export type StructuredAnswer =
       value: SpecialResponseValue;
     };
 
+export interface AdultEligibilityDeclaration {
+  minimumAge: 18;
+  declaration: "age_18_or_over";
+  confirmedAt: IsoDateTime;
+}
+
+export interface ParticipationConsentAcceptance {
+  purposeId: string;
+  textVersion: string;
+  scopes: readonly string[];
+  mechanism: "in_app_explicit";
+  acceptedAt: IsoDateTime;
+}
+
 export type QuestionPresentationReason =
   | {
       kind: "base_sequence";
