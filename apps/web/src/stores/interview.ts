@@ -19,6 +19,7 @@ import {
 import releaseSource from "../../../../content/releases/mvp-0.2/beliefs-and-background.en.yaml?raw";
 import { currentLocale, translate } from "../i18n";
 import { localizeContentText as localizeContentTextForRelease } from "../i18n/content";
+import type { ParticipantPreflightEvidence } from "../privacy/participant-consent";
 
 const parsedRelease = parseAndValidateContentReleaseYaml(releaseSource);
 
@@ -217,7 +218,7 @@ export const useInterviewStore = defineStore("interview", () => {
     flowComplete.value = true;
   }
 
-  async function startSession(): Promise<string> {
+  async function startSession(preflight: ParticipantPreflightEvidence): Promise<string> {
     busy.value = true;
     errorMessage.value = null;
 
@@ -238,6 +239,8 @@ export const useInterviewStore = defineStore("interview", () => {
         contentReleaseId: bundledRelease.releaseId,
         operationId: newId(),
         startedAt: timestamp,
+        eligibility: preflight.eligibility,
+        consent: preflight.consent,
       });
 
       localStorage.setItem(LAST_SESSION_KEY, id);

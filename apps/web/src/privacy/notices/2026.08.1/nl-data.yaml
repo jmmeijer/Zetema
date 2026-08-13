@@ -1,0 +1,12 @@
+consentTitle: Informatie voor deelnemers en toestemming
+consentIntro: Lees voordat er een interviewsessie wordt aangemaakt hoe deze pilot met je antwoorden omgaat.
+sensitiveTitle: Gevoelige informatie
+sensitiveBody: Je antwoorden kunnen iets zeggen over je religieuze of levensbeschouwelijke overtuigingen en worden daarom als gevoelige gegevens behandeld.
+dataTitle: Wat wordt opgeslagen
+dataBody: Zetema slaat je antwoorden op, welke vragen je te zien kreeg, een optionele leeftijdsgroep en technische sessiegegevens. In deze versie vragen we niet naar je naam of e-mailadres.
+purposeTitle: Waarom dit wordt opgeslagen
+purposeBody: De gegevens worden gebruikt om de MVP-0.2-interviewpilot uit te voeren, te beoordelen, te beveiligen en te evalueren. Onderzoeksdata-export is in MVP-0.2 niet ingeschakeld.
+storageTitle: Waar het wordt opgeslagen
+storageBody: Tijdens het interview worden gegevens op dit apparaat opgeslagen en kunnen ze, zodra er een verbinding beschikbaar is, worden gesynchroniseerd met de Firebase-backend van Zetema.
+retentionTitle: Hoe lang
+retentionBody: De privacybasis voor MVP-0.2 hanteert een maximale bewaartermijn van 24 maanden na de laatste betekenisvolle activiteit. Daarna moeten de gegevens worden verwijderd of aantoonbaar geanonimiseerd.

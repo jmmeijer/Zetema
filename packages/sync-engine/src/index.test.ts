@@ -18,12 +18,30 @@ function createStore(): IndexedDbLocalStore {
   });
 }
 
+function preflightEvidence() {
+  return {
+    eligibility: {
+      minimumAge: 18 as const,
+      declaration: "age_18_or_over" as const,
+      confirmedAt: "2026-08-07T23:58:00.000Z",
+    },
+    consent: {
+      purposeId: "mvp-0.2-interview-participation-v1",
+      textVersion: "2026.08.1",
+      scopes: ["INTERVIEW_STORAGE"],
+      mechanism: "in_app_explicit" as const,
+      acceptedAt: "2026-08-07T23:59:00.000Z",
+    },
+  };
+}
+
 async function createActiveSession(store: IndexedDbLocalStore) {
   return store.createSession({
     sessionId: "session-1",
     contentReleaseId: "release-1",
     operationId: "operation-start",
     startedAt: "2026-08-08T00:00:00.000Z",
+    ...preflightEvidence(),
   });
 }
 
@@ -72,12 +90,15 @@ describe("IndexedDbLocalStore", () => {
       sessionId: "session-1",
       state: "active",
       lastLocalSequence: 1,
+      eligibility: preflightEvidence().eligibility,
+      consent: preflightEvidence().consent,
     });
     expect(created.command).toMatchObject({
       command: "start_interview_session",
       operationId: "operation-start",
       localSequence: 1,
       state: "pending",
+      payload: preflightEvidence(),
     });
 
     const retry = await createActiveSession(store);
@@ -94,6 +115,7 @@ describe("IndexedDbLocalStore", () => {
         contentReleaseId: "release-1",
         operationId: "different-operation",
         startedAt: "2026-08-08T00:00:00.000Z",
+        ...preflightEvidence(),
       }),
     ).rejects.toMatchObject<Partial<LocalStoreError>>({
       code: "SESSION_ALREADY_EXISTS",
@@ -159,10 +181,7 @@ describe("IndexedDbLocalStore", () => {
       operationId: "operation-response-1",
       sessionId: "session-1",
       questionId: "god-exists",
-      answer: {
-        kind: "yes_no",
-        value: "yes",
-      },
+      answer: { kind: "yes_no", value: "yes" },
       createdAt: "2026-08-08T00:01:00.000Z",
     });
 
@@ -171,10 +190,7 @@ describe("IndexedDbLocalStore", () => {
       operationId: "operation-response-2",
       sessionId: "session-1",
       questionId: "god-exists",
-      answer: {
-        kind: "yes_no",
-        value: "no",
-      },
+      answer: { kind: "yes_no", value: "no" },
       createdAt: "2026-08-08T00:02:00.000Z",
     });
 
@@ -186,10 +202,7 @@ describe("IndexedDbLocalStore", () => {
       operationId: "operation-response-2",
       sessionId: "session-1",
       questionId: "god-exists",
-      answer: {
-        kind: "yes_no",
-        value: "no",
-      },
+      answer: { kind: "yes_no", value: "no" },
       createdAt: "2026-08-08T00:02:00.000Z",
     });
     expect(retry).toEqual(second);
@@ -201,10 +214,7 @@ describe("IndexedDbLocalStore", () => {
     expect(effective).toEqual([
       {
         questionId: "god-exists",
-        answer: {
-          kind: "yes_no",
-          value: "no",
-        },
+        answer: { kind: "yes_no", value: "no" },
         localSequence: 3,
       },
     ]);
@@ -223,10 +233,7 @@ describe("IndexedDbLocalStore", () => {
       operationId: "operation-response",
       sessionId: "session-1",
       questionId: "god-exists",
-      answer: {
-        kind: "yes_no",
-        value: "yes",
-      },
+      answer: { kind: "yes_no", value: "yes" },
       createdAt: "2026-08-08T00:01:00.000Z",
     });
 
@@ -236,10 +243,7 @@ describe("IndexedDbLocalStore", () => {
         operationId: "operation-response",
         sessionId: "session-1",
         questionId: "personal-god",
-        answer: {
-          kind: "yes_no",
-          value: "no",
-        },
+        answer: { kind: "yes_no", value: "no" },
         createdAt: "2026-08-08T00:02:00.000Z",
       }),
     ).rejects.toMatchObject<Partial<LocalStoreError>>({
@@ -262,10 +266,7 @@ describe("IndexedDbLocalStore", () => {
       operationId: "operation-response-1",
       sessionId: "session-1",
       questionId: "god-exists",
-      answer: {
-        kind: "yes_no",
-        value: "yes",
-      },
+      answer: { kind: "yes_no", value: "yes" },
       createdAt: "2026-08-08T00:01:00.000Z",
     });
 
@@ -275,10 +276,7 @@ describe("IndexedDbLocalStore", () => {
         operationId: "operation-response-2",
         sessionId: "session-1",
         questionId: "god-exists",
-        answer: {
-          kind: "yes_no",
-          value: "no",
-        },
+        answer: { kind: "yes_no", value: "no" },
         createdAt: "2026-08-08T00:02:00.000Z",
       }),
     ).rejects.toMatchObject<Partial<LocalStoreError>>({
@@ -304,10 +302,7 @@ describe("IndexedDbLocalStore", () => {
       operationId: "operation-response-1",
       sessionId: "session-1",
       questionId: "god-exists",
-      answer: {
-        kind: "special",
-        value: "skip",
-      },
+      answer: { kind: "special", value: "skip" },
       createdAt: "2026-08-08T00:01:00.000Z",
     });
 
@@ -326,9 +321,7 @@ describe("IndexedDbLocalStore", () => {
     expect(completed.command).toMatchObject({
       command: "finalize_interview_session",
       localSequence: 3,
-      payload: {
-        mode: "complete",
-      },
+      payload: { mode: "complete" },
     });
 
     await expect(
@@ -346,10 +339,7 @@ describe("IndexedDbLocalStore", () => {
         operationId: "operation-after-complete",
         sessionId: "session-1",
         questionId: "personal-god",
-        answer: {
-          kind: "yes_no",
-          value: "yes",
-        },
+        answer: { kind: "yes_no", value: "yes" },
         createdAt: "2026-08-08T00:04:00.000Z",
       }),
     ).rejects.toMatchObject<Partial<LocalStoreError>>({
@@ -368,10 +358,7 @@ describe("IndexedDbLocalStore", () => {
         operationId: "operation-response-1",
         sessionId: "missing-session",
         questionId: "god-exists",
-        answer: {
-          kind: "yes_no",
-          value: "yes",
-        },
+        answer: { kind: "yes_no", value: "yes" },
         createdAt: "2026-08-08T00:01:00.000Z",
       }),
     ).rejects.toMatchObject<Partial<LocalStoreError>>({

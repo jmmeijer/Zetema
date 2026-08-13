@@ -65,7 +65,10 @@ try {
   await signInAnonymously(other.auth);
 
   const sessionId = `smoke-${randomUUID()}`;
-  const startedAt = new Date().toISOString();
+  const now = Date.now();
+  const eligibilityConfirmedAt = new Date(now - 2_000).toISOString();
+  const consentAcceptedAt = new Date(now - 1_000).toISOString();
+  const startedAt = new Date(now).toISOString();
   const startOperationId = `start-${randomUUID()}`;
   const appendOperationId = `append-${randomUUID()}`;
   const revisionId = `revision-${randomUUID()}`;
@@ -94,8 +97,20 @@ try {
   const startCommand = {
     sessionId,
     operationId: startOperationId,
-    contentReleaseId: "mvp-0.1.nature-of-god.v1",
+    contentReleaseId: "mvp-0.2.beliefs-and-background.v2",
     startedAt,
+    eligibility: {
+      minimumAge: 18,
+      declaration: "age_18_or_over",
+      confirmedAt: eligibilityConfirmedAt,
+    },
+    consent: {
+      purposeId: "mvp-0.2-interview-participation-v1",
+      textVersion: "2026.08.1",
+      scopes: ["INTERVIEW_STORAGE"],
+      mechanism: "in_app_explicit",
+      acceptedAt: consentAcceptedAt,
+    },
   };
 
   const startResult = (await startInterviewSession(startCommand)).data;
@@ -114,6 +129,55 @@ try {
   assert.equal(storedSession.exists(), true);
   assert.equal(storedSession.data().ownerUid, ownerCredential.user.uid);
   assert.equal(storedSession.data().status, "in_progress");
+  assert.equal(storedSession.data().eligibilityState, "age_18_or_over");
+  assert.equal(storedSession.data().consentState, "confirmed");
+  assert.equal(storedSession.data().consentTextVersion, "2026.08.1");
+
+  const eligibilityRef = doc(
+    owner.firestore,
+    "interviewSessions",
+    sessionId,
+    "eligibilityEvents",
+    startOperationId,
+  );
+  const participationRef = doc(
+    owner.firestore,
+    "interviewSessions",
+    sessionId,
+    "participationEvents",
+    startOperationId,
+  );
+
+  const eligibilityEvent = await getDoc(eligibilityRef);
+  assert.equal(eligibilityEvent.exists(), true);
+  assert.equal(eligibilityEvent.data().declaration, "age_18_or_over");
+  assert.equal(eligibilityEvent.data().clientConfirmedAt, eligibilityConfirmedAt);
+  assert.equal(typeof eligibilityEvent.data().occurredAt, "string");
+
+  const participationEvent = await getDoc(participationRef);
+  assert.equal(participationEvent.exists(), true);
+  assert.equal(participationEvent.data().purposeId, "mvp-0.2-interview-participation-v1");
+  assert.equal(participationEvent.data().consentTextVersion, "2026.08.1");
+  assert.deepEqual(participationEvent.data().scopes, ["INTERVIEW_STORAGE"]);
+  assert.equal(participationEvent.data().clientAcceptedAt, consentAcceptedAt);
+  assert.equal(typeof participationEvent.data().occurredAt, "string");
+
+  await expectFirebaseError(
+    () =>
+      setDoc(
+        doc(owner.firestore, "interviewSessions", sessionId, "eligibilityEvents", `client-${randomUUID()}`),
+        { declaration: "age_18_or_over" },
+      ),
+    "permission-denied",
+  );
+  await expectFirebaseError(
+    () =>
+      setDoc(
+        doc(owner.firestore, "interviewSessions", sessionId, "participationEvents", `client-${randomUUID()}`),
+        { newState: "confirmed" },
+      ),
+    "permission-denied",
+  );
 
   const appendCommand = {
     sessionId,

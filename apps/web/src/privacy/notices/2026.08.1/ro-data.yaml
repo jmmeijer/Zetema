@@ -1,0 +1,12 @@
+consentTitle: Informații pentru participanți și consimțământ
+consentIntro: Înainte de crearea unei sesiuni de interviu, citește cum gestionează acest proiect pilot răspunsurile tale.
+sensitiveTitle: Informații sensibile
+sensitiveBody: Răspunsurile tale pot dezvălui convingeri religioase sau filozofice și sunt tratate ca date sensibile.
+dataTitle: Ce se stochează
+dataBody: Zetema stochează răspunsurile tale, întrebările care ți-au fost afișate, o grupă de vârstă opțională și metadate tehnice despre sesiune. Această versiune nu îți cere numele sau adresa de e-mail.
+purposeTitle: De ce se stochează
+purposeBody: Datele sunt folosite pentru desfășurarea, verificarea, securizarea și evaluarea proiectului pilot de interviu MVP-0.2. Exporturile de date pentru cercetare nu sunt activate în MVP-0.2.
+storageTitle: Unde se stochează
+storageBody: În timpul interviului, datele sunt salvate pe acest dispozitiv și pot fi sincronizate cu infrastructura Firebase a Zetema atunci când există o conexiune.
+retentionTitle: Pentru cât timp
+retentionBody: Regula de bază de confidențialitate pentru MVP-0.2 stabilește o perioadă maximă de păstrare de 24 de luni după ultima activitate relevantă. După aceea, datele trebuie șterse sau anonimizate în mod demonstrabil.

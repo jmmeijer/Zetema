@@ -28,8 +28,7 @@ const taglineParts = computed(() => {
 onMounted(() => interview.checkResume());
 
 async function start(): Promise<void> {
-  const sessionId = await interview.startSession();
-  await router.push({ name: "interview", params: { sessionId } });
+  await router.push({ name: "preflight" });
 }
 
 async function resume(): Promise<void> {

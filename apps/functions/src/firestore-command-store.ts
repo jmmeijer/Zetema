@@ -4,6 +4,8 @@ import type { SessionId, OperationId, ResponseRevisionId } from "@zetema/domain"
 import type {
   CommandStore,
   CommandTransaction,
+  StoredConsentEvent,
+  StoredEligibilityEvent,
   StoredOperation,
   StoredRevision,
   StoredSession,
@@ -78,6 +80,31 @@ class FirestoreCommandTransaction implements CommandTransaction {
         .collection("responseRevisions")
         .doc(revision.revisionId),
       revision,
+    );
+  }
+
+  async putEligibilityEvent(
+    sessionId: SessionId,
+    event: StoredEligibilityEvent,
+  ): Promise<void> {
+    this.transaction.set(
+      this.database
+        .collection(SESSIONS_COLLECTION)
+        .doc(sessionId)
+        .collection("eligibilityEvents")
+        .doc(event.eventId),
+      event,
+    );
+  }
+
+  async putConsentEvent(sessionId: SessionId, event: StoredConsentEvent): Promise<void> {
+    this.transaction.set(
+      this.database
+        .collection(SESSIONS_COLLECTION)
+        .doc(sessionId)
+        .collection("participationEvents")
+        .doc(event.eventId),
+      event,
     );
   }
 }

@@ -1,0 +1,29 @@
+eyebrow: Before you begin
+ageTitle: Are you 18 or older?
+ageBody: This version of Zetema is intended only for participants aged 18 or older. We do not ask for or store your date of birth or birth year.
+ageYes: Yes, I am 18 or older
+ageNo: No, I am not 18 yet
+ineligibleTitle: This pilot is limited to participants aged 18 or older
+ineligibleBody: No interview session or response data has been created.
+consentTitle: Participant information and consent
+consentIntro: Before an interview session is created, please read how this pilot handles your responses.
+sensitiveTitle: Sensitive information
+sensitiveBody: Your answers may reveal religious or philosophical beliefs and are treated as sensitive data.
+dataTitle: What is stored
+dataBody: Zetema stores your interview answers, which questions you were shown, an optional age group, and technical session metadata. This version does not ask for your name or email.
+purposeTitle: Why it is stored
+purposeBody: The data is used to run, review, secure, and evaluate the MVP-0.2 interview pilot. Research exports are not enabled in MVP-0.2.
+storageTitle: Where it is stored
+storageBody: During the interview, data is saved on this device and can be synchronized to Zetema’s Firebase backend when a connection is available.
+retentionTitle: How long
+retentionBody: The MVP-0.2 privacy baseline sets a maximum retention period of 24 months after the last meaningful activity, after which data must be deleted or demonstrably anonymised.
+choiceTitle: Your choice
+choiceBody: Participation is voluntary. You can skip any interview question or stop using the interview. Declining here creates no interview session.
+consentLabel: I have read the information above and explicitly consent to Zetema storing and processing my interview responses for this MVP-0.2 participation purpose.
+consentStart: I consent and start the interview
+decline: I do not consent
+declinedTitle: No session was created
+declinedBody: You chose not to consent. No interview session or response data has been created.
+back: Back
+returnHome: Return home
+noticeVersion: Participant information version {version}

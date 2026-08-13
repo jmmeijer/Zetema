@@ -10,6 +10,8 @@ import {
   CommandGatewayService,
   type CommandStore,
   type CommandTransaction,
+  type StoredConsentEvent,
+  type StoredEligibilityEvent,
   type StoredOperation,
   type StoredRevision,
   type StoredSession,
@@ -19,6 +21,8 @@ class InMemoryCommandStore implements CommandStore, CommandTransaction {
   readonly sessions = new Map<string, StoredSession>();
   readonly operations = new Map<string, StoredOperation>();
   readonly revisions = new Map<string, StoredRevision>();
+  readonly eligibilityEvents = new Map<string, StoredEligibilityEvent>();
+  readonly participationEvents = new Map<string, StoredConsentEvent>();
 
   transact<T>(work: (transaction: CommandTransaction) => Promise<T>): Promise<T> {
     return work(this);
@@ -50,6 +54,16 @@ class InMemoryCommandStore implements CommandStore, CommandTransaction {
     this.revisions.set(`${revision.sessionId}:${revision.revisionId}`, revision);
     return Promise.resolve();
   }
+
+  putEligibilityEvent(sessionId: string, event: StoredEligibilityEvent): Promise<void> {
+    this.eligibilityEvents.set(`${sessionId}:${event.eventId}`, event);
+    return Promise.resolve();
+  }
+
+  putConsentEvent(sessionId: string, event: StoredConsentEvent): Promise<void> {
+    this.participationEvents.set(`${sessionId}:${event.eventId}`, event);
+    return Promise.resolve();
+  }
 }
 
 const USER = "participant-1";
@@ -60,8 +74,20 @@ function startRequest(overrides: Partial<StartInterviewSessionRequest> = {}): St
   return {
     sessionId: "session-1",
     operationId: "operation-start-1",
-    contentReleaseId: "mvp-0.1.nature-of-god.v1",
+    contentReleaseId: "mvp-0.2.beliefs-and-background.v2",
     startedAt: "2026-08-08T11:00:00.000Z",
+    eligibility: {
+      minimumAge: 18,
+      declaration: "age_18_or_over",
+      confirmedAt: "2026-08-08T10:58:00.000Z",
+    },
+    consent: {
+      purposeId: "mvp-0.2-interview-participation-v1",
+      textVersion: "2026.08.1",
+      scopes: ["INTERVIEW_STORAGE"],
+      mechanism: "in_app_explicit",
+      acceptedAt: "2026-08-08T10:59:00.000Z",
+    },
     ...overrides,
   };
 }
@@ -108,7 +134,7 @@ describe("CommandGatewayService", () => {
     service = new CommandGatewayService(store, () => SERVER_NOW);
   });
 
-  it("starts a new session at version one", async () => {
+  it("starts a new session with versioned eligibility and participation evidence", async () => {
     const result = await service.startInterviewSession(USER, startRequest());
 
     expect(result).toEqual({
@@ -123,6 +149,29 @@ describe("CommandGatewayService", () => {
       sessionVersion: 1,
       lastServerSequence: 0,
       createdAt: SERVER_NOW,
+      eligibilityState: "age_18_or_over",
+      consentState: "confirmed",
+      consentPurposeId: "mvp-0.2-interview-participation-v1",
+      consentTextVersion: "2026.08.1",
+    });
+    expect(store.eligibilityEvents.get("session-1:operation-start-1")).toMatchObject({
+      actorUid: USER,
+      minimumAge: 18,
+      declaration: "age_18_or_over",
+      mechanism: "self_declaration",
+      clientConfirmedAt: "2026-08-08T10:58:00.000Z",
+      occurredAt: SERVER_NOW,
+      schemaVersion: 1,
+    });
+    expect(store.participationEvents.get("session-1:operation-start-1")).toMatchObject({
+      subjectUid: USER,
+      purposeId: "mvp-0.2-interview-participation-v1",
+      consentTextVersion: "2026.08.1",
+      scopes: ["INTERVIEW_STORAGE"],
+      previousState: "pending",
+      newState: "confirmed",
+      occurredAt: SERVER_NOW,
+      schemaVersion: 1,
     });
   });
 
@@ -133,6 +182,8 @@ describe("CommandGatewayService", () => {
     expect(replay.idempotentReplay).toBe(true);
     expect(replay.sessionVersion).toBe(1);
     expect(store.operations.size).toBe(1);
+    expect(store.eligibilityEvents.size).toBe(1);
+    expect(store.participationEvents.size).toBe(1);
   });
 
   it("rejects reuse of a start operation ID with a changed payload", async () => {
@@ -142,6 +193,23 @@ describe("CommandGatewayService", () => {
       service.startInterviewSession(
         USER,
         startRequest({ contentReleaseId: "different-release" }),
+      ),
+      "OPERATION_ID_CONFLICT",
+    );
+  });
+
+  it("includes participation evidence in the start-operation fingerprint", async () => {
+    await service.startInterviewSession(USER, startRequest());
+
+    await expectGatewayError(
+      service.startInterviewSession(
+        USER,
+        startRequest({
+          consent: {
+            ...startRequest().consent,
+            acceptedAt: "2026-08-08T10:59:30.000Z",
+          },
+        }),
       ),
       "OPERATION_ID_CONFLICT",
     );

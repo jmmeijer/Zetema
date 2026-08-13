@@ -1,7 +1,9 @@
 import type {
+  AdultEligibilityDeclaration,
   ContentReleaseId,
   IsoDateTime,
   OperationId,
+  ParticipationConsentAcceptance,
   QuestionId,
   ResponseRevisionId,
   SessionId,
@@ -13,6 +15,8 @@ export interface StartInterviewSessionRequest {
   operationId: OperationId;
   contentReleaseId: ContentReleaseId;
   startedAt: IsoDateTime;
+  eligibility: AdultEligibilityDeclaration;
+  consent: ParticipationConsentAcceptance;
 }
 
 export interface StartInterviewSessionResult {
