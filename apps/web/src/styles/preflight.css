@@ -57,7 +57,7 @@
   line-height: 1.6;
 }
 
-.preflight-check {
+.preflight-consent {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -69,7 +69,7 @@
   cursor: pointer;
 }
 
-.preflight-check input {
+.preflight-consent input {
   width: 20px;
   height: 20px;
   flex: 0 0 auto;
