@@ -60,11 +60,9 @@ function translationsForRelease(releaseId: string): ReleaseTranslations {
     return v01Translations;
   }
 
-  const usesRefinedWording =
-    releaseId === "mvp-0.2.beliefs-and-background.v2" ||
-    releaseId === "mvp-0.2.beliefs-and-background.v3";
-
-  return usesRefinedWording ? v02V2Translations : v02Translations;
+  return releaseId === "mvp-0.2.beliefs-and-background.v2"
+    ? v02V2Translations
+    : v02Translations;
 }
 
 export function localizeContentText(text: LocalizedText, releaseId: string): string {
