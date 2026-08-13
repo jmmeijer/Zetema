@@ -1,7 +1,9 @@
 import type {
+  AdultEligibilityDeclaration,
   ContentReleaseId,
   IsoDateTime,
   OperationId,
+  ParticipationConsentAcceptance,
   QuestionExposure,
   QuestionId,
   ResponseRevisionId,
@@ -54,6 +56,10 @@ export interface LocalSessionRecord {
   updatedAt: IsoDateTime;
   lastLocalActivityAt: IsoDateTime;
   lastLocalSequence: number;
+  /** Missing only on local sessions created before the MVP-0.2 participant preflight gate. */
+  eligibility?: AdultEligibilityDeclaration;
+  /** Missing only on local sessions created before the MVP-0.2 participant preflight gate. */
+  consent?: ParticipationConsentAcceptance;
 }
 
 export interface LocalResponseRevision {
@@ -94,6 +100,10 @@ export interface StartInterviewSessionOutboxCommand extends OutboxBase {
   payload: {
     contentReleaseId: ContentReleaseId;
     startedAt: IsoDateTime;
+    /** Missing only on queued commands created before the participant preflight gate. */
+    eligibility?: AdultEligibilityDeclaration;
+    /** Missing only on queued commands created before the participant preflight gate. */
+    consent?: ParticipationConsentAcceptance;
   };
 }
 
@@ -172,6 +182,8 @@ export interface CreateLocalSessionInput {
   contentReleaseId: ContentReleaseId;
   operationId: OperationId;
   startedAt: IsoDateTime;
+  eligibility: AdultEligibilityDeclaration;
+  consent: ParticipationConsentAcceptance;
 }
 
 export interface AppendLocalResponseInput {
@@ -355,7 +367,9 @@ export class IndexedDbLocalStore {
       if (
         existing.startOperationId === input.operationId &&
         existing.contentReleaseId === input.contentReleaseId &&
-        existing.startedAt === input.startedAt
+        existing.startedAt === input.startedAt &&
+        JSON.stringify(existing.eligibility) === JSON.stringify(input.eligibility) &&
+        JSON.stringify(existing.consent) === JSON.stringify(input.consent)
       ) {
         const existingCommand = await requestToPromise(
           outboxStore.get(input.operationId) as IDBRequest<OutboxCommand | undefined>,
@@ -392,6 +406,8 @@ export class IndexedDbLocalStore {
       updatedAt: input.startedAt,
       lastLocalActivityAt: input.startedAt,
       lastLocalSequence: 1,
+      eligibility: input.eligibility,
+      consent: input.consent,
     };
 
     const command: StartInterviewSessionOutboxCommand = {
@@ -405,6 +421,8 @@ export class IndexedDbLocalStore {
       payload: {
         contentReleaseId: input.contentReleaseId,
         startedAt: input.startedAt,
+        eligibility: input.eligibility,
+        consent: input.consent,
       },
     };
 
