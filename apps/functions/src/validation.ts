@@ -1,4 +1,8 @@
-import type { StructuredAnswer } from "@zetema/domain";
+import type {
+  AdultEligibilityDeclaration,
+  ParticipationConsentAcceptance,
+  StructuredAnswer,
+} from "@zetema/domain";
 import type {
   AppendResponseRevisionRequest,
   FinalizeInterviewSessionRequest,
@@ -6,6 +10,10 @@ import type {
 } from "@zetema/shared-types";
 
 import { CommandGatewayError } from "./command-service.js";
+
+const PARTICIPATION_PURPOSE_ID = "mvp-0.2-interview-participation-v1";
+const PARTICIPANT_NOTICE_VERSION = "2026.08.1";
+const PARTICIPATION_SCOPE = "INTERVIEW_STORAGE";
 
 function invalid(message: string): never {
   throw new CommandGatewayError("INVALID_ARGUMENT", message);
@@ -55,6 +63,50 @@ function isoDateTime(value: unknown, field: string): string {
   return new Date(milliseconds).toISOString();
 }
 
+function adultEligibility(value: unknown): AdultEligibilityDeclaration {
+  const eligibility = asRecord(value, "eligibility");
+  if (eligibility.minimumAge !== 18) {
+    invalid("eligibility.minimumAge must be 18.");
+  }
+  if (eligibility.declaration !== "age_18_or_over") {
+    invalid("eligibility.declaration must confirm that the participant is 18 or older.");
+  }
+
+  return {
+    minimumAge: 18,
+    declaration: "age_18_or_over",
+    confirmedAt: isoDateTime(eligibility.confirmedAt, "eligibility.confirmedAt"),
+  };
+}
+
+function participationConsent(value: unknown): ParticipationConsentAcceptance {
+  const consent = asRecord(value, "consent");
+  if (consent.purposeId !== PARTICIPATION_PURPOSE_ID) {
+    invalid("consent.purposeId is not the current MVP-0.2 participation purpose.");
+  }
+  if (consent.textVersion !== PARTICIPANT_NOTICE_VERSION) {
+    invalid("consent.textVersion is not the current participant-information version.");
+  }
+  if (consent.mechanism !== "in_app_explicit") {
+    invalid("consent.mechanism must be 'in_app_explicit'.");
+  }
+  if (
+    !Array.isArray(consent.scopes) ||
+    consent.scopes.length !== 1 ||
+    consent.scopes[0] !== PARTICIPATION_SCOPE
+  ) {
+    invalid("consent.scopes must contain only the MVP-0.2 interview-storage scope.");
+  }
+
+  return {
+    purposeId: PARTICIPATION_PURPOSE_ID,
+    textVersion: PARTICIPANT_NOTICE_VERSION,
+    scopes: [PARTICIPATION_SCOPE],
+    mechanism: "in_app_explicit",
+    acceptedAt: isoDateTime(consent.acceptedAt, "consent.acceptedAt"),
+  };
+}
+
 function structuredAnswer(value: unknown): StructuredAnswer {
   const answer = asRecord(value, "answer");
   const kind = answer.kind;
@@ -98,11 +150,24 @@ export function parseStartInterviewSessionRequest(
   value: unknown,
 ): StartInterviewSessionRequest {
   const input = asRecord(value, "data");
+  const eligibility = adultEligibility(input.eligibility);
+  const consent = participationConsent(input.consent);
+  const startedAt = isoDateTime(input.startedAt, "startedAt");
+
+  if (eligibility.confirmedAt > consent.acceptedAt) {
+    invalid("The age eligibility declaration must occur before consent is accepted.");
+  }
+  if (consent.acceptedAt > startedAt) {
+    invalid("Consent must be accepted before the interview session starts.");
+  }
+
   return {
     sessionId: documentId(input.sessionId, "sessionId"),
     operationId: documentId(input.operationId, "operationId"),
     contentReleaseId: semanticId(input.contentReleaseId, "contentReleaseId"),
-    startedAt: isoDateTime(input.startedAt, "startedAt"),
+    startedAt,
+    eligibility,
+    consent,
   };
 }
 
